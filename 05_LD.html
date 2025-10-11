@@ -10,22 +10,23 @@
   </style>
 </head>
 <body class="min-h-screen bg-slate-50 text-slate-900">
-  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <h1 class="text-xl md:text-2xl font-semibold text-blue-700 tracking-tight">
-        Rối loạn Ngôn ngữ (Language Disorder)
-      </h1>
-      <span class="hidden md:inline text-sm text-slate-500">Tailwind · Blue theme</span>
+  <header class="bg-blue-700 text-white">
+    <div class="max-w-5xl mx-auto px-4 py-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+      <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">Rối loạn Ngôn ngữ (Language Disorder)</h1>
+      <span class="text-sm text-blue-100">Tailwind · Blue theme</span>
     </div>
-    <nav class="max-w-5xl mx-auto px-2 pb-2">
-      <ul id="tabs" class="flex flex-wrap gap-2">
-        <li><button data-target="dinh-nghia" class="tab-btn rounded-2xl px-4 py-2 text-sm font-medium transition bg-blue-600 text-white shadow">Định nghĩa</button></li>
-        <li><button data-target="dsm5" class="tab-btn rounded-2xl px-4 py-2 text-sm font-medium transition bg-white text-blue-700 border border-blue-200 hover:bg-blue-50">Tiêu chí DSM-5</button></li>
-        <li><button data-target="danh-gia" class="tab-btn rounded-2xl px-4 py-2 text-sm font-medium transition bg-white text-blue-700 border border-blue-200 hover:bg-blue-50">Đánh giá &amp; test</button></li>
-        <li><button data-target="dieu-tri" class="tab-btn rounded-2xl px-4 py-2 text-sm font-medium transition bg-white text-blue-700 border border-blue-200 hover:bg-blue-50">Điều trị</button></li>
-      </ul>
-    </nav>
   </header>
+
+  <nav data-tabs class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-2">
+      <ul id="tabs" class="flex flex-wrap gap-2 py-2">
+        <li><a href="#dinh-nghia" data-target="dinh-nghia" class="tab inline-block px-4 py-2 text-sm font-medium rounded-xl border border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100">Định nghĩa</a></li>
+        <li><a href="#dsm5" data-target="dsm5" class="tab inline-block px-4 py-2 text-sm font-medium rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100">Tiêu chí DSM-5</a></li>
+        <li><a href="#danh-gia" data-target="danh-gia" class="tab inline-block px-4 py-2 text-sm font-medium rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100">Đánh giá &amp; test</a></li>
+        <li><a href="#dieu-tri" data-target="dieu-tri" class="tab inline-block px-4 py-2 text-sm font-medium rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100">Điều trị</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <main class="max-w-5xl mx-auto px-4 py-8 space-y-16">
     <!-- Định nghĩa -->
@@ -196,42 +197,60 @@
     // Set year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Tabs: click to scroll + active state
-    const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
-    const sectionIds = tabButtons.map(btn => btn.dataset.target);
+    const nav = document.querySelector('nav[data-tabs]');
+    const tabs = Array.from(document.querySelectorAll('#tabs .tab'));
+    const sectionIds = tabs.map(btn => btn.dataset.target);
+
+    const applyActiveStyles = (el, isActive) => {
+      el.classList.toggle('bg-blue-50', isActive);
+      el.classList.toggle('border-blue-200', isActive);
+      el.classList.toggle('text-blue-700', isActive);
+      el.classList.toggle('hover:bg-blue-100', isActive);
+      el.classList.toggle('border-slate-200', !isActive);
+      el.classList.toggle('text-slate-700', !isActive);
+      el.classList.toggle('hover:bg-slate-100', !isActive);
+    };
 
     function setActiveTab(id) {
-      tabButtons.forEach(btn => {
+      tabs.forEach(btn => {
         const isActive = btn.dataset.target === id;
-        btn.className = 'tab-btn rounded-2xl px-4 py-2 text-sm font-medium transition ' + (isActive
-          ? 'bg-blue-600 text-white shadow'
-          : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-50');
+        applyActiveStyles(btn, isActive);
       });
     }
 
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
+    const topOffset = () => {
+      const height = nav ? nav.getBoundingClientRect().height : 0;
+      return height + 12;
+    };
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', (event) => {
         const id = btn.dataset.target;
         const el = document.getElementById(id);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          event.preventDefault();
+          const y = el.getBoundingClientRect().top + window.pageYOffset - topOffset();
+          window.scrollTo({ top: y, behavior: 'smooth' });
           setActiveTab(id);
         }
       });
     });
 
     // Scroll spy via IntersectionObserver
-    const opts = { root: null, rootMargin: '-40% 0px -55% 0px', threshold: 0 };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) setActiveTab(entry.target.id);
       });
-    }, opts);
+    }, { root: null, rootMargin: `-${topOffset()}px 0px -55% 0px`, threshold: 0 });
 
     sectionIds.forEach(id => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
+
+    if (sectionIds.length) {
+      setActiveTab(sectionIds[0]);
+    }
   </script>
 </body>
 </html>

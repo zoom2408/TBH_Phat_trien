@@ -7,31 +7,40 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
-    /* active tab indicator */
-    .tab-active { @apply bg-blue-600 text-white shadow; }
-    .tab-inactive { @apply bg-white text-blue-700 border border-blue-200 hover:bg-blue-50; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
   <!-- Header -->
-  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/80 bg-white/70 border-b border-slate-200">
-    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold">ASD</div>
-      <div>
-        <h1 class="text-xl md:text-2xl font-semibold text-slate-900">Rối loạn Phổ Tự kỷ (ASD)</h1>
-        <p class="text-sm text-slate-600">Tóm lược tương tác dựa trên MSD Manual (bản Chuyên gia) &amp; tài liệu IACAPAP (2014).</p>
+  <header class="bg-blue-700 text-white">
+    <div class="max-w-5xl mx-auto px-4 py-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl bg-white/90 text-blue-700 font-bold grid place-items-center shadow">ASD</div>
+        <div>
+          <h1 class="text-2xl md:text-3xl font-semibold">Rối loạn Phổ Tự kỷ (ASD)</h1>
+          <p class="text-sm text-blue-100">Tóm lược tương tác dựa trên MSD Manual (bản Chuyên gia) &amp; tài liệu IACAPAP (2014).</p>
+        </div>
       </div>
     </div>
-    <!-- Tabs -->
-    <nav class="max-w-5xl mx-auto px-4 pb-4">
-      <ul id="tabs" class="flex flex-wrap gap-2">
-        <li><a href="#dinhnghia" class="tab tab-active inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium">Định nghĩa</a></li>
-        <li><a href="#tieu-chi" class="tab tab-inactive inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium">Tiêu chí DSM‑5</a></li>
-        <li><a href="#danh-gia" class="tab tab-inactive inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium">Đánh giá &amp; test</a></li>
-        <li><a href="#dieu-tri" class="tab tab-inactive inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium">Điều trị</a></li>
-      </ul>
-    </nav>
   </header>
+
+  <nav data-tabs class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-2">
+      <ul id="tabs" class="flex flex-wrap gap-2 py-2">
+        <li>
+          <a href="#dinhnghia" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100">Định nghĩa</a>
+        </li>
+        <li>
+          <a href="#tieu-chi" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Tiêu chí DSM‑5</a>
+        </li>
+        <li>
+          <a href="#danh-gia" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Đánh giá &amp; test</a>
+        </li>
+        <li>
+          <a href="#dieu-tri" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Điều trị</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <main class="max-w-5xl mx-auto px-4 pt-8 pb-24">
     <!-- Section: Định nghĩa -->
@@ -186,16 +195,29 @@
   <script>
     // Smooth scroll with header offset fix
     const header = document.querySelector('header');
+    const nav = document.querySelector('nav[data-tabs]');
     const tabs = document.querySelectorAll('#tabs .tab');
     const sections = Array.from(document.querySelectorAll('main section'));
-    const offset = () => header.getBoundingClientRect().height + 8; // ~ header height
+    const offset = () => {
+      const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+      return navHeight + 16;
+    };
+
+    function applyActiveStyles(tab, isActive) {
+      tab.classList.toggle('bg-blue-50', isActive);
+      tab.classList.toggle('border-blue-200', isActive);
+      tab.classList.toggle('text-blue-700', isActive);
+      tab.classList.toggle('hover:bg-blue-100', isActive);
+      tab.classList.toggle('border-slate-200', !isActive);
+      tab.classList.toggle('text-slate-700', !isActive);
+      tab.classList.toggle('hover:bg-slate-100', !isActive);
+    }
 
     // Activate tab helper
     function setActiveById(id) {
       tabs.forEach(a => {
         const isActive = a.getAttribute('href') === '#' + id;
-        a.classList.toggle('tab-active', isActive);
-        a.classList.toggle('tab-inactive', !isActive);
+        applyActiveStyles(a, isActive);
       });
     }
 
@@ -223,6 +245,10 @@
     }, { root: null, rootMargin: `-${offset()}px 0px -70% 0px`, threshold: 0.01 });
 
     sections.forEach(sec => observer.observe(sec));
+
+    if (sections.length) {
+      setActiveById(sections[0].id);
+    }
   </script>
 </body>
 </html>
