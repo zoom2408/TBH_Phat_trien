@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rối loạn Ngôn ngữ (Language Disorder) — Tailwind Blue</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <h1 class="text-xl md:text-2xl font-semibold text-blue-700 tracking-tight">
+        Rối loạn Ngôn ngữ (Language Disorder)
+      </h1>
+      <span class="hidden md:inline text-sm text-slate-500">Tailwind · Blue theme</span>
+    </div>
+    <nav class="max-w-5xl mx-auto px-2 pb-2">
+      <ul id="tabs" class="flex flex-wrap gap-2">
+        <li><button data-target="dinh-nghia" class="tab-btn rounded-2xl px-4 py-2 text-sm font-medium transition bg-blue-600 text-white shadow">Định nghĩa</button></li>
+        <li><button data-target="dsm5" class="tab-btn rounded-2xl px-4 py-2 text-sm font-medium transition bg-white text-blue-700 border border-blue-200 hover:bg-blue-50">Tiêu chí DSM-5</button></li>
+        <li><button data-target="danh-gia" class="tab-btn rounded-2xl px-4 py-2 text-sm font-medium transition bg-white text-blue-700 border border-blue-200 hover:bg-blue-50">Đánh giá &amp; test</button></li>
+        <li><button data-target="dieu-tri" class="tab-btn rounded-2xl px-4 py-2 text-sm font-medium transition bg-white text-blue-700 border border-blue-200 hover:bg-blue-50">Điều trị</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-8 space-y-16">
+    <!-- Định nghĩa -->
+    <section id="dinh-nghia" class="scroll-mt-28">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Định nghĩa</h2>
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 leading-relaxed">
+        <p class="mb-3">
+          <strong>Rối loạn Ngôn ngữ (Language Disorder – LD)</strong> thuộc nhóm Rối loạn Phát triển Thần kinh.
+          Đặc trưng bởi <em>khó khăn dai dẳng</em> trong <span class="font-semibold">tiếp thu</span> và
+          <span class="font-semibold">sử dụng ngôn ngữ</span> trên nhiều phương thức (nói, viết, ký hiệu…), do
+          <span class="font-semibold">thiếu hụt</span> trong <span class="font-semibold">hiểu</span>
+          (comprehension) hoặc <span class="font-semibold">sản xuất</span> (production) ngôn ngữ.
+        </p>
+        <ul class="list-disc ml-6 space-y-2">
+          <li>Phân biệt với Rối loạn Ngữ âm – Lời nói (SSD) và Rối loạn Giao tiếp Xã hội (SCD).</li>
+          <li>Ảnh hưởng đến <span class="font-semibold">nội dung</span> và <span class="font-semibold">hình thức</span> ngôn ngữ: vốn từ, ngữ pháp, diễn ngôn.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DSM-5 -->
+    <section id="dsm5" class="scroll-mt-28">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Tiêu chí chẩn đoán theo DSM-5</h2>
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-6">
+        <div>
+          <h3 class="text-lg font-semibold text-slate-800">Tiêu chí A – Thiếu hụt cốt lõi</h3>
+          <p>Khó khăn dai dẳng trong tiếp thu và sử dụng ngôn ngữ do thiếu hụt ở một hoặc cả hai:</p>
+          <ul class="list-disc ml-6 mt-2 space-y-1">
+            <li><strong>Hiểu</strong> (comprehension)</li>
+            <li><strong>Sản xuất</strong> (production)</li>
+          </ul>
+          <p class="mt-2">Các lĩnh vực bị ảnh hưởng bao gồm:</p>
+          <ul class="grid sm:grid-cols-2 gap-2 list-disc ml-6">
+            <li>Giảm <em>vốn từ vựng</em></li>
+            <li>Hạn chế <em>cấu trúc câu</em> (ngữ pháp, hình thái)</li>
+            <li>Suy giảm <em>diễn ngôn</em> (kể chuyện, nối kết câu)</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-slate-800">Tiêu chí B – Mức độ nghiêm trọng &amp; hạn chế chức năng</h3>
+          <ul class="list-disc ml-6 space-y-1">
+            <li>Năng lực ngôn ngữ <strong>thấp đáng kể</strong> so với lứa tuổi.</li>
+            <li>Gây <strong>hạn chế đáng kể</strong> trong giao tiếp, học tập, sinh hoạt hằng ngày / nghề nghiệp.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-slate-800">Tiêu chí C – Khởi phát</h3>
+          <p>Khởi phát trong <strong>giai đoạn phát triển sớm</strong>.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-slate-800">Tiêu chí D – Loại trừ</h3>
+          <p>Không được giải thích tốt hơn bởi khuyết tật trí tuệ, RL phổ tự kỷ, RL thính giác, các RL thần kinh/tâm thần khác,
+            thiếu thốn môi trường, hay không thông thạo ngôn ngữ giảng dạy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Đánh giá & test -->
+    <section id="danh-gia" class="scroll-mt-28">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Đánh giá &amp; test</h2>
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-6">
+        <div>
+          <h3 class="text-lg font-semibold">Quy trình đánh giá lâm sàng</h3>
+          <ol class="list-decimal ml-6 space-y-1">
+            <li>Thu thập tiền sử phát triển, y khoa, giáo dục; quan sát giao tiếp trong bối cảnh tự nhiên.</li>
+            <li>Đánh giá ngôn ngữ <em>tiếp nhận</em> &amp; <em>biểu đạt</em> (cấu trúc, từ vựng, diễn ngôn).</li>
+            <li>Đánh giá <em>ngữ dụng</em> (pragmatics) và kỹ năng xã hội.</li>
+            <li>Đánh giá trí tuệ/tâm lý khi cần (VD: WISC‑V), sàng lọc ASD (ADOS‑2/ADI‑R) nếu nghi ngờ.</li>
+            <li>Khám thính lực (OAE/ABR) để loại trừ mất thính lực; tổng hợp kết quả đa nguồn.</li>
+          </ol>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">Các test chuẩn hóa (ví dụ tiêu biểu)</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+              <thead class="bg-blue-600 text-white">
+                <tr>
+                  <th class="text-left p-3">Bài kiểm tra</th>
+                  <th class="text-left p-3">Mục tiêu chính</th>
+                  <th class="text-left p-3">Nhóm tuổi dùng nhiều</th>
+                  <th class="text-left p-3">Ghi chú</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 bg-white">
+                <tr>
+                  <td class="p-3 font-medium">CELF‑P:2</td>
+                  <td class="p-3">Đánh giá ngôn ngữ toàn diện ở tuổi mẫu giáo</td>
+                  <td class="p-3">Mẫu giáo; tiểu học sớm dùng CELF‑4/5</td>
+                  <td class="p-3">Độ nhạy≈.85; đặc hiệu≈.82 (@ −1 SD)</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-medium">CELF‑4/5</td>
+                  <td class="p-3">Đánh giá ngôn ngữ toàn diện cho trẻ lớn hơn</td>
+                  <td class="p-3">Lớp 1+</td>
+                  <td class="p-3">Ngưỡng tối ưu ≈ −1.3 SD</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-medium">PLS‑4/5</td>
+                  <td class="p-3">Đánh giá ngôn ngữ sơ sinh → 7 tuổi</td>
+                  <td class="p-3">Mẫu giáo</td>
+                  <td class="p-3">Chuẩn hóa tiếp nhận &amp; biểu đạt</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-medium">REEL‑3</td>
+                  <td class="p-3">Đánh giá ngôn ngữ nổi ở trẻ nhỏ</td>
+                  <td class="p-3">Mẫu giáo</td>
+                  <td class="p-3">Phổ biến cho giai đoạn sớm</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-medium">TNL / TNL‑2</td>
+                  <td class="p-3">Đánh giá khả năng kể chuyện (diễn ngôn)</td>
+                  <td class="p-3">Lớp 1+</td>
+                  <td class="p-3">Độ nhạy/đặc hiệu cao, ngưỡng ≈ −0.5 SD</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-sm text-slate-600 mt-2">Ghi chú: Denver II, PEDS, Vineland, PEP‑3 chỉ đóng vai trò sàng lọc/hỗ trợ, không trực tiếp chẩn đoán LD.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Điều trị -->
+    <section id="dieu-tri" class="scroll-mt-28">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Các cách điều trị (Can thiệp/Hỗ trợ)</h2>
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-6">
+        <div>
+          <h3 class="text-lg font-semibold">Nguyên tắc &amp; Cách tiếp cận</h3>
+          <ul class="list-disc ml-6 space-y-1">
+            <li><strong>Phương pháp ngầm</strong> (implicit): làm phong phú môi trường giao tiếp, không đặt yêu cầu trực tiếp.</li>
+            <li><strong>Phương pháp tường minh</strong> (explicit): tăng cường đầu vào, nhắc lại/cấu trúc lại, kỹ thuật gợi ra, chiến lược siêu‑ngôn ngữ.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">Ba khung can thiệp phổ biến</h3>
+          <ul class="list-disc ml-6 space-y-1">
+            <li><strong>Lấy trẻ làm trung tâm</strong>: nói một mình, nói song song, bắt chước, mở rộng ngữ pháp/ngữ nghĩa, thay đổi mẫu câu.</li>
+            <li><strong>Trị liệu viên chỉ đạo</strong>: drill, drill‑play.</li>
+            <li><strong>Hybrid</strong>: kích thích tập trung (focused stimulation), cấu trúc dọc, trị liệu theo kịch bản (script therapy).</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">Một số mô hình cụ thể</h3>
+          <ul class="list-disc ml-6 space-y-1">
+            <li><strong>Hanen</strong> (It Takes Two to Talk / More Than Words): huấn luyện phụ huynh, thúc đẩy tương tác tự nhiên.</li>
+            <li><strong>Milieu Communication Teaching (PMT/MT/EMT)</strong>: dạy từ/cụm từ trong bối cảnh tự nhiên (MLU&lt;3.5).</li>
+            <li><strong>Focused Stimulation</strong>: lặp lại – mô hình hóa mục tiêu (từ vựng, hình thái ngữ pháp) trong ngữ cảnh có ý nghĩa.</li>
+            <li>Khác: AAC, Play‑based, DIR/Floortime, SCERTS, TEACCH, ABA/VB… (tùy trường hợp đồng mắc).</li>
+          </ul>
+        </div>
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm">
+          <p class="font-medium text-blue-800">Lưu ý:</p>
+          <ul class="list-disc ml-6 text-blue-900">
+            <li>Thời kỳ nhạy cảm phát triển ngôn ngữ (sơ sinh → dậy thì): can thiệp sớm cho hiệu quả tốt hơn.</li>
+            <li>Điều chỉnh mục tiêu theo hồ sơ điểm mạnh – điểm yếu (tiếp nhận, biểu đạt, ngữ dụng, diễn ngôn).</li>
+            <li>Phối hợp gia đình – nhà trường – chuyên viên âm ngữ trị liệu; theo dõi tiến triển định kỳ.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pt-8 pb-16 text-center text-sm text-slate-500">
+      © <span id="year"></span> Language Disorder · Tailwind Blue UI
+    </footer>
+  </main>
+
+  <script>
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tabs: click to scroll + active state
+    const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+    const sectionIds = tabButtons.map(btn => btn.dataset.target);
+
+    function setActiveTab(id) {
+      tabButtons.forEach(btn => {
+        const isActive = btn.dataset.target === id;
+        btn.className = 'tab-btn rounded-2xl px-4 py-2 text-sm font-medium transition ' + (isActive
+          ? 'bg-blue-600 text-white shadow'
+          : 'bg-white text-blue-700 border border-blue-200 hover:bg-blue-50');
+      });
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.target;
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setActiveTab(id);
+        }
+      });
+    });
+
+    // Scroll spy via IntersectionObserver
+    const opts = { root: null, rootMargin: '-40% 0px -55% 0px', threshold: 0 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setActiveTab(entry.target.id);
+      });
+    }, opts);
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  </script>
+</body>
+</html>

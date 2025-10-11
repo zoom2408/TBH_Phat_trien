@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rối loạn cư xử (Conduct Disorder) — Trang tương tác Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    .tab-active{ @apply bg-blue-600 text-white shadow; }
+    .tab-inactive{ @apply bg-white text-blue-700 hover:bg-blue-50; }
+    .anchor-offset{ scroll-margin-top: 96px; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <!-- Header -->
+  <header class="bg-gradient-to-br from-blue-600 to-blue-700 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <h1 class="text-2xl sm:text-3xl font-bold">Rối loạn hành vi (Conduct Disorder, CD)</h1>
+      <p class="opacity-90 mt-2">Trang tổng hợp ngắn gọn, có tương tác. Phong cách Tailwind xanh. Nguồn nội dung: MSD Manual (chuyên gia) & tài liệu lớp học CD.</p>
+      <div class="mt-3 text-sm opacity-80 space-x-3">
+        <a href="https://www.msdmanuals.com/vi/professional/khoa-nhi/r%E1%BB%91i-lo%E1%BA%A1n-t%C3%A2m-th%E1%BA%A7n-%E1%BB%9F-tr%E1%BA%BB-em-v%C3%A0-tr%E1%BA%BB-v%E1%BB%8B-th%C3%A0nh-ni%C3%AAn/r%E1%BB%91i-lo%E1%BA%A1n-c%C6%B0-x%E1%BB%AD" target="_blank" class="underline">MSD Manual (vi)</a>
+        <span>•</span>
+        <span>PDF: RỐI LOẠN HÀNH VI (CD)</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tabs (sticky) -->
+  <nav id="tabs" class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-2 py-2">
+      <div class="flex gap-2 overflow-x-auto no-scrollbar">
+        <a href="#dinh-nghia" data-tab class="tab tab-active rounded-xl px-4 py-2 text-sm font-medium">Định nghĩa</a>
+        <a href="#dsm5" data-tab class="tab tab-inactive rounded-xl px-4 py-2 text-sm font-medium">Tiêu chí DSM‑5‑TR</a>
+        <a href="#danh-gia" data-tab class="tab tab-inactive rounded-xl px-4 py-2 text-sm font-medium">Đánh giá & test</a>
+        <a href="#dieu-tri" data-tab class="tab tab-inactive rounded-xl px-4 py-2 text-sm font-medium">Điều trị</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-4 py-10 space-y-12">
+    <!-- Định nghĩa -->
+    <section id="dinh-nghia" class="anchor-offset">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+        <h2 class="text-xl font-semibold text-blue-700">Định nghĩa</h2>
+        <p class="mt-3 leading-relaxed">Rối loạn cư xử (CD) là <strong>mẫu hành vi thường xuyên hoặc dai dẳng</strong> ở trẻ em/thanh thiếu niên <strong>vi phạm quyền của người khác</strong> hoặc <strong>các quy tắc xã hội phù hợp lứa tuổi</strong>. Trẻ có thể hung hăng (với người/động vật), phá hoại tài sản, lừa dối/trộm cắp, và vi phạm nghiêm trọng các quy tắc (ví dụ: trốn học, bỏ nhà) — thường với <em>ít hoặc không hối hận</em>. Khởi phát hay gặp ở thời thơ ấu/đầu vị thành niên; nam > nữ.</p>
+        <ul class="mt-4 list-disc pl-5 text-sm text-slate-700 space-y-1">
+          <li>Tỷ lệ hiện mắc ước ~3–10% tùy quần thể; đồng mắc thường gặp: ADHD, ODD, rối loạn khí sắc, sử dụng chất.</li>
+          <li>Lưu ý đặc điểm <strong>cảm xúc xã hội hạn chế (LPE)</strong>: thiếu hối hận, thiếu đồng cảm, thờ ơ thành tích, cảm xúc nông cạn → tiên lượng xấu hơn.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DSM-5-TR -->
+    <section id="dsm5" class="anchor-offset">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+        <h2 class="text-xl font-semibold text-blue-700">Tiêu chí chẩn đoán theo DSM‑5‑TR</h2>
+        <p class="mt-3">Chẩn đoán khi trong <strong>12 tháng</strong> qua có <strong>≥ 3/15 hành vi</strong> dưới đây (ít nhất <strong>1 hành vi</strong> xảy ra trong <strong>6 tháng</strong> gần đây), gây suy giảm chức năng xã hội/học tập. Các hành vi chia thành 4 nhóm:</p>
+
+        <!-- Accordions -->
+        <div class="mt-4 grid md:grid-cols-2 gap-4">
+          <!-- A. Aggression -->
+          <details class="group rounded-xl border border-slate-200 p-4 open:bg-blue-50">
+            <summary class="cursor-pointer font-medium text-blue-800">A. Hung hăng với người/động vật (7)</summary>
+            <ul class="mt-2 list-disc pl-5 text-sm space-y-1">
+              <li>Thường bắt nạt, đe dọa hoặc hăm dọa người khác.</li>
+              <li>Thường khởi xướng đánh nhau.</li>
+              <li>Đã sử dụng vũ khí có thể gây tổn thương nghiêm trọng (gậy, gạch, chai vỡ, dao, súng...).</li>
+              <li>Đã tàn ác thể chất với người.</li>
+              <li>Đã tàn ác thể chất với động vật.</li>
+              <li>Đã cướp giật/chiếm đoạt khi đối mặt nạn nhân (cướp, cưỡng đoạt...).</li>
+              <li>Đã cưỡng ép hoạt động tình dục.</li>
+            </ul>
+          </details>
+
+          <!-- B. Property destruction -->
+          <details class="group rounded-xl border border-slate-200 p-4 open:bg-blue-50">
+            <summary class="cursor-pointer font-medium text-blue-800">B. Phá hoại tài sản (2)</summary>
+            <ul class="mt-2 list-disc pl-5 text-sm space-y-1">
+              <li>Cố ý phóng hỏa với mục đích gây thiệt hại nghiêm trọng.</li>
+              <li>Cố ý phá hoại tài sản của người khác (không chỉ do phóng hỏa).</li>
+            </ul>
+          </details>
+
+          <!-- C. Deceit/theft -->
+          <details class="group rounded-xl border border-slate-200 p-4 open:bg-blue-50">
+            <summary class="cursor-pointer font-medium text-blue-800">C. Lừa dối hoặc trộm cắp (3)</summary>
+            <ul class="mt-2 list-disc pl-5 text-sm space-y-1">
+              <li>Đã đột nhập nhà, tòa nhà, hoặc xe cộ của người khác.</li>
+              <li>Thường nói dối để đạt lợi ích/né tránh nghĩa vụ (“lừa người khác”).</li>
+              <li>Đã trộm đồ giá trị đáng kể mà không đối mặt nạn nhân (trộm cửa hàng, giả mạo...).</li>
+            </ul>
+          </details>
+
+          <!-- D. Rules violations -->
+          <details class="group rounded-xl border border-slate-200 p-4 open:bg-blue-50">
+            <summary class="cursor-pointer font-medium text-blue-800">D. Vi phạm nghiêm trọng quy tắc (3)</summary>
+            <ul class="mt-2 list-disc pl-5 text-sm space-y-1">
+              <li>Hay về khuya bất chấp cấm đoán của cha mẹ, bắt đầu trước 13 tuổi.</li>
+              <li>Bỏ nhà qua đêm ≥ 2 lần (hoặc 1 lần nhưng đi lâu không về).</li>
+              <li>Trốn học thường xuyên, bắt đầu trước 13 tuổi.</li>
+            </ul>
+          </details>
+        </div>
+
+        <div class="mt-6 grid md:grid-cols-3 gap-4 text-sm">
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <h3 class="font-semibold text-blue-800">Điều kiện bổ sung</h3>
+            <ul class="mt-2 list-disc pl-5 space-y-1">
+              <li>Gây suy giảm rõ rệt chức năng xã hội/học tập.</li>
+              <li>Không giải thích tốt hơn bởi rối loạn tâm thần khác.</li>
+            </ul>
+          </div>
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <h3 class="font-semibold text-blue-800">Chỉ định thời điểm khởi phát</h3>
+            <ul class="mt-2 list-disc pl-5 space-y-1">
+              <li><strong>Khởi phát thời thơ ấu</strong>: ≥ 1 triệu chứng trước 10 tuổi.</li>
+              <li><strong>Khởi phát vị thành niên</strong>: không triệu chứng trước 10 tuổi.</li>
+              <li><strong>Không xác định</strong>: thiếu thông tin.</li>
+            </ul>
+          </div>
+          <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <h3 class="font-semibold text-blue-800">Chỉ định LPE & mức độ nặng</h3>
+            <ul class="mt-2 list-disc pl-5 space-y-1">
+              <li><strong>LPE</strong>: thiếu hối hận/đồng cảm, thờ ơ kết quả, cảm xúc nông cạn.</li>
+              <li><strong>Mức độ</strong>: nhẹ / trung bình / nặng (dựa trên số & tác động hành vi).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Đánh giá & test -->
+    <section id="danh-gia" class="anchor-offset">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+        <h2 class="text-xl font-semibold text-blue-700">Đánh giá & các test thường dùng</h2>
+        <p class="mt-3 leading-relaxed">Đánh giá lâm sàng đa nguồn (trẻ/phụ huynh/giáo viên), nhiều bối cảnh (nhà, trường, cộng đồng), sàng lọc đồng mắc (ADHD, sử dụng chất, rối loạn khí sắc) và yếu tố nguy cơ/bảo vệ.</p>
+        <div class="mt-4 grid md:grid-cols-2 gap-4 text-sm">
+          <div class="rounded-xl border border-slate-200 p-4">
+            <h3 class="font-semibold text-blue-800">Bộ công cụ khuyến nghị</h3>
+            <ul class="mt-2 list-disc pl-5 space-y-1">
+              <li><strong>CBCL</strong> (Child Behavior Checklist) — hành vi toàn diện.</li>
+              <li><strong>SDQ</strong> (Strengths and Difficulties Questionnaire).</li>
+              <li><strong>Conduct Disorder Rating Scale</strong> / thang đo CD.</li>
+              <li><strong>K‑SADS</strong> hoặc <strong>DISC</strong> — phỏng vấn chẩn đoán bán cấu trúc.</li>
+              <li><strong>ICU</strong> (Inventory of Callous–Unemotional Traits) — đánh giá LPE.</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-4">
+            <h3 class="font-semibold text-blue-800">Nguyên tắc thực hành</h3>
+            <ul class="mt-2 list-disc pl-5 space-y-1">
+              <li>Thu thập thông tin lịch sử phát triển, mô hình hành vi theo thời gian.</li>
+              <li>Đánh giá nguy cơ an toàn: bạo lực, tự hại, bỏ nhà, sử dụng chất.</li>
+              <li>Phân biệt với ODD, DMDD, IED; sàng lọc rối loạn học tập/ngôn ngữ.</li>
+              <li>Xem bối cảnh văn hóa–xã hội; nhận diện yếu tố kích hoạt & duy trì.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Điều trị -->
+    <section id="dieu-tri" class="anchor-offset">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+        <h2 class="text-xl font-semibold text-blue-700">Điều trị (dựa trên bằng chứng)</h2>
+        <p class="mt-3">Kết hợp can thiệp <strong>tâm lý–xã hội</strong>, <strong>gia đình–nhà trường–cộng đồng</strong>, và <strong>điều trị y khoa cho đồng mắc</strong>. Tránh chỉ dựa vào quở phạt; ưu tiên tăng cường hành vi tích cực.</p>
+        <div class="mt-4 grid lg:grid-cols-3 gap-4 text-sm">
+          <div class="rounded-xl border border-blue-200 bg-blue-50 p-4">
+            <h3 class="font-semibold text-blue-800">Liệu pháp trọng tâm</h3>
+            <ul class="mt-2 list-disc pl-5 space-y-1">
+              <li><strong>PMT</strong> (Huấn luyện cha mẹ quản lý hành vi): củng cố tích cực, kỷ luật nhất quán.</li>
+              <li><strong>CBT</strong>: điều chỉnh nhận thức lệch lạc, kỹ năng kiểm soát cảm xúc & giải quyết vấn đề.</li>
+              <li><strong>MST</strong> / <strong>FFT</strong>: can thiệp đa hệ (gia đình–trường–cộng đồng) cho ca nặng.</li>
+              <li><strong>Chương trình kỹ năng xã hội</strong>, phục hồi học đường, hoạt động ngoại khóa có cấu trúc.</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-blue-200 bg-blue-50 p-4">
+            <h3 class="font-semibold text-blue-800">Thuốc (khi chỉ định)</h3>
+            <ul class="mt-2 list-disc pl-5 space-y-1">
+              <li>Điều trị <strong>đồng mắc</strong> (ví dụ ADHD: thuốc kích thích; khí sắc: theo hướng dẫn).</li>
+              <li><strong>Risperidone ngắn hạn</strong> có thể giảm hung hăng nặng; cân nhắc tác dụng phụ.</li>
+              <li><em>Không</em> dùng thuốc đơn thuần thay cho trị liệu hành vi/hệ thống.</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-blue-200 bg-blue-50 p-4">
+            <h3 class="font-semibold text-blue-800">Trường hợp đặc biệt</h3>
+            <ul class="mt-2 list-disc pl-5 space-y-1">
+              <li>Ca gây rối nghiêm trọng: có thể cần <strong>môi trường cư trú</strong> quản lý chặt chẽ.</li>
+              <li>Trẻ có <strong>LPE</strong>: tập trung vào gắn kết, cảm xúc, phần thưởng nhất quán.</li>
+              <li>Kế hoạch an toàn & phối hợp đa ngành (y tế, giáo dục, pháp luật khi cần).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 py-6 text-center text-sm text-slate-500">
+    <p>© 2025 • Trang học thuật không thay thế tư vấn y khoa cá nhân.</p>
+  </footer>
+
+  <script>
+    // Tabs: toggle active state on click and on scroll
+    const tabs = Array.from(document.querySelectorAll('[data-tab]'));
+    function setActive(hash){
+      tabs.forEach(a=>{
+        if(a.getAttribute('href')===hash){ a.classList.remove('tab-inactive'); a.classList.add('tab-active'); }
+        else { a.classList.add('tab-inactive'); a.classList.remove('tab-active'); }
+      });
+    }
+    tabs.forEach(a=>a.addEventListener('click', e=>{ setActive(a.getAttribute('href')); }));
+
+    const sections = ['#dinh-nghia','#dsm5','#danh-gia','#dieu-tri'].map(id=>document.querySelector(id));
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){ setActive('#'+entry.target.id); }
+      });
+    }, { rootMargin: '-60% 0px -35% 0px', threshold: [0, 1] });
+    sections.forEach(sec=> io.observe(sec));
+  </script>
+</body>
+</html>

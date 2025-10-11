@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rối loạn Phổ Tự kỷ (ASD) — Tương tác | Tailwind</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    /* active tab indicator */
+    .tab-active { @apply bg-blue-600 text-white shadow; }
+    .tab-inactive { @apply bg-white text-blue-700 border border-blue-200 hover:bg-blue-50; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/80 bg-white/70 border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold">ASD</div>
+      <div>
+        <h1 class="text-xl md:text-2xl font-semibold text-slate-900">Rối loạn Phổ Tự kỷ (ASD)</h1>
+        <p class="text-sm text-slate-600">Tóm lược tương tác dựa trên MSD Manual (bản Chuyên gia) &amp; tài liệu IACAPAP (2014).</p>
+      </div>
+    </div>
+    <!-- Tabs -->
+    <nav class="max-w-5xl mx-auto px-4 pb-4">
+      <ul id="tabs" class="flex flex-wrap gap-2">
+        <li><a href="#dinhnghia" class="tab tab-active inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium">Định nghĩa</a></li>
+        <li><a href="#tieu-chi" class="tab tab-inactive inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium">Tiêu chí DSM‑5</a></li>
+        <li><a href="#danh-gia" class="tab tab-inactive inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium">Đánh giá &amp; test</a></li>
+        <li><a href="#dieu-tri" class="tab tab-inactive inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium">Điều trị</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 pt-8 pb-24">
+    <!-- Section: Định nghĩa -->
+    <section id="dinhnghia" class="scroll-mt-28">
+      <h2 class="text-2xl font-bold text-blue-700">Định nghĩa</h2>
+      <div class="mt-3 space-y-3 leading-7">
+        <p>
+          Rối loạn Phổ Tự kỷ (ASD) là <span class="font-semibold">rối loạn phát triển thần kinh</span> được đặc trưng bởi
+          (1) <span class="font-medium">thiếu hụt giao tiếp &amp; tương tác xã hội</span> và (2) <span class="font-medium">kiểu hành vi/sở thích lặp lại, hạn hẹp</span>.
+          Triệu chứng xuất hiện sớm, có thể chỉ bộc lộ rõ khi nhu cầu xã hội vượt quá khả năng của trẻ và gây <span class="font-medium">suy giảm chức năng</span> (DSM‑5‑TR; IACAPAP C.2).
+        </p>
+        <ul class="list-disc ml-6 text-slate-700">
+          <li>ASD thuộc nhóm <em>rối loạn phát triển thần kinh</em>; là một <em>phổ</em> với mức độ cần hỗ trợ khác nhau (Level 1–3).</li>
+          <li>Phân biệt với IDD/khuyết tật trí tuệ: nếu đồng mắc, thiếu hụt giao tiếp xã hội phải <em>dưới mức kỳ vọng</em> so với mức phát triển chung.</li>
+        </ul>
+        <div class="mt-4 p-4 rounded-xl border bg-white">
+          <p class="text-sm text-slate-600">Nguồn: MSD Manual Professional (vi), IACAPAP e‑Textbook — Chương C.2 ASD (2014).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="my-10 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+
+    <!-- Section: Tiêu chí DSM-5 -->
+    <section id="tieu-chi" class="scroll-mt-28">
+      <h2 class="text-2xl font-bold text-blue-700">Tiêu chí chẩn đoán theo DSM‑5‑TR</h2>
+      <p class="mt-3 text-slate-700">Cần thỏa <span class="font-semibold">A, B, C, D, E</span>. Dưới đây là tóm lược kèm nội dung có thể mở/đóng:</p>
+
+      <!-- Accordion A -->
+      <details class="group mt-4 rounded-xl border bg-white open:shadow">
+        <summary class="cursor-pointer px-4 py-3 flex items-center justify-between">
+          <span class="font-medium">A. Thiếu hụt kéo dài trong giao tiếp &amp; tương tác xã hội (cần đủ 3/3)</span>
+          <span class="ml-3 text-blue-600 group-open:rotate-180 transition">▾</span>
+        </summary>
+        <div class="px-5 pb-4 text-slate-700">
+          <ul class="list-disc ml-6">
+            <li>Thiếu hụt giao tiếp xã hội–tình cảm (khởi xướng/đáp ứng tương tác kém, qua lại xã hội hạn chế).</li>
+            <li>Thiếu hụt giao tiếp phi ngôn ngữ (nhìn mắt, cử chỉ, nét mặt).</li>
+            <li>Khó phát triển/duy trì/hiểu quan hệ (chơi giả vờ, kết bạn, mối quan tâm xã hội).</li>
+          </ul>
+        </div>
+      </details>
+      <!-- Accordion B -->
+      <details class="group mt-3 rounded-xl border bg-white">
+        <summary class="cursor-pointer px-4 py-3 flex items-center justify-between">
+          <span class="font-medium">B. Hành vi/sở thích lặp lại, hạn hẹp (cần ≥ 2/4)</span>
+          <span class="ml-3 text-blue-600 group-open:rotate-180 transition">▾</span>
+        </summary>
+        <div class="px-5 pb-4 text-slate-700">
+          <ul class="list-disc ml-6">
+            <li>Ngôn ngữ/đồ vật/cử chỉ lặp lại, rập khuôn.</li>
+            <li>Khăng khăng giống nhau, nghi thức cứng nhắc; khó chuyển đổi.</li>
+            <li>Hứng thú rất hạn hẹp, cường độ bất thường.</li>
+            <li>Quá/giảm phản ứng cảm giác; quan tâm đặc biệt tới giác quan (ánh sáng, âm thanh, kết cấu...).</li>
+          </ul>
+        </div>
+      </details>
+      <!-- CDE -->
+      <div class="mt-4 grid md:grid-cols-3 gap-3">
+        <div class="rounded-xl border bg-white p-4">
+          <h3 class="font-semibold">C. Khởi phát sớm</h3>
+          <p class="text-sm text-slate-700 mt-1">Triệu chứng có từ giai đoạn phát triển sớm (có thể bộc lộ khi nhu cầu xã hội tăng).</p>
+        </div>
+        <div class="rounded-xl border bg-white p-4">
+          <h3 class="font-semibold">D. Ảnh hưởng chức năng</h3>
+          <p class="text-sm text-slate-700 mt-1">Gây suy giảm đáng kể về xã hội/học tập/nghề nghiệp.</p>
+        </div>
+        <div class="rounded-xl border bg-white p-4">
+          <h3 class="font-semibold">E. Loại trừ</h3>
+          <p class="text-sm text-slate-700 mt-1">Không giải thích tốt hơn bởi IDD/chậm phát triển toàn diện (nếu đồng mắc, thiếu hụt giao tiếp xã hội dưới mức kỳ vọng).</p>
+        </div>
+      </div>
+
+      <div class="mt-4 text-sm text-slate-600">
+        <p><span class="font-medium">Mức độ hỗ trợ (Level 1–3)</span> và các <em>specifier</em> (kèm/không kèm IDD, kèm/không kèm suy giảm ngôn ngữ, tình trạng y học/di truyền đi kèm, catatonia…) giúp định hướng can thiệp.</p>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="my-10 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+
+    <!-- Section: Đánh giá & test -->
+    <section id="danh-gia" class="scroll-mt-28">
+      <h2 class="text-2xl font-bold text-blue-700">Đánh giá &amp; các test sàng lọc/đánh giá</h2>
+      <p class="mt-3 text-slate-700">Chẩn đoán ASD là <span class="font-semibold">lâm sàng đa nguồn thông tin</span> (phỏng vấn gia đình, quan sát cấu trúc &amp; tự nhiên, thu thập thông tin từ nhà trường), kết hợp sàng lọc/phát hiện sớm và đánh giá phát triển toàn diện.</p>
+
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        <div class="rounded-xl border bg-white p-5">
+          <h3 class="font-semibold text-slate-900">Sàng lọc cộng đồng/ngoại trú</h3>
+          <ul class="list-disc ml-6 mt-2 text-slate-700 space-y-1">
+            <li><span class="font-medium">M‑CHAT</span> (Modified Checklist for Autism in Toddlers): 16–30 tháng; khuyến nghị phỏng vấn theo dõi để giảm dương tính giả.</li>
+            <li><span class="font-medium">CAST</span> (Childhood Autism Spectrum Test): lứa tuổi đi học; dùng miễn phí cho mục đích phi thương mại.</li>
+            <li>Giám sát phát triển theo bối cảnh; cân nhắc công cụ quan sát ngắn trực tiếp khi phù hợp.</li>
+          </ul>
+          <p class="text-xs text-slate-500 mt-3">Nguồn: IACAPAP C.2 — mục sàng lọc (M‑CHAT, CAST) và phát hiện sớm.</p>
+        </div>
+        <div class="rounded-xl border bg-white p-5">
+          <h3 class="font-semibold text-slate-900">Đánh giá chẩn đoán &amp; phối hợp</h3>
+          <ul class="list-disc ml-6 mt-2 text-slate-700 space-y-1">
+            <li>Đánh giá ngôn ngữ, nhận thức, vận động, cảm giác; sàng lọc nghe – nhìn – thần kinh.</li>
+            <li>Phân biệt với/đồng mắc: IDD, rối loạn ngôn ngữ, ADHD, ODD/CD, lo âu, trầm cảm, động kinh…</li>
+            <li>Lưu ý <em>diagnostic overshadowing</em> ở IDD: tránh quy chụp hành vi do IDD mà bỏ sót rối loạn tâm thần khác.</li>
+          </ul>
+          <p class="text-xs text-slate-500 mt-3">Nguồn: IACAPAP C.2; tài liệu IDD (chú ý hiện tượng “che lấp chẩn đoán”).</p>
+        </div>
+      </div>
+
+      <div class="mt-4 p-4 rounded-xl border bg-blue-50 text-blue-900">
+        <p class="text-sm"><span class="font-semibold">Lưu ý:</span> Sàng lọc không đồng nghĩa chẩn đoán; một số công cụ có dương/âm tính giả. Cần theo dõi và đánh giá chuyên sâu khi nghi ngờ.</p>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="my-10 h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent"></div>
+
+    <!-- Section: Điều trị -->
+    <section id="dieu-tri" class="scroll-mt-28">
+      <h2 class="text-2xl font-bold text-blue-700">Điều trị &amp; hỗ trợ</h2>
+      <p class="mt-3 text-slate-700">Không có “thuốc chữa khỏi” ASD; mục tiêu là tối ưu phát triển, kỹ năng giao tiếp – xã hội, hành vi thích nghi và chất lượng sống. Bằng chứng ủng hộ <span class="font-semibold">can thiệp sớm, cường độ đủ, cá thể hóa</span>.</p>
+
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        <div class="rounded-xl border bg-white p-5">
+          <h3 class="font-semibold text-slate-900">Can thiệp giáo dục – hành vi</h3>
+          <ul class="list-disc ml-6 mt-2 text-slate-700 space-y-1">
+            <li><span class="font-medium">ABA / EIBI</span> (can thiệp hành vi chuyên sâu đầu đời), huấn luyện kỹ năng xã hội, can thiệp dựa trên chơi có cấu trúc.</li>
+            <li><span class="font-medium">Ngôn ngữ trị liệu</span>, <span class="font-medium">Âm ngữ trị liệu</span>, <span class="font-medium">Hoạt động trị liệu</span> (cảm giác, vận động tinh thô, kỹ năng tự chăm sóc).</li>
+            <li>Hỗ trợ tại trường: <span class="font-medium">Kế hoạch giáo dục cá nhân hóa</span> (IEP), điều chỉnh môi trường &amp; kỳ vọng, hỗ trợ chuyển tiếp.</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border bg-white p-5">
+          <h3 class="font-semibold text-slate-900">Gia đình &amp; y tế</h3>
+          <ul class="list-disc ml-6 mt-2 text-slate-700 space-y-1">
+            <li><span class="font-medium">Huấn luyện phụ huynh</span>, điều hòa hành vi tại nhà, vệ sinh giấc ngủ, chiến lược quản lý cảm giác.</li>
+            <li>Quản lý rối loạn đi kèm (ADHD, lo âu, trầm cảm, rối loạn giấc ngủ, động kinh…).</li>
+            <li>Điều phối liên ngành: nhi/pediatrics – tâm thần/trị liệu – giáo dục – công tác xã hội.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-4 p-4 rounded-xl border bg-blue-50 text-blue-900">
+        <p class="text-sm"><span class="font-semibold">Nguyên tắc:</span> Mục tiêu đo được (SMART), theo dõi tiến bộ định kỳ, điều chỉnh cường độ &amp; chiến lược theo đáp ứng và mức hỗ trợ cần thiết (Level 1–3).</p>
+      </div>
+    </section>
+
+    <!-- Footer note -->
+    <footer class="mt-12 text-xs text-slate-500">
+      <p>Biên soạn phục vụ học tập. Nội dung tóm lược từ MSD Manual (chuyên gia, tiếng Việt) và IACAPAP e‑Textbook chương C.2 ASD (2014) + tài liệu lớp. Không thay thế tư vấn chuyên môn.</p>
+    </footer>
+  </main>
+
+  <script>
+    // Smooth scroll with header offset fix
+    const header = document.querySelector('header');
+    const tabs = document.querySelectorAll('#tabs .tab');
+    const sections = Array.from(document.querySelectorAll('main section'));
+    const offset = () => header.getBoundingClientRect().height + 8; // ~ header height
+
+    // Activate tab helper
+    function setActiveById(id) {
+      tabs.forEach(a => {
+        const isActive = a.getAttribute('href') === '#' + id;
+        a.classList.toggle('tab-active', isActive);
+        a.classList.toggle('tab-inactive', !isActive);
+      });
+    }
+
+    // Click behavior: adjust scroll position for sticky header
+    tabs.forEach(a => {
+      a.addEventListener('click', (e) => {
+        // allow anchor jump then correct offset
+        setTimeout(() => {
+          const el = document.querySelector(a.getAttribute('href'));
+          if (el) {
+            const y = el.getBoundingClientRect().top + window.pageYOffset - offset();
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }, 0);
+      });
+    });
+
+    // Observe sections to update active tab on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveById(entry.target.id);
+        }
+      });
+    }, { root: null, rootMargin: `-${offset()}px 0px -70% 0px`, threshold: 0.01 });
+
+    sections.forEach(sec => observer.observe(sec));
+  </script>
+</body>
+</html>

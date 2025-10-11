@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ADHD — Web học nhanh (Tailwind)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    .tab-pill{transition:background-color .2s ease, color .2s ease, box-shadow .2s ease}
+    .tab-active{background-color:rgb(219 234 254); color:rgb(23 37 84); box-shadow:0 2px 0 0 rgb(59 130 246)}
+    .tab-inactive{background-color:transparent; color:rgb(96 165 250)}
+    .tab-hover:hover{background-color:rgb(239 246 255); color:rgb(29 78 216)}
+    .anchor-offset{scroll-margin-top:90px}
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center gap-4">
+      <div class="shrink-0 w-10 h-10 rounded-xl bg-blue-600/90 grid place-items-center text-white font-bold">AD</div>
+      <div>
+        <h1 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-900">Rối loạn tăng động/giảm chú ý (ADHD)</h1>
+        <p class="text-sm text-slate-500">Nguồn: nội dung từ MSD Manual (bản chuyên gia) & tài liệu lớp (PDF ADHD).</p>
+      </div>
+    </div>
+    <!-- Tabs -->
+    <nav class="border-t border-slate-200">
+      <div class="max-w-5xl mx-auto px-4 py-2 overflow-x-auto">
+        <ul id="tabBar" class="flex gap-2 md:gap-3 whitespace-nowrap">
+          <li><a href="#dinh-nghia" data-target="dinh-nghia" class="tab tab-inactive tab-hover tab-pill px-3 py-2 rounded-full text-sm font-medium">Định nghĩa</a></li>
+          <li><a href="#dsm5" data-target="dsm5" class="tab tab-inactive tab-hover tab-pill px-3 py-2 rounded-full text-sm font-medium">Tiêu chí DSM‑5</a></li>
+          <li><a href="#danh-gia" data-target="danh-gia" class="tab tab-inactive tab-hover tab-pill px-3 py-2 rounded-full text-sm font-medium">Đánh giá & test</a></li>
+          <li><a href="#dieu-tri" data-target="dieu-tri" class="tab tab-inactive tab-hover tab-pill px-3 py-2 rounded-full text-sm font-medium">Can thiệp & điều trị</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-8 space-y-16">
+    <!-- Định nghĩa -->
+    <section id="dinh-nghia" class="anchor-offset scroll-mt-28">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Định nghĩa</h2>
+      <div class="prose prose-slate max-w-none">
+        <p><strong>Rối loạn tăng động giảm chú ý (ADHD)</strong> là dạng <em>rối loạn phát triển thần kinh</em> đặc trưng bởi <strong>giảm chú ý</strong>, <strong>tăng động</strong> và/hoặc <strong>bốc đồng</strong>, dẫn đến <strong>cản trở hoạt động hàng ngày và các mối quan hệ xã hội</strong>.</p>
+      </div>
+    </section>
+
+    <!-- DSM-5 -->
+    <section id="dsm5" class="anchor-offset">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Tiêu chí chẩn đoán theo DSM‑5‑TR</h2>
+      <div class="rounded-2xl bg-white border border-slate-200 shadow-sm p-5">
+        <div class="grid md:grid-cols-2 gap-6 mt-4">
+          <div>
+            <h3 class="font-semibold">Nhóm <span class="text-blue-700">Giảm chú ý</span> (≥6 triệu chứng; ≥5 nếu ≥17 tuổi)</h3>
+            <ol class="list-decimal pl-5 mt-2 text-sm leading-6">
+              <li>Thường không chú ý đến chi tiết hoặc mắc lỗi bất cẩn trong học tập/công việc.</li>
+              <li>Thường gặp khó khăn trong việc duy trì sự chú ý trong nhiệm vụ hoặc trò chuyện.</li>
+              <li>Dường như không lắng nghe khi nói trực tiếp.</li>
+              <li>Không tuân theo hướng dẫn và không hoàn thành nhiệm vụ học tập/công việc.</li>
+              <li>Khó tổ chức công việc, nhiệm vụ, hoạt động.</li>
+              <li>Tránh hoặc miễn cưỡng tham gia nhiệm vụ cần nỗ lực tinh thần kéo dài.</li>
+              <li>Thường làm mất đồ vật cần thiết cho nhiệm vụ hoặc hoạt động.</li>
+              <li>Dễ bị phân tâm bởi kích thích bên ngoài.</li>
+              <li>Thường hay quên các hoạt động hằng ngày.</li>
+            </ol>
+          </div>
+          <div>
+            <h3 class="font-semibold">Nhóm <span class="text-blue-700">Tăng động/bốc đồng</span> (≥6 triệu chứng; ≥5 nếu ≥17 tuổi)</h3>
+            <ol class="list-decimal pl-5 mt-2 text-sm leading-6">
+              <li>Thường cựa quậy tay chân hoặc ngọ nguậy khi ngồi.</li>
+              <li>Thường rời khỏi chỗ ngồi trong những tình huống yêu cầu ngồi yên.</li>
+              <li>Chạy nhảy hoặc leo trèo quá mức trong tình huống không phù hợp.</li>
+              <li>Không thể chơi hoặc tham gia yên tĩnh trong các hoạt động giải trí.</li>
+              <li>Thường có vẻ “như thể bị điều khiển bởi động cơ”.</li>
+              <li>Thường nói quá nhiều.</li>
+              <li>Buột miệng trả lời trước khi người khác nói xong câu hỏi.</li>
+              <li>Khó chờ đến lượt.</li>
+              <li>Thường chen ngang hoặc can thiệp vào người khác (ví dụ: xen vào cuộc trò chuyện, trò chơi).</li>
+            </ol>
+          </div>
+        </div>
+        <div class="mt-4 text-sm">
+          <p><span class="font-medium">Điều kiện bổ sung:</span> Triệu chứng kéo dài ≥6 tháng, không phù hợp lứa tuổi, xuất hiện trước 12 tuổi, hiện diện ở ≥2 bối cảnh (nhà, trường, nơi làm việc...), gây suy giảm đáng kể chức năng xã hội/học tập/nghề nghiệp, và không giải thích tốt hơn bởi rối loạn khác.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Đánh giá & test -->
+    <section id="danh-gia" class="anchor-offset">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Đánh giá & các test thường dùng</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+          <h3 class="font-semibold">Quy trình tổng quát</h3>
+          <ul class="list-disc pl-5 mt-2 text-sm leading-6">
+            <li>Khai thác mốc phát triển, tiền sử y khoa, học đường, tâm lý.</li>
+            <li>Thu thập báo cáo đa nguồn (phụ huynh/người chăm sóc, giáo viên, bản thân trẻ/người lớn) để đảm bảo ≥2 bối cảnh.</li>
+            <li>Sàng lọc và đánh giá rối loạn đồng mắc (lo âu, trầm cảm, rối loạn học tập, ODD/CD, rối loạn giấc ngủ...).</li>
+            <li>Đánh giá ảnh hưởng chức năng: học tập, xã hội, gia đình, nghề nghiệp.</li>
+          </ul>
+        </div>
+        <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200">
+          <h3 class="font-semibold">Các thang đo khuyến nghị</h3>
+          <ul class="list-disc pl-5 mt-2 text-sm leading-6">
+            <li><strong>Vanderbilt ADHD Diagnostic Rating Scale</strong> (phiên bản phụ huynh/giáo viên).</li>
+            <li><strong>Conners Comprehensive Behavior Rating Scales</strong> (Conners CBRS).</li>
+            <li><strong>ADHD Rating Scale‑5</strong> (ADHD‑RS‑5).</li>
+          </ul>
+          <p class="text-xs text-slate-600 mt-2">Lưu ý: thang đo hỗ trợ đánh giá, <em>không</em> sử dụng đơn lẻ để chẩn đoán. Cần kết hợp phỏng vấn lâm sàng và quan sát.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Điều trị -->
+    <section id="dieu-tri" class="anchor-offset">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">Can thiệp & điều trị</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm md:col-span-2">
+          <h3 class="font-semibold">Nguyên tắc theo lứa tuổi</h3>
+          <ul class="list-disc pl-5 mt-2 text-sm leading-6">
+            <li><span class="font-medium">Mẫu giáo</span>: ưu tiên <strong>liệu pháp hành vi</strong> (huấn luyện phụ huynh, chiến lược lớp học). Cân nhắc thuốc nếu can thiệp hành vi chưa đủ và triệu chứng trung bình–nặng.</li>
+            <li><span class="font-medium">Tuổi đi học</span>: <strong>kết hợp</strong> can thiệp hành vi + thuốc.</li>
+            <li><span class="font-medium">Người lớn</span>: áp dụng nguyên tắc tương tự; cá nhân hóa lựa chọn và liều; kết hợp kỹ năng tổ chức/thời gian.</li>
+          </ul>
+          <h3 class="font-semibold mt-4">Thuốc</h3>
+          <ul class="list-disc pl-5 mt-2 text-sm leading-6">
+            <li><strong>Chất kích thích</strong> (tuyến đầu): <em>methylphenidate</em>, <em>dextroamphetamine</em> (dạng tác dụng ngắn/dài) — hiệu quả giảm triệu chứng, tạo điều kiện tham gia học tập và can thiệp hành vi.</li>
+            <li><strong>Lựa chọn khi không dung nạp/không đáp ứng</strong> (hiệu quả kém hơn): <em>bupropion</em>, <em>venlafaxine</em>; <em>chủ vận α2</em> như <em>clonidine</em>, <em>guanfacine</em>.</li>
+            <li>Luôn xem xét <strong>tác dụng phụ</strong> (chán ăn, mất ngủ, tăng nhịp tim...), <strong>chống chỉ định</strong>, và <strong>tương tác thuốc</strong>.</li>
+          </ul>
+        </div>
+        <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200">
+          <h3 class="font-semibold">Quản lý hành vi & học đường</h3>
+          <ul class="list-disc pl-5 mt-2 text-sm leading-6">
+            <li>Chiến lược hành vi/CBT ứng dụng: đặt mục tiêu, tự giám sát, củng cố tích cực, phân mảnh nhiệm vụ.</li>
+            <li>Điều chỉnh lớp học: giảm nhiễu, hướng dẫn từng bước, nhiệm vụ ngắn và rõ ràng, cấu trúc thời gian nghỉ hợp lý.</li>
+            <li>Thiết lập thói quen & hệ thống nhắc việc trực quan (lịch, checklist, bảng điểm).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pt-10 text-xs text-slate-500">
+      <p>Tài liệu tóm lược để học nhanh. Tham khảo: MSD Manual (phiên bản chuyên gia) & PDF ADHD (DSM‑5‑TR, nguyên tắc điều trị theo lứa tuổi, thang đo đánh giá).</p>
+    </footer>
+  </main>
+
+  <script>
+    // Active tab on scroll using IntersectionObserver
+    const tabs = Array.from(document.querySelectorAll('.tab'))
+    const sections = tabs.map(t => document.getElementById(t.dataset.target))
+
+    const setActive = (id) => {
+      tabs.forEach(t => {
+        const on = t.dataset.target === id
+        t.classList.toggle('tab-active', on)
+        t.classList.toggle('tab-inactive', !on)
+      })
+    }
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ setActive(e.target.id) } })
+    }, { root: null, rootMargin: "-70px 0px -60% 0px", threshold: 0.1 })
+
+    sections.forEach(sec => io.observe(sec))
+
+    tabs.forEach(t=>{
+      t.addEventListener('click', ()=>{ setTimeout(()=> setActive(t.dataset.target), 200) })
+    })
+  </script>
+</body>
+</html>
