@@ -25,32 +25,32 @@
                 <span class="text-xl md:text-2xl font-extrabold">Tâm Bệnh học phát triển</span>
                 <span class="text-sm md:text-base font-medium">GV: Hoàng Dương</span>
 
-            <nav id="nav-menu">
-        
-                    <div class="submenu text-sm ml-4 mt-1">
-                        <a href="#" class="menu-link block py-2 px-4 rounded transition duration-200 hover:bg-gray-600" data-target="01_ASD.html">
-                            RL phổ tự kỷ (ASD) 
+            <nav id="nav-menu" class="mt-3 space-y-1 text-sm">
+
+                    <div class="submenu">
+                        <a href="#" class="menu-link block py-2 pl-0 pr-2 rounded transition duration-200 hover:bg-gray-600" data-target="01_ASD.html">
+                            RL phổ tự kỷ (ASD)
                         </a>
-                        <a href="#" class="menu-link block py-2 px-4 rounded transition duration-200 hover:bg-gray-600" data-target="02_ADHD.html">
+                        <a href="#" class="menu-link block py-2 pl-0 pr-2 rounded transition duration-200 hover:bg-gray-600" data-target="02_ADHD.html">
                             RL tăng động giảm chú ý (ADHD)
                         </a>
-                        <a href="#" class="menu-link block py-2 px-4 rounded transition duration-200 hover:bg-gray-600" data-target="03_IDD.html">
+                        <a href="#" class="menu-link block py-2 pl-0 pr-2 rounded transition duration-200 hover:bg-gray-600" data-target="03_IDD.html">
                             RL chậm phát triển trí tuệ (IDD)
                         </a>
-                        <a href="#" class="menu-link block py-2 px-4 rounded transition duration-200 hover:bg-gray-600" data-target="04_SLD.html">
+                        <a href="#" class="menu-link block py-2 pl-0 pr-2 rounded transition duration-200 hover:bg-gray-600" data-target="04_SLD.html">
                             RL học tập dặc hiệu (SLD)
                         </a>
-                        <a href="#" class="menu-link block py-2 px-4 rounded transition duration-200 hover:bg-gray-600" data-target="05_LD.html">
+                        <a href="#" class="menu-link block py-2 pl-0 pr-2 rounded transition duration-200 hover:bg-gray-600" data-target="05_LD.html">
                             RL ngôn ngữ (LD)
                         </a>
-                        <a href="#" class="menu-link block py-2 px-4 rounded transition duration-200 hover:bg-gray-600" data-target="06_CD.html">
+                        <a href="#" class="menu-link block py-2 pl-0 pr-2 rounded transition duration-200 hover:bg-gray-600" data-target="06_CD.html">
                             RL hành vi (CD)
                         </a>
-                        <a href="#" class="menu-link block py-2 px-4 rounded transition duration-200 hover:bg-gray-600" data-target="07_ODD.html">
+                        <a href="#" class="menu-link block py-2 pl-0 pr-2 rounded transition duration-200 hover:bg-gray-600" data-target="07_ODD.html">
                             RL thách thức chống đối (ODD)
                         </a>
                 </div>
-           
+
             </nav>
            
         </aside>
@@ -78,78 +78,39 @@
             const contentFrame = document.getElementById('content-frame');
             const navMenu = document.getElementById('nav-menu');
             const menuLinks = navMenu.querySelectorAll('a[data-target]');
-            const sectionHeaders = navMenu.querySelectorAll('.section-header');
-            const submenus = navMenu.querySelectorAll('.submenu');
-
-            // Initialize submenu states
-            submenus.forEach((submenu, index) => {
-                const icon = submenu.previousElementSibling.querySelector('i');
-                if (index === 0) {
-                    submenu.classList.remove('hidden');
-                    icon.classList.remove('fa-chevron-down');
-                    icon.classList.add('fa-chevron-up');
-                } else {
-                    submenu.classList.add('hidden');
-                    icon.classList.remove('fa-chevron-up');
-                    icon.classList.add('fa-chevron-down');
-                }
-            });
-
-            // Toggle submenus and ensure only one is open at a time
-            sectionHeaders.forEach(header => {
-                header.addEventListener('click', () => {
-                    const submenu = header.nextElementSibling;
-                    const isHidden = submenu.classList.contains('hidden');
-
-                    submenus.forEach(sm => {
-                        sm.classList.add('hidden');
-                        const smIcon = sm.previousElementSibling.querySelector('i');
-                        smIcon.classList.remove('fa-chevron-up');
-                        smIcon.classList.add('fa-chevron-down');
-                    });
-
-                    if (isHidden) {
-                        submenu.classList.remove('hidden');
-                        const icon = header.querySelector('i');
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    }
-                });
-            });
 
             // Toggle sidebar trên di động
             hamburgerButton.addEventListener('click', () => {
                 sidebar.classList.toggle('-translate-x-full');
             });
 
-            // Xử lý khi click vào link menu để tải nội dung và cập nhật trạng thái active
+            function loadContent(link) {
+                const targetPage = link?.getAttribute('data-target');
+                if (!targetPage) {
+                    return;
+                }
+
+                menuLinks.forEach(l => l.classList.remove('active-link'));
+                link.classList.add('active-link');
+
+                if (contentFrame.getAttribute('src') !== targetPage) {
+                    contentFrame.setAttribute('src', targetPage);
+                }
+
+                if (window.innerWidth < 768) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            }
+
             menuLinks.forEach(link => {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
-                    
-                    // Xóa trạng thái active khỏi tất cả các link
-                    menuLinks.forEach(l => l.classList.remove('active-link'));
-                    
-                    // Thêm trạng thái active cho link vừa được click
-                    this.classList.add('active-link');
-                    
-                    // Tải nội dung vào iframe
-                    const targetPage = this.getAttribute('data-target');
-                    if (targetPage && contentFrame.src !== window.location.origin + '/' + targetPage) {
-                        contentFrame.src = targetPage;
-                    }
-                    
-                    // Tự động đóng sidebar trên di động sau khi chọn
-                    if (window.innerWidth < 768) {
-                        sidebar.classList.add('-translate-x-full');
-                    }
+                    loadContent(this);
                 });
             });
 
-            // Tự động tải và active link đầu tiên khi tải trang
-            if(menuLinks.length > 0) {
-                contentFrame.src = menuLinks[0].getAttribute('data-target');
-                menuLinks[0].classList.add('active-link');
+            if (menuLinks.length > 0) {
+                loadContent(menuLinks[0]);
             }
         });
     </script>
