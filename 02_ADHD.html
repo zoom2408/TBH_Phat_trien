@@ -6,36 +6,34 @@
   <title>ADHD — Web học nhanh (Tailwind)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html{scroll-behavior:smooth}
-    .tab-pill{transition:background-color .2s ease, color .2s ease, box-shadow .2s ease}
-    .tab-active{background-color:rgb(219 234 254); color:rgb(23 37 84); box-shadow:0 2px 0 0 rgb(59 130 246)}
-    .tab-inactive{background-color:transparent; color:rgb(96 165 250)}
-    .tab-hover:hover{background-color:rgb(239 246 255); color:rgb(29 78 216)}
-    .anchor-offset{scroll-margin-top:90px}
+    html { scroll-behavior: smooth; }
+    .anchor-offset { scroll-margin-top: 96px; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
   <!-- Header -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-white/80 border-b border-slate-200">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center gap-4">
-      <div class="shrink-0 w-10 h-10 rounded-xl bg-blue-600/90 grid place-items-center text-white font-bold">AD</div>
-      <div>
-        <h1 class="text-xl md:text-2xl font-semibold tracking-tight text-slate-900">Rối loạn tăng động/giảm chú ý (ADHD)</h1>
-        <p class="text-sm text-slate-500">Nguồn: nội dung từ MSD Manual (bản chuyên gia) & tài liệu lớp (PDF ADHD).</p>
+  <header class="bg-blue-700 text-white">
+    <div class="max-w-5xl mx-auto px-4 py-6">
+      <div class="flex items-start gap-4">
+        <div class="shrink-0 w-12 h-12 rounded-xl bg-white/90 text-blue-700 font-bold grid place-items-center shadow">AD</div>
+        <div>
+          <h1 class="text-2xl md:text-3xl font-semibold tracking-tight">Rối loạn tăng động/giảm chú ý (ADHD)</h1>
+          <p class="text-sm text-blue-100">Nguồn: nội dung từ MSD Manual (bản chuyên gia) &amp; tài liệu lớp (PDF ADHD).</p>
+        </div>
       </div>
     </div>
-    <!-- Tabs -->
-    <nav class="border-t border-slate-200">
-      <div class="max-w-5xl mx-auto px-4 py-2 overflow-x-auto">
-        <ul id="tabBar" class="flex gap-2 md:gap-3 whitespace-nowrap">
-          <li><a href="#dinh-nghia" data-target="dinh-nghia" class="tab tab-inactive tab-hover tab-pill px-3 py-2 rounded-full text-sm font-medium">Định nghĩa</a></li>
-          <li><a href="#dsm5" data-target="dsm5" class="tab tab-inactive tab-hover tab-pill px-3 py-2 rounded-full text-sm font-medium">Tiêu chí DSM‑5</a></li>
-          <li><a href="#danh-gia" data-target="danh-gia" class="tab tab-inactive tab-hover tab-pill px-3 py-2 rounded-full text-sm font-medium">Đánh giá & test</a></li>
-          <li><a href="#dieu-tri" data-target="dieu-tri" class="tab tab-inactive tab-hover tab-pill px-3 py-2 rounded-full text-sm font-medium">Can thiệp & điều trị</a></li>
-        </ul>
-      </div>
-    </nav>
   </header>
+
+  <nav data-tabs class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-2">
+      <ul id="tabBar" class="flex gap-2 md:gap-3 whitespace-nowrap py-2">
+        <li><a href="#dinh-nghia" data-target="dinh-nghia" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100">Định nghĩa</a></li>
+        <li><a href="#dsm5" data-target="dsm5" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Tiêu chí DSM‑5</a></li>
+        <li><a href="#danh-gia" data-target="danh-gia" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Đánh giá &amp; test</a></li>
+        <li><a href="#dieu-tri" data-target="dieu-tri" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Can thiệp &amp; điều trị</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <main class="max-w-5xl mx-auto px-4 py-8 space-y-16">
     <!-- Định nghĩa -->
@@ -147,26 +145,45 @@
 
   <script>
     // Active tab on scroll using IntersectionObserver
-    const tabs = Array.from(document.querySelectorAll('.tab'))
-    const sections = tabs.map(t => document.getElementById(t.dataset.target))
+    const nav = document.querySelector('nav[data-tabs]');
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+    const sections = tabs.map(t => document.getElementById(t.dataset.target));
+
+    const applyActiveStyles = (el, isActive) => {
+      el.classList.toggle('bg-blue-50', isActive);
+      el.classList.toggle('border-blue-200', isActive);
+      el.classList.toggle('text-blue-700', isActive);
+      el.classList.toggle('hover:bg-blue-100', isActive);
+      el.classList.toggle('border-slate-200', !isActive);
+      el.classList.toggle('text-slate-700', !isActive);
+      el.classList.toggle('hover:bg-slate-100', !isActive);
+    };
 
     const setActive = (id) => {
       tabs.forEach(t => {
-        const on = t.dataset.target === id
-        t.classList.toggle('tab-active', on)
-        t.classList.toggle('tab-inactive', !on)
-      })
+        const on = t.dataset.target === id;
+        applyActiveStyles(t, on);
+      });
+    };
+
+    const topOffset = () => {
+      const height = nav ? nav.getBoundingClientRect().height : 0;
+      return height + 12;
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { setActive(e.target.id); } });
+    }, { root: null, rootMargin: `-${topOffset()}px 0px -60% 0px`, threshold: 0.1 });
+
+    sections.forEach(sec => io.observe(sec));
+
+    tabs.forEach(t => {
+      t.addEventListener('click', () => { setTimeout(() => setActive(t.dataset.target), 200); });
+    });
+
+    if (sections.length) {
+      setActive(sections[0].id);
     }
-
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ setActive(e.target.id) } })
-    }, { root: null, rootMargin: "-70px 0px -60% 0px", threshold: 0.1 })
-
-    sections.forEach(sec => io.observe(sec))
-
-    tabs.forEach(t=>{
-      t.addEventListener('click', ()=>{ setTimeout(()=> setActive(t.dataset.target), 200) })
-    })
   </script>
 </body>
 </html>

@@ -13,27 +13,27 @@
 </head>
 <body class="bg-sky-50 text-slate-800">
   <!-- Header -->
-  <header class="bg-white/80 backdrop-blur sticky top-0 z-50 border-b border-sky-100">
-    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-      <h1 class="text-xl md:text-2xl font-bold text-sky-700">Rối loạn thách thức chống đối (ODD)</h1>
-      <span class="hidden md:inline text-slate-500">Tổng hợp theo DSM‑5, bài giảng & tài liệu chuyên môn</span>
-    </div>
-    <!-- Tabs (anchor links) -->
-    <nav id="tabbar" class="bg-white border-t border-sky-100">
-      <div class="max-w-5xl mx-auto px-2 py-2">
-        <ul class="flex gap-2 overflow-x-auto no-scrollbar" role="tablist">
-          <li><a href="#dinhnghia" data-spy class="tablink inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-sky-700 hover:bg-sky-100 aria-[current=page]:bg-sky-600 aria-[current=page]:text-white">Định nghĩa</a></li>
-          <li><a href="#chan-doan" data-spy class="tablink inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-sky-700 hover:bg-sky-100 aria-[current=page]:bg-sky-600 aria-[current=page]:text-white">Tiêu chí DSM‑5</a></li>
-          <li><a href="#danh-gia" data-spy class="tablink inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-sky-700 hover:bg-sky-100 aria-[current=page]:bg-sky-600 aria-[current=page]:text-white">Đánh giá & test</a></li>
-          <li><a href="#dieu-tri" data-spy class="tablink inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-sky-700 hover:bg-sky-100 aria-[current=page]:bg-sky-600 aria-[current=page]:text-white">Điều trị</a></li>
-        </ul>
-      </div>
-    </nav>
-    <!-- Reading progress -->
-    <div class="h-1 bg-sky-100">
-      <div id="progress" class="h-1 w-0 bg-sky-500 transition-[width] duration-150"></div>
+  <header class="bg-blue-700 text-white">
+    <div class="max-w-5xl mx-auto px-4 py-6 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+      <h1 class="text-2xl font-bold">Rối loạn thách thức chống đối (ODD)</h1>
+      <span class="text-sm text-blue-100">Tổng hợp theo DSM‑5, bài giảng &amp; tài liệu chuyên môn</span>
     </div>
   </header>
+
+  <!-- Tabs (anchor links) -->
+  <nav id="tabbar" data-tabs class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-2">
+      <ul class="flex gap-2 overflow-x-auto no-scrollbar py-2" role="tablist">
+        <li><a href="#dinhnghia" data-spy class="tablink inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium border border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100" aria-current="page">Định nghĩa</a></li>
+        <li><a href="#chan-doan" data-spy class="tablink inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Tiêu chí DSM‑5</a></li>
+        <li><a href="#danh-gia" data-spy class="tablink inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Đánh giá &amp; test</a></li>
+        <li><a href="#dieu-tri" data-spy class="tablink inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Điều trị</a></li>
+      </ul>
+    </div>
+    <div class="h-1 bg-blue-100">
+      <div id="progress" class="h-1 w-0 bg-blue-500 transition-[width] duration-150"></div>
+    </div>
+  </nav>
 
   <main class="max-w-5xl mx-auto px-4 md:px-6 py-8">
     <!-- Intro card -->
@@ -230,38 +230,76 @@
 
   <script>
     // Scrollspy for tabs
+    const nav = document.querySelector('nav[data-tabs]');
     const links = Array.from(document.querySelectorAll('a[data-spy]'));
     const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+
+    const applyActiveStyles = (link, isActive) => {
+      link.classList.toggle('bg-blue-50', isActive);
+      link.classList.toggle('border-blue-200', isActive);
+      link.classList.toggle('text-blue-700', isActive);
+      link.classList.toggle('hover:bg-blue-100', isActive);
+      link.classList.toggle('border-slate-200', !isActive);
+      link.classList.toggle('text-slate-700', !isActive);
+      link.classList.toggle('hover:bg-slate-100', !isActive);
+      if (isActive) {
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    };
+
+    const setActiveByIndex = (index) => {
+      links.forEach((link, idx) => applyActiveStyles(link, idx === index));
+    };
+
+    const topOffset = () => {
+      const height = nav ? nav.getBoundingClientRect().height : 0;
+      return height + 12;
+    };
 
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const idx = sections.indexOf(entry.target);
         if (idx >= 0 && entry.isIntersecting) {
-          links.forEach(l => l.removeAttribute('aria-current'));
-          links[idx].setAttribute('aria-current', 'page');
+          setActiveByIndex(idx);
         }
       });
-    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0.01 });
+    }, { rootMargin: `-${topOffset()}px 0px -55% 0px`, threshold: 0.05 });
 
     sections.forEach(sec => io.observe(sec));
+
+    links.forEach((link, idx) => {
+      link.addEventListener('click', (event) => {
+        const target = sections[idx];
+        if (target) {
+          event.preventDefault();
+          const y = target.getBoundingClientRect().top + window.pageYOffset - topOffset();
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          setActiveByIndex(idx);
+        }
+      });
+    });
+
+    if (sections.length) {
+      setActiveByIndex(0);
+    }
 
     // Progress bar
     const progress = document.getElementById('progress');
     const onScroll = () => {
       const h = document.documentElement;
-      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+      const scrolled = h.scrollHeight > h.clientHeight ? (h.scrollTop) / (h.scrollHeight - h.clientHeight) : 0;
       progress.style.width = (scrolled * 100).toFixed(2) + '%';
     };
     document.addEventListener('scroll', onScroll, { passive: true });
 
     // Subtle shadow when scrolling
     const tabbar = document.getElementById('tabbar');
-    let lastY = 0;
     window.addEventListener('scroll', () => {
       const y = window.scrollY || 0;
       if (y > 8 && !tabbar.classList.contains('elevate')) tabbar.classList.add('elevate');
       if (y <= 8 && tabbar.classList.contains('elevate')) tabbar.classList.remove('elevate');
-      lastY = y;
     }, { passive: true });
   </script>
 </body>

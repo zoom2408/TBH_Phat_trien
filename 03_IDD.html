@@ -7,30 +7,30 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
-    /* Offset anchor for fixed header */
-    section[id]::before { content: ""; display: block; height: 88px; margin-top: -88px; visibility: hidden; }
   </style>
 </head>
 <body class="bg-white text-slate-800">
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <div class="h-8 w-8 rounded-xl bg-blue-600"></div>
-        <h1 class="font-semibold text-slate-900">Chậm phát triển trí tuệ (IDD)</h1>
+  <header class="bg-blue-700 text-white">
+    <div class="max-w-5xl mx-auto px-4 py-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-white/90 text-blue-700 font-semibold grid place-items-center shadow">ID</div>
+        <h1 class="text-2xl font-semibold">Chậm phát triển trí tuệ (IDD)</h1>
       </div>
-      <span class="text-xs text-slate-500 hidden sm:block">Nguồn: MSD Manual (VI) & tài liệu lớp IDD</span>
+      <span class="text-sm text-blue-100">Nguồn: MSD Manual (VI) &amp; tài liệu lớp IDD</span>
     </div>
-    <!-- Tabs -->
-    <nav class="max-w-5xl mx-auto px-2 pb-2">
-      <ul id="tabbar" class="flex flex-wrap gap-2">
-        <li><a href="#dinh-nghia" data-target="dinh-nghia" class="tab px-3 py-2 rounded-full text-sm font-medium border border-transparent hover:border-blue-200 hover:bg-blue-50 text-slate-600">Định nghĩa</a></li>
-        <li><a href="#tieu-chuan" data-target="tieu-chuan" class="tab px-3 py-2 rounded-full text-sm font-medium border border-transparent hover:border-blue-200 hover:bg-blue-50 text-slate-600">Tiêu chí DSM-5</a></li>
-        <li><a href="#danh-gia" data-target="danh-gia" class="tab px-3 py-2 rounded-full text-sm font-medium border border-transparent hover:border-blue-200 hover:bg-blue-50 text-slate-600">Đánh giá & test</a></li>
-        <li><a href="#dieu-tri" data-target="dieu-tri" class="tab px-3 py-2 rounded-full text-sm font-medium border border-transparent hover:border-blue-200 hover:bg-blue-50 text-slate-600">Điều trị & hỗ trợ</a></li>
-      </ul>
-    </nav>
   </header>
+
+  <nav data-tabs class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-2">
+      <ul id="tabbar" class="flex flex-wrap gap-2 py-2">
+        <li><a href="#dinh-nghia" data-target="dinh-nghia" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100">Định nghĩa</a></li>
+        <li><a href="#tieu-chuan" data-target="tieu-chuan" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Tiêu chí DSM-5</a></li>
+        <li><a href="#danh-gia" data-target="danh-gia" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Đánh giá &amp; test</a></li>
+        <li><a href="#dieu-tri" data-target="dieu-tri" class="tab inline-block px-4 py-2 rounded-xl text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Điều trị &amp; hỗ trợ</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <main class="max-w-5xl mx-auto px-4 py-8 space-y-16">
     <!-- Định nghĩa -->
@@ -157,19 +157,31 @@
 
   <script>
     // Smooth scroll with accurate active tab state using IntersectionObserver
+    const nav = document.querySelector('nav[data-tabs]');
     const tabs = Array.from(document.querySelectorAll('.tab'));
-    const map = new Map(tabs.map(a => [a.dataset.target, a]));
+    const sections = tabs.map(a => document.querySelector(`#${a.dataset.target}`)).filter(Boolean);
 
-    function setActive(key){
+    function applyActiveStyles(tab, isActive) {
+      tab.classList.toggle('bg-blue-50', isActive);
+      tab.classList.toggle('border-blue-200', isActive);
+      tab.classList.toggle('text-blue-700', isActive);
+      tab.classList.toggle('hover:bg-blue-100', isActive);
+      tab.classList.toggle('border-slate-200', !isActive);
+      tab.classList.toggle('text-slate-700', !isActive);
+      tab.classList.toggle('hover:bg-slate-100', !isActive);
+    }
+
+    function setActive(key) {
       tabs.forEach(a => {
         const active = a.dataset.target === key;
-        a.classList.toggle('bg-blue-600', active);
-        a.classList.toggle('text-white', active);
-        a.classList.toggle('shadow', active);
-        a.classList.toggle('border-transparent', active);
-        a.classList.toggle('text-slate-600', !active);
+        applyActiveStyles(a, active);
       });
     }
+
+    const topOffset = () => {
+      const height = nav ? nav.getBoundingClientRect().height : 0;
+      return height + 12;
+    };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -177,17 +189,20 @@
           setActive(entry.target.id);
         }
       });
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 1] });
+    }, { rootMargin: `-${topOffset()}px 0px -60% 0px`, threshold: 0.1 });
 
-    document.querySelectorAll('main section[id]').forEach(sec => observer.observe(sec));
+    sections.forEach(sec => observer.observe(sec));
 
     // Ensure clicking tab scrolls and highlights
     tabs.forEach(a => {
-      a.addEventListener('click', (e) => {
-        // Let native smooth scroll happen; just pre-set active for instant feedback
+      a.addEventListener('click', () => {
         setActive(a.dataset.target);
       });
     });
+
+    if (sections.length) {
+      setActive(sections[0].id);
+    }
   </script>
 </body>
 </html>

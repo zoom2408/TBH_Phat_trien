@@ -6,19 +6,19 @@
   <title>Rối loạn hành vi (Conduct Disorder) — Trang tương tác Tailwind</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html{scroll-behavior:smooth}
-    .tab-active{ @apply bg-blue-600 text-white shadow; }
-    .tab-inactive{ @apply bg-white text-blue-700 hover:bg-blue-50; }
-    .anchor-offset{ scroll-margin-top: 96px; }
+    html { scroll-behavior: smooth; }
+    .anchor-offset { scroll-margin-top: 96px; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
   <!-- Header -->
-  <header class="bg-gradient-to-br from-blue-600 to-blue-700 text-white">
-    <div class="max-w-6xl mx-auto px-4 py-8">
-      <h1 class="text-2xl sm:text-3xl font-bold">Rối loạn hành vi (Conduct Disorder, CD)</h1>
-      <p class="opacity-90 mt-2">Trang tổng hợp ngắn gọn, có tương tác. Phong cách Tailwind xanh. Nguồn nội dung: MSD Manual (chuyên gia) & tài liệu lớp học CD.</p>
-      <div class="mt-3 text-sm opacity-80 space-x-3">
+  <header class="bg-blue-700 text-white">
+    <div class="max-w-5xl mx-auto px-4 py-8 space-y-3">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-bold">Rối loạn hành vi (Conduct Disorder, CD)</h1>
+        <p class="text-blue-100 mt-2">Trang tổng hợp ngắn gọn, có tương tác. Phong cách Tailwind xanh. Nguồn nội dung: MSD Manual (chuyên gia) &amp; tài liệu lớp học CD.</p>
+      </div>
+      <div class="text-sm text-blue-100/90 space-x-3">
         <a href="https://www.msdmanuals.com/vi/professional/khoa-nhi/r%E1%BB%91i-lo%E1%BA%A1n-t%C3%A2m-th%E1%BA%A7n-%E1%BB%9F-tr%E1%BA%BB-em-v%C3%A0-tr%E1%BA%BB-v%E1%BB%8B-th%C3%A0nh-ni%C3%AAn/r%E1%BB%91i-lo%E1%BA%A1n-c%C6%B0-x%E1%BB%AD" target="_blank" class="underline">MSD Manual (vi)</a>
         <span>•</span>
         <span>PDF: RỐI LOẠN HÀNH VI (CD)</span>
@@ -27,13 +27,13 @@
   </header>
 
   <!-- Tabs (sticky) -->
-  <nav id="tabs" class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
-    <div class="max-w-6xl mx-auto px-2 py-2">
-      <div class="flex gap-2 overflow-x-auto no-scrollbar">
-        <a href="#dinh-nghia" data-tab class="tab tab-active rounded-xl px-4 py-2 text-sm font-medium">Định nghĩa</a>
-        <a href="#dsm5" data-tab class="tab tab-inactive rounded-xl px-4 py-2 text-sm font-medium">Tiêu chí DSM‑5‑TR</a>
-        <a href="#danh-gia" data-tab class="tab tab-inactive rounded-xl px-4 py-2 text-sm font-medium">Đánh giá & test</a>
-        <a href="#dieu-tri" data-tab class="tab tab-inactive rounded-xl px-4 py-2 text-sm font-medium">Điều trị</a>
+  <nav data-tabs class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-2">
+      <div class="flex gap-2 overflow-x-auto no-scrollbar py-2">
+        <a href="#dinh-nghia" data-tab="dinh-nghia" class="tab inline-block rounded-xl px-4 py-2 text-sm font-medium border border-blue-200 text-blue-700 bg-blue-50 hover:bg-blue-100">Định nghĩa</a>
+        <a href="#dsm5" data-tab="dsm5" class="tab inline-block rounded-xl px-4 py-2 text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Tiêu chí DSM‑5‑TR</a>
+        <a href="#danh-gia" data-tab="danh-gia" class="tab inline-block rounded-xl px-4 py-2 text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Đánh giá &amp; test</a>
+        <a href="#dieu-tri" data-tab="dieu-tri" class="tab inline-block rounded-xl px-4 py-2 text-sm font-medium border border-slate-200 text-slate-700 hover:bg-slate-100">Điều trị</a>
       </div>
     </div>
   </nav>
@@ -202,22 +202,58 @@
 
   <script>
     // Tabs: toggle active state on click and on scroll
+    const nav = document.querySelector('nav[data-tabs]');
     const tabs = Array.from(document.querySelectorAll('[data-tab]'));
-    function setActive(hash){
-      tabs.forEach(a=>{
-        if(a.getAttribute('href')===hash){ a.classList.remove('tab-inactive'); a.classList.add('tab-active'); }
-        else { a.classList.add('tab-inactive'); a.classList.remove('tab-active'); }
+    const sections = tabs.map(a => document.querySelector(`#${a.dataset.tab}`)).filter(Boolean);
+
+    const applyActiveStyles = (el, isActive) => {
+      el.classList.toggle('bg-blue-50', isActive);
+      el.classList.toggle('border-blue-200', isActive);
+      el.classList.toggle('text-blue-700', isActive);
+      el.classList.toggle('hover:bg-blue-100', isActive);
+      el.classList.toggle('border-slate-200', !isActive);
+      el.classList.toggle('text-slate-700', !isActive);
+      el.classList.toggle('hover:bg-slate-100', !isActive);
+    };
+
+    function setActive(id) {
+      tabs.forEach(a => {
+        const active = a.dataset.tab === id;
+        applyActiveStyles(a, active);
       });
     }
-    tabs.forEach(a=>a.addEventListener('click', e=>{ setActive(a.getAttribute('href')); }));
 
-    const sections = ['#dinh-nghia','#dsm5','#danh-gia','#dieu-tri'].map(id=>document.querySelector(id));
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){ setActive('#'+entry.target.id); }
+    const topOffset = () => {
+      const height = nav ? nav.getBoundingClientRect().height : 0;
+      return height + 12;
+    };
+
+    tabs.forEach(a => {
+      a.addEventListener('click', (event) => {
+        const id = a.dataset.tab;
+        const target = document.getElementById(id);
+        if (target) {
+          event.preventDefault();
+          const y = target.getBoundingClientRect().top + window.pageYOffset - topOffset();
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          setActive(id);
+        }
       });
-    }, { rootMargin: '-60% 0px -35% 0px', threshold: [0, 1] });
-    sections.forEach(sec=> io.observe(sec));
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    }, { rootMargin: `-${topOffset()}px 0px -35% 0px`, threshold: 0.1 });
+
+    sections.forEach(sec => io.observe(sec));
+
+    if (sections.length) {
+      setActive(sections[0].id);
+    }
   </script>
 </body>
 </html>
