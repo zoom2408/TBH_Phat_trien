@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flashcards – Kiểm tra kiến thức (TBH Phát triển)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff', 100:'#dbeafe', 200:'#bfdbfe', 300:'#93c5fd',
+              400:'#60a5fa', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8',
+              800:'#1e40af', 900:'#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .transition-base{transition: all .2s ease;}
+    .card-shadow{box-shadow: 0 10px 25px -10px rgba(29,78,216,.25)}
+    .btn{ @apply px-3 py-2 rounded-xl transition-base }
+  </style>
+</head>
+<body class="bg-primary-50 text-slate-800">
+  <div class="max-w-6xl mx-auto p-4 sm:p-8">
+    <header class="mb-6">
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-primary-800">Flashcards – Tâm bệnh học phát triển</h1>
+      <p class="text-primary-700 mt-2">Bộ ~70 thẻ kiểm tra kiến thức từ các tài liệu trong dự án (ASD, ADHD, ODD, CD, IDD, RL Ngôn ngữ, SLD). Chọn chủ đề, trộn thẻ, luyện trong Chế độ Quiz.</p>
+    </header>
+
+    <!-- Controls -->
+    <section class="grid gap-4 sm:grid-cols-3 mb-4">
+      <div class="col-span-2 flex flex-wrap gap-2">
+        <button data-filter="ALL" class="filter-btn px-3 py-2 rounded-xl bg-white border border-primary-200 text-primary-800 hover:bg-primary-100 transition-base">Tất cả</button>
+        <button data-filter="ASD" class="filter-btn px-3 py-2 rounded-xl bg-white border border-primary-200 text-primary-800 hover:bg-primary-100 transition-base">ASD</button>
+        <button data-filter="ADHD" class="filter-btn px-3 py-2 rounded-xl bg-white border border-primary-200 text-primary-800 hover:bg-primary-100 transition-base">ADHD</button>
+        <button data-filter="ODD" class="filter-btn px-3 py-2 rounded-xl bg-white border border-primary-200 text-primary-800 hover:bg-primary-100 transition-base">ODD</button>
+        <button data-filter="CD" class="filter-btn px-3 py-2 rounded-xl bg-white border border-primary-200 text-primary-800 hover:bg-primary-100 transition-base">CD</button>
+        <button data-filter="IDD" class="filter-btn px-3 py-2 rounded-xl bg-white border border-primary-200 text-primary-800 hover:bg-primary-100 transition-base">IDD</button>
+        <button data-filter="LD" class="filter-btn px-3 py-2 rounded-xl bg-white border border-primary-200 text-primary-800 hover:bg-primary-100 transition-base">RL Ngôn ngữ</button>
+        <button data-filter="SLD" class="filter-btn px-3 py-2 rounded-xl bg-white border border-primary-200 text-primary-800 hover:bg-primary-100 transition-base">SLD</button>
+      </div>
+      <div class="flex gap-2 justify-start sm:justify-end">
+        <button id="shuffleBtn" class="px-3 py-2 rounded-xl bg-primary-600 text-white hover:bg-primary-700 transition-base">Trộn thẻ</button>
+        <button id="quizToggle" class="px-3 py-2 rounded-xl bg-white border border-primary-300 text-primary-800 hover:bg-primary-100 transition-base">Chế độ Quiz: <span id="quizState">Tắt</span></button>
+      </div>
+    </section>
+
+    <!-- Progress -->
+    <section class="mb-4">
+      <div class="flex items-center justify-between mb-1">
+        <span class="text-sm font-medium text-primary-800">Tiến độ</span>
+        <span class="text-sm text-primary-700" id="progressText">0 / 0</span>
+      </div>
+      <div class="w-full bg-white border border-primary-200 rounded-xl overflow-hidden">
+        <div id="progressBar" class="h-2 bg-primary-500 w-0"></div>
+      </div>
+      <div id="quizStats" class="hidden mt-2 text-sm text-primary-800">Đúng: <span id="correctCnt">0</span> · Sai: <span id="wrongCnt">0</span></div>
+    </section>
+
+    <!-- Card viewport -->
+    <section class="bg-white border border-primary-200 rounded-2xl p-6 card-shadow">
+      <div class="flex items-start justify-between mb-4">
+        <div>
+          <span id="cardTag" class="inline-flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-md bg-primary-100 text-primary-800">ASD</span>
+        </div>
+        <div class="text-sm text-primary-700">Thẻ <span id="cardIndex">1</span>/<span id="cardTotal">0</span></div>
+      </div>
+
+      <h2 id="question" class="text-xl sm:text-2xl font-bold text-slate-900 mb-4">Câu hỏi</h2>
+      <div id="answerWrap" class="mb-6">
+        <button id="revealBtn" class="px-4 py-2 rounded-xl bg-primary-600 text-white hover:bg-primary-700 transition-base">Hiện đáp án</button>
+        <div id="answer" class="mt-3 hidden text-slate-700"></div>
+      </div>
+
+      <div id="quizButtons" class="hidden flex gap-2 mb-4">
+        <button id="markCorrect" class="px-4 py-2 rounded-xl bg-green-600 text-white hover:bg-green-700 transition-base">Đúng</button>
+        <button id="markWrong" class="px-4 py-2 rounded-xl bg-rose-600 text-white hover:bg-rose-700 transition-base">Sai</button>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <button id="prevBtn" class="px-3 py-2 rounded-xl bg-white border border-primary-300 text-primary-800 hover:bg-primary-100 transition-base">◀ Trước</button>
+        <button id="nextBtn" class="px-3 py-2 rounded-xl bg-primary-600 text-white hover:bg-primary-700 transition-base">Tiếp ▶</button>
+        <button id="resetBtn" class="ml-auto px-3 py-2 rounded-xl bg-white border border-primary-300 text-primary-800 hover:bg-primary-100 transition-base">Đặt lại</button>
+      </div>
+    </section>
+
+    <section class="mt-6 text-xs text-primary-700">
+      <details class="bg-white/70 border border-primary-200 rounded-xl p-3">
+        <summary class="cursor-pointer font-semibold text-primary-800">Kết quả tự kiểm thử (runtime self-tests)</summary>
+        <ul id="selfTests" class="list-disc pl-5 mt-2 space-y-1"></ul>
+      </details>
+    </section>
+
+    <footer class="mt-4 text-xs text-primary-700">
+      Nguồn nội dung: các tài liệu trong dự án TBH Phát triển (IACAPAP – ASD/ODD, bài nhóm về ADHD, IDD, RL Ngôn ngữ, CD, SLD). Dùng cho mục đích học tập.
+    </footer>
+  </div>
+
+  <script>
+    // =============== DATA ===============
+    const CARDS = [
+      {tag:'ASD', q:'ASD theo DSM-5 gồm hai cụm triệu chứng cốt lõi là gì?', a:'(1) Khiếm khuyết giao tiếp & tương tác xã hội đa bối cảnh; (2) Hành vi, sở thích hạn hẹp, lặp lại (RRB).'},
+      {tag:'ASD', q:'Ba mức độ hỗ trợ (severity levels) của ASD theo DSM-5?', a:'Level 1: Cần hỗ trợ; Level 2: Cần hỗ trợ đáng kể; Level 3: Cần hỗ trợ rất đáng kể.'},
+      {tag:'ASD', q:'Hai công cụ sàng lọc ASD miễn phí, phổ biến cho nhóm tuổi khác nhau?', a:'M-CHAT (trẻ nhỏ ~16–30 tháng, kèm phỏng vấn theo dõi) và CAST (trẻ lớn/tuổi học đường).'},
+      {tag:'ASD', q:'Ví dụ 3 “red flags” sớm của ASD ở 12–24 tháng.', a:'Không đáp ứng tên gọi ~12m; không chỉ trỏ/chia sẻ hứng thú ~14m; không chơi giả vờ ~18m; tránh nhìn mắt; nhại lời dai dẳng.'},
+      {tag:'ASD', q:'Tỉ lệ hiện mắc điển hình của ASD ở dân số nói chung khoảng bao nhiêu?', a:'Khoảng ~1% (một số khảo sát cho thấy cao hơn ở vài quốc gia; nam > nữ).'},
+      {tag:'ASD', q:'“Specifiers” trong chẩn đoán ASD dùng để làm gì?', a:'Mô tả đặc điểm kèm (có/không kèm ID, suy giảm ngôn ngữ; bệnh lý y khoa/di truyền; rối loạn kèm; catatonia; mức độ nặng).'},
+      {tag:'ASD', q:'Một hiểu lầm thường gặp về vắc-xin và ASD?', a:'Bằng chứng dịch tễ lớn cho thấy vắc-xin (ví dụ MMR) không gây ASD; nên tiếp tục tiêm chủng theo khuyến cáo.'},
+      {tag:'ASD', q:'Mất cân bằng kích thích–ức chế (E/I) có thể liên quan triệu chứng nào ở ASD?', a:'Tăng nhạy cảm giác quan, khó điều hòa xã hội, hành vi lặp; giả thuyết E/I nghiêng về kích thích.'},
+      {tag:'ASD', q:'Khác biệt chính giữa DSM-IV và DSM-5 về phân loại tự kỷ?', a:'DSM-5 gộp các rối loạn PDD (autistic disorder, Asperger…) thành ASD duy nhất, dùng mức độ nặng và specifiers.'},
+      {tag:'ASD', q:'Một mục tiêu của phát hiện sớm ASD là gì?', a:'Can thiệp sớm giúp cải thiện kỹ năng giao tiếp-xã hội, lập kế hoạch hỗ trợ học đường & gia đình, giảm lo âu của phụ huynh.'},
+      {tag:'ADHD', q:'Định nghĩa ngắn gọn ADHD dùng trong dự án?', a:'Rối loạn phát triển thần kinh với mô hình dai dẳng của giảm chú ý, tăng động và/hoặc bốc đồng, gây cản trở hoạt động và quan hệ xã hội.'},
+      {tag:'ADHD', q:'Kể tên 3 biểu hiện tiêu biểu nhóm Giảm chú ý (Inattention).', a:'Dễ mắc lỗi cẩu thả; khó duy trì chú ý; có vẻ không lắng nghe; không hoàn thành nhiệm vụ; mất đồ; hay quên; dễ xao nhãng…'},
+      {tag:'ADHD', q:'Kể tên 3 biểu hiện tiêu biểu nhóm Tăng động/Bốc đồng.', a:'Cựa quậy/khó ngồi yên; rời chỗ; nói quá nhiều; trả lời vội; khó chờ lượt; chen ngang; hoạt động như “gắn máy”.'},
+      {tag:'ADHD', q:'Ba thể lâm sàng chính của ADHD?', a:'Thể Giảm chú ý; Thể Tăng động/Bốc đồng; Thể Kết hợp.'},
+      {tag:'ADHD', q:'Một khác biệt biểu hiện ADHD giữa trẻ nhỏ và người lớn?', a:'Trẻ: tăng động/bốc đồng nổi bật; người lớn: bồn chồn bên trong, kém tổ chức, trì hoãn, mất tập trung.'},
+      {tag:'ADHD', q:'Tỉ lệ đồng mắc cao nhất của ADHD là nhóm rối loạn nào?', a:'Rối loạn hành vi phá vỡ: ODD và CD; ngoài ra lo âu, trầm cảm, SLD cũng thường gặp.'},
+      {tag:'ADHD', q:'Yếu tố di truyền đóng vai trò ra sao trong ADHD?', a:'Hệ số di truyền cao (~0.74–0.79); người thân bậc một tăng nguy cơ nhiều lần; đa gen ảnh hưởng hệ DA/NE.'},
+      {tag:'ADHD', q:'“Hyperfocus” là gì và mặt trái của nó?', a:'Trạng thái tập trung cao vào việc ưa thích; có thể khiến bỏ bê nhiệm vụ khác, quản lý thời gian kém nếu không kiểm soát.'},
+      {tag:'ADHD', q:'Một nguyên tắc can thiệp chung cho ADHD?', a:'Cá thể hóa & đa mô thức: giáo dục – kỹ năng – điều chỉnh môi trường – (khi phù hợp) thuốc kích thích/non-stimulant.'},
+      {tag:'ADHD', q:'Ví dụ 2 vùng não liên quan ADHD trong mô hình thần kinh?', a:'Vỏ trước trán (điều hành); hạch nền (ức chế hành vi); hệ limbic (điều hòa cảm xúc).'},
+      {tag:'ODD', q:'ODD được đặc trưng bởi mẫu hành vi nào và tối thiểu bao lâu?', a:'Mẫu hành vi chống đối, tranh cãi/thách thức, cáu kỉnh/thù địch; kéo dài ≥6 tháng, gây suy giảm chức năng.'},
+      {tag:'ODD', q:'Ba cụm triệu chứng của ODD theo DSM-5?', a:'(A) Dễ cáu/giận; (B) Tranh cãi/không tuân; (C) Thù địch/độc ác (trả đũa ≥2 lần/6 tháng).'},
+      {tag:'ODD', q:'Yêu cầu về tần suất theo lứa tuổi trong ODD?', a:'Trẻ nhỏ: gần như hằng ngày; vị thành niên: ≥1 lần/tuần; xảy ra với ít nhất 1 người không phải anh/chị/em.'},
+      {tag:'ODD', q:'Mối liên hệ ODD và CD?', a:'Liên quan và có thể đồng mắc; ODD không đồng nghĩa CD. ODD có thể là tiền đề, nhưng nhiều trẻ ODD không tiến triển thành CD.'},
+      {tag:'ODD', q:'Hai yếu tố nguy cơ môi trường điển hình cho ODD.', a:'Nuôi dạy không nhất quán/khắc nghiệt; xung đột gia đình; môi trường hỗn loạn; giám sát kém.'},
+      {tag:'ODD', q:'Một chiến lược can thiệp hàng đầu có bằng chứng cho ODD?', a:'Huấn luyện cha mẹ quản lý hành vi (PMT): củng cố tích cực, thiết lập quy tắc – hệ quả nhất quán, giảm leo thang tranh cãi.'},
+      {tag:'ODD', q:'Hai chỉ dấu cảnh báo cần chuyển khám sớm.', a:'Hung hăng thể chất, phá hoại, trộm cắp (nghĩ CD); kéo dài >6 tháng kèm suy giảm; tự hại/đe dọa; nghi ngờ ADHD nặng.'},
+      {tag:'ODD', q:'Ba “kiểu mẫu” tiên nghiệm gợi ý khác biệt tiên lượng trong ODD?', a:'Irritable (dễ cáu) → dự báo rối loạn cảm xúc; Headstrong (cứng đầu) & Hurtful (gây tổn thương) → dự báo vấn đề hành vi.'},
+      {tag:'ODD', q:'Tỉ lệ hiện mắc ODD trong dân số trẻ em khoảng bao nhiêu?', a:'Ước tính 2%–10% tùy nghiên cứu; nam > nữ trước dậy thì.'},
+      {tag:'ODD', q:'Ví dụ một lỗi chẩn đoán phân biệt thường gặp với ODD.', a:'Nhầm với DMDD (khí sắc cáu gắt mạn + bùng nổ rất nặng hầu như mỗi ngày) hoặc IED (bùng nổ rời rạc, không mẫu chống đối).'},
+      {tag:'CD', q:'CD là gì?', a:'Rối loạn hành vi với mẫu hành vi dai dẳng vi phạm chuẩn mực xã hội/quyền người khác: hung hãn, phá hoại, lừa dối/trộm, vi phạm quy tắc.'},
+      {tag:'CD', q:'Bốn nhóm hành vi chính trong CD theo DSM-5.', a:'(1) Hung hãn với người/động vật; (2) Phá hoại tài sản; (3) Lừa dối hoặc trộm cắp; (4) Vi phạm nghiêm trọng quy tắc.'},
+      {tag:'CD', q:'Phân nhóm theo tuổi khởi phát của CD và ý nghĩa tiên lượng.', a:'Khởi phát thời thơ ấu (<10t) → nặng, tiên lượng xấu; khởi phát vị thành niên (≥10t) → nhẹ hơn; không xác định.'},
+      {tag:'CD', q:'“Limited Prosocial Emotions (LPE)” nghĩa là gì?', a:'Đặc điểm vô cảm – thiếu cảm xúc (thiếu hối hận, đồng cảm, cảm xúc nông cạn, thờ ơ kết quả) – dự báo tiên lượng xấu.'},
+      {tag:'CD', q:'Tỉ lệ mắc CD ước tính ở trẻ em?', a:'Khoảng 3–4% toàn cầu; nam > nữ (gấp 2–4 lần).'},
+      {tag:'CD', q:'Ba hệ quả dài hạn quan trọng của CD nếu không can thiệp.', a:'Thành tích học tập kém/đình chỉ; quan hệ xã hội xấu/pháp lý; tăng nguy cơ trầm cảm, lạm dụng chất, ASPD.'},
+      {tag:'CD', q:'Một gói can thiệp tâm lý–xã hội có bằng chứng cho CD.', a:'PMT, MST/FFT (gia đình – trường – cộng đồng), CBT (sửa nhận thức lệch lạc, kỹ năng xã hội).'},
+      {tag:'CD', q:'Một khác biệt chính giữa CD và ODD.', a:'CD có xâm hại quyền người khác/vi phạm quy tắc nghiêm trọng (đánh nhau nặng, phá hoại, trộm cắp nghiêm trọng); ODD thiên về cãi–giận–trả đũa.'},
+      {tag:'CD', q:'Hai yếu tố nguy cơ gia đình–xã hội điển hình trong CD.', a:'Bạo lực gia đình, lạm dụng chất, giám sát kém; nghèo đói, khu dân cư bất ổn, bạn bè lệch chuẩn.'},
+      {tag:'CD', q:'Thang đo sàng lọc/đánh giá hành vi thường dùng cho CD?', a:'CBCL, SDQ, Conduct Disorder Rating Scale; phỏng vấn đa nguồn (trẻ – phụ huynh – giáo viên).'},
+      {tag:'IDD', q:'Ba thành tố cốt lõi định nghĩa IDD hiện đại.', a:'(1) Thiếu hụt trí tuệ (lý luận, lập kế hoạch…); (2) Thiếu hụt chức năng thích ứng (khái niệm, xã hội, thực hành); (3) Khởi phát trong giai đoạn phát triển (<18t).'},
+      {tag:'IDD', q:'Ba lĩnh vực của chức năng thích ứng cần đánh giá ở IDD?', a:'Khái niệm; Xã hội; Thực hành (ADLs, kỹ năng nghề, quản lý tiền/đi lại…).'},
+      {tag:'IDD', q:'IDD được phân mức độ dựa trên điều gì?', a:'Dựa vào mức độ suy giảm chức năng thích ứng (không chỉ điểm IQ). Mức: Nhẹ/Trung bình/Nặng/Rất nặng.'},
+      {tag:'IDD', q:'“Diagnostic overshadowing” là gì và vì sao quan trọng?', a:'Xu hướng quy mọi triệu chứng sang IDD, làm bỏ sót rối loạn kèm (lo âu, trầm cảm, đau thể chất…). Cần cảnh giác để điều trị đúng.'},
+      {tag:'IDD', q:'Tỉ lệ hiện mắc IDD ước tính ở dân số?', a:'Khoảng 1%–3% dân số; mức độ nhẹ phổ biến nhất.'},
+      {tag:'IDD', q:'Hai rối loạn thường đồng mắc với IDD.', a:'ADHD, ODD/CD, lo âu, trầm cảm; động kinh, bại não (y khoa).'},
+      {tag:'IDD', q:'Mối liên hệ SES và IDD nói chung?', a:'Nhóm SES thấp có tỉ lệ IDD (nhẹ) cao hơn do phơi nhiễm bệnh tật/độc tố, thiếu kích thích, hạn chế tiếp cận dịch vụ.'},
+      {tag:'IDD', q:'Tuổi khởi phát yêu cầu của IDD giúp phân biệt với gì?', a:'Phân biệt với sa sút trí tuệ mắc phải ở người lớn hoặc chấn thương sọ não sau trưởng thành.'},
+      {tag:'IDD', q:'Ví dụ công cụ/miền đánh giá khi nghi ngờ IDD.', a:'Đánh giá lâm sàng + test trí tuệ chuẩn hóa; thang chức năng thích ứng; khai thác bối cảnh văn hóa–xã hội.'},
+      {tag:'IDD', q:'Một mục tiêu can thiệp dài hạn ở người IDD mức nhẹ.', a:'Tối đa hóa độc lập chức năng (ADLs, nghề), kỹ năng xã hội, hòa nhập học đường–cộng đồng; hỗ trợ gia đình.'},
+      {tag:'LD', q:'RL Ngôn ngữ (Language Disorder) là gì?', a:'Khó khăn dai dẳng tiếp thu & sử dụng ngôn ngữ (nói/viết/ký hiệu…) do thiếu hụt hiểu hoặc sản xuất, thuộc nhóm rối loạn phát triển thần kinh.'},
+      {tag:'LD', q:'Ba cấu phần ngôn ngữ có thể suy giảm trong RL Ngôn ngữ theo DSM-5.', a:'Vốn từ; cấu trúc câu/ ngữ pháp – hình thái; diễn ngôn/kể chuyện (mạch lạc, liên kết).'},
+      {tag:'LD', q:'Phân biệt nhanh LD, SSD (ngữ âm-lời nói), SCD (giao tiếp xã hội).', a:'LD: nội dung/hình thức ngôn ngữ; SSD: phát âm/khớp âm; SCD: ngữ dụng – phù hợp xã hội (không phải phát âm hay cấu trúc).'},
+      {tag:'LD', q:'Một mốc phát triển ngôn ngữ sớm giúp gợi ý chậm nói.', a:'~12m nói 5–10 từ; 18–24m ghép 2 từ; >3 tuổi phát triển cú pháp – nếu chậm rõ cần đánh giá.'},
+      {tag:'LD', q:'Tỉ lệ hiện mắc LD ở trẻ mầm non/xuất đường (gợi ý).', a:'Nghiên cứu cho thấy khoảng 7%± ở mầm non; ~6% ở tuổi học đường; nam nhiều hơn nữ (~1.3:1).'},
+      {tag:'LD', q:'Hai hệ quả học đường thường gặp ở trẻ LD.', a:'Khó đọc/viết chính tả; hạn chế từ vựng học thuật; khó hiểu văn bản; khó kỹ năng suy luận, ẩn dụ – thành ngữ.'},
+      {tag:'LD', q:'Ví dụ hai yếu tố nguy cơ/đi kèm LD.', a:'Tiền sử gia đình (tính di truyền); phơi nhiễm thiết bị số quá nhiều, thiếu kích thích tương tác; đồng mắc lo âu/trầm cảm.'},
+      {tag:'LD', q:'Một nguyên tắc can thiệp cho LD trong trường học.', a:'Liệu pháp ngôn ngữ – lời nói; dạy tường minh từ vựng, ngữ pháp; hỗ trợ đa phương thức và điều chỉnh tốc độ/độ phức tạp ngôn ngữ.'},
+      {tag:'LD', q:'Dấu hiệu phân biệt LD với chậm nói do thiếu tiếp xúc ngôn ngữ đơn thuần.', a:'LD tồn tại dai dẳng, ảnh hưởng nhiều miền ngôn ngữ; không cải thiện đầy đủ khi chỉ tăng tiếp xúc; cần đánh giá chuyên môn.'},
+      {tag:'LD', q:'Một lưu ý đánh giá LD về văn hóa–ngôn ngữ.', a:'Cần xem xét ngôn ngữ dạy học, song ngữ; dùng công cụ phù hợp; tránh gán “rối loạn” do khác biệt phương ngữ/ngôn ngữ.'},
+      {tag:'SLD', q:'SLD là gì và các lĩnh vực học tập bị ảnh hưởng điển hình?', a:'Rối loạn học tập đặc hiệu: khó khăn bền vững trong đọc (dyslexia), viết (dysgraphia), toán (dyscalculia).'},
+      {tag:'SLD', q:'Tiêu chí A của DSM-5-TR cho SLD tóm tắt?', a:'Khó học & sử dụng kỹ năng học tập (đọc/viết/toán) ≥ 6 tháng dù đã can thiệp, thể hiện bởi ≥ 1 triệu chứng (đọc chậm, chính tả kém, lập luận toán…).'},
+      {tag:'SLD', q:'Tiêu chí B–D của SLD (tóm tắt).', a:'B: Thành tích dưới mức tuổi, ảnh hưởng chức năng; C: Bắt đầu từ năm đầu đi học; D: Không giải thích tốt hơn bởi IDD, giác quan, rối loạn thần kinh khác, dạy học thiếu…'},
+      {tag:'SLD', q:'Tỉ lệ hiện mắc SLD ở trẻ đi học và thiên lệch giới?', a:'Ước tính 5%–15%; nam được chẩn đoán nhiều hơn nữ (2–3:1).'},
+      {tag:'SLD', q:'Khoảng bao nhiêu phần trăm SLD thuộc về khó đọc?', a:'Khoảng ~80% các trường hợp SLD là dyslexia.'},
+      {tag:'SLD', q:'Ba dấu hiệu sớm trước tuổi đi học gợi ý nguy cơ SLD.', a:'Chậm kỹ năng tiền đọc–viết; khó nhận thức âm vị; vốn từ hạn chế; vụng về vận động tinh; vấn đề số học ban đầu.'},
+      {tag:'SLD', q:'Hai yếu tố nguy cơ sinh học/di truyền cho SLD.', a:'Tiền sử gia đình (nguy cơ đọc 4–8x, toán 5–10x); sinh non/nhẹ cân; một số rối loạn di truyền (vd. NF1).'},
+      {tag:'SLD', q:'Nguyên tắc đánh giá toàn diện SLD.', a:'Tổng hợp tiền sử phát triển, học đường; test chuẩn hóa đọc–viết–toán; loại trừ nguyên nhân khác; xem ngôn ngữ dạy học/cơ hội học tập.'},
+      {tag:'SLD', q:'Các specifiers về lĩnh vực suy giảm trong SLD theo DSM-5.', a:'Suy giảm đọc (độ chính xác/tốc độ/hiểu); suy giảm biểu đạt viết; suy giảm toán (cảm nhận số/ghi nhớ kiến thức/tính toán/lập luận).'},
+      {tag:'SLD', q:'Một chiến lược can thiệp có bằng chứng cho dyslexia.', a:'Giảng dạy có cấu trúc, đa giác quan, tường minh âm vị–chính tả (vd. tiếp cận Orton–Gillingham), luyện tập lặp lại có hệ thống.'}
+    ];
+
+    // =============== STATE ===============
+    let view = { filter: 'ALL', order: [], index: 0, quiz: false, correct: 0, wrong: 0 };
+
+    function getList(){
+      const list = CARDS.filter(c => view.filter==='ALL' || c.tag===view.filter);
+      return Array.isArray(list) ? list : [];
+    }
+    function resetOrder(){
+      const list = getList();
+      view.order = Array.from({length: list.length}, (_,i)=>i);
+      view.index = 0;
+      updateProgress();
+    }
+    function ensureValidIndex(){
+      const list = getList();
+      if(list.length === 0){ return false; }
+      const idx = view.order[view.index];
+      if(!Array.isArray(view.order) || view.order.length===0 || idx==null || idx<0 || idx>=list.length){
+        resetOrder();
+      }
+      if(view.index < 0) view.index = 0;
+      if(view.index >= view.order.length) view.index = view.order.length-1;
+      return true;
+    }
+    function shuffle(){
+      const arr = view.order;
+      for(let i=arr.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [arr[i],arr[j]]=[arr[j],arr[i]];
+      }
+      view.index = 0;
+    }
+
+    // =============== RENDER ===============
+    const qEl = document.getElementById('question');
+    const aEl = document.getElementById('answer');
+    const tagEl = document.getElementById('cardTag');
+    const idxEl = document.getElementById('cardIndex');
+    const totEl = document.getElementById('cardTotal');
+    const progEl = document.getElementById('progressBar');
+    const progText = document.getElementById('progressText');
+    const quizStats = document.getElementById('quizStats');
+    const correctCnt = document.getElementById('correctCnt');
+    const wrongCnt = document.getElementById('wrongCnt');
+
+    function updateProgress(){
+      const total = getList().length;
+      const pos = Math.min(view.index+1, Math.max(total,1));
+      totEl.textContent = total;
+      idxEl.textContent = total? pos : 0;
+      const p = total? (pos/total)*100 : 0;
+      progEl.style.width = p+'%';
+      progText.textContent = `${total?pos:0} / ${total}`;
+    }
+
+    function renderCard(){
+      const list = getList();
+      if(list.length===0){
+        qEl.textContent = 'Không có thẻ trong bộ lọc này.';
+        aEl.textContent = '';
+        aEl.classList.add('hidden');
+        document.getElementById('revealBtn').classList.remove('hidden');
+        tagEl.textContent = '—';
+        updateProgress();
+        return;
+      }
+      if(!ensureValidIndex()) return;
+      const safeIdx = view.order[view.index] ?? 0;
+      const card = list[safeIdx] ?? list[0];
+      qEl.textContent = card.q || '—';
+      aEl.textContent = card.a || '';
+      aEl.classList.add('hidden');
+      document.getElementById('revealBtn').classList.remove('hidden');
+      tagEl.textContent = card.tag || '—';
+      updateProgress();
+    }
+
+    // =============== EVENTS ===============
+    document.querySelectorAll('.filter-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        // Active = blue text + dark blue border
+        document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('text-primary-700','border-primary-700'));
+        btn.classList.add('text-primary-700','border-primary-700');
+        view.filter = btn.dataset.filter;
+        view.correct = 0; view.wrong = 0;
+        correctCnt.textContent = '0';
+        wrongCnt.textContent = '0';
+        resetOrder();
+        renderCard();
+      });
+    });
+
+    document.getElementById('revealBtn').addEventListener('click',()=>{
+      aEl.classList.remove('hidden');
+      document.getElementById('revealBtn').classList.add('hidden');
+      if(view.quiz){
+        document.getElementById('quizButtons').classList.remove('hidden');
+      }
+    });
+
+    document.getElementById('nextBtn').addEventListener('click',()=>{
+      const total = getList().length;
+      if(total===0) return;
+      view.index = (view.index + 1) % Math.max(view.order.length,1);
+      document.getElementById('quizButtons').classList.add('hidden');
+      renderCard();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click',()=>{
+      const total = getList().length;
+      if(total===0) return;
+      const len = Math.max(view.order.length,1);
+      view.index = (view.index - 1 + len) % len;
+      document.getElementById('quizButtons').classList.add('hidden');
+      renderCard();
+    });
+
+    document.getElementById('resetBtn').addEventListener('click',()=>{
+      view.correct = 0; view.wrong = 0;
+      correctCnt.textContent = '0';
+      wrongCnt.textContent = '0';
+      resetOrder();
+      renderCard();
+    });
+
+    document.getElementById('shuffleBtn').addEventListener('click',()=>{
+      if(getList().length===0) return;
+      shuffle();
+      renderCard();
+    });
+
+    document.getElementById('quizToggle').addEventListener('click',()=>{
+      view.quiz = !view.quiz;
+      document.getElementById('quizState').textContent = view.quiz? 'Bật' : 'Tắt';
+      quizStats.classList.toggle('hidden', !view.quiz);
+      document.getElementById('quizButtons').classList.add('hidden');
+      aEl.classList.add('hidden');
+      document.getElementById('revealBtn').classList.remove('hidden');
+    });
+
+    document.getElementById('markCorrect').addEventListener('click',()=>{
+      view.correct++; correctCnt.textContent = view.correct;
+      document.getElementById('quizButtons').classList.add('hidden');
+    });
+    document.getElementById('markWrong').addEventListener('click',()=>{
+      view.wrong++; wrongCnt.textContent = view.wrong;
+      document.getElementById('quizButtons').classList.add('hidden');
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='ArrowRight') document.getElementById('nextBtn').click();
+      if(e.key==='ArrowLeft') document.getElementById('prevBtn').click();
+      if(e.key===' ') { e.preventDefault(); document.getElementById('revealBtn').click(); }
+    });
+
+    // Self tests
+    function selfTest(){
+      const out = [];
+      function ok(name, fn){
+        try{ fn(); out.push(`✅ ${name}`); }
+        catch(err){ out.push(`❌ ${name} — ${err.message}`); }
+      }
+      ok('Khởi động hiển thị thẻ đầu tiên', ()=>{
+        resetOrder();
+        renderCard();
+        if(getList().length>0 && document.getElementById('question').textContent.trim()==='') throw new Error('Câu hỏi rỗng');
+      });
+      ok('Tự phục hồi khi state hỏng', ()=>{
+        view.order=[999]; view.index=0; renderCard();
+      });
+      ok('Bộ lọc rỗng không lỗi', ()=>{
+        const old = view.filter; const oldOrder=[...view.order]; const oldIndex=view.index;
+        view.filter='XYZ';
+        renderCard();
+        if(document.getElementById('question').textContent.indexOf('Không có thẻ')===-1) throw new Error('Không thấy thông báo rỗng');
+        view.filter=old; view.order=oldOrder; view.index=oldIndex; renderCard();
+      });
+      ok('Next/Prev an toàn khi rỗng', ()=>{
+        const old=view.filter; view.filter='XYZ';
+        document.getElementById('nextBtn').click();
+        document.getElementById('prevBtn').click();
+        view.filter=old; renderCard();
+      });
+      const ul = document.getElementById('selfTests');
+      ul.innerHTML = '';
+      out.forEach(t=>{ const li=document.createElement('li'); li.textContent=t; ul.appendChild(li); });
+      console.log('Self tests:', out);
+    }
+
+    // Init
+    window.addEventListener('load',()=>{
+      const allBtn = document.querySelector('.filter-btn[data-filter="ALL"]');
+      if(allBtn) allBtn.classList.add('text-primary-700','border-primary-700');
+      resetOrder();
+      renderCard();
+      selfTest();
+    });
+  </script>
+</body>
+</html>
