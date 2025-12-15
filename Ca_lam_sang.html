@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân Tích Ca Lâm Sàng Phức Hợp - Tâm Bệnh Học</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Custom scrollbar for tab navigation */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .tab-btn.active {
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+            font-weight: 600;
+        }
+        
+        .sub-tab-btn.active {
+            background-color: #eff6ff;
+            color: #1e40af;
+            border-color: #bfdbfe;
+        }
+        
+        .quote-ref {
+            font-style: italic;
+            color: #475569;
+            background-color: #f1f5f9;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .text-justify { text-align: justify; }
+        .case-header-bg { background-color: #f0f9ff; }
+        .case-summary { border-left: 4px solid #3b82f6; padding-left: 1rem; }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header & Main Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="py-4 border-b border-gray-100 flex justify-between items-center">
+                <h1 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fas fa-brain text-blue-600"></i> Phân Tích Ca Lâm Sàng Phức Hợp
+                </h1>
+                <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">6 Ca Chi Tiết</span>
+            </div>
+            
+            <!-- Horizontal Scrollable Navigation -->
+            <nav class="flex overflow-x-auto hide-scrollbar gap-6 pt-2">
+                <button onclick="switchMainTab('case1')" id="tab-case1" class="tab-btn active whitespace-nowrap pb-3 px-2 text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors">
+                    Ca 1: Bé T (ASD)
+                </button>
+                <button onclick="switchMainTab('case2')" id="tab-case2" class="tab-btn whitespace-nowrap pb-3 px-2 text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors">
+                    Ca 2: Bé H (ADHD)
+                </button>
+                <button onclick="switchMainTab('case3')" id="tab-case3" class="tab-btn whitespace-nowrap pb-3 px-2 text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors">
+                    Ca 3: Bé L (IDD)
+                </button>
+                <button onclick="switchMainTab('case6')" id="tab-case6" class="tab-btn whitespace-nowrap pb-3 px-2 text-sm font-medium text-slate-500 hover:text-slate-800 transition-colors">
+                    Ca 4: Bé N (Ám sợ + Trầm cảm)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-6xl mx-auto w-full px-4 py-6">
+
+        <!-- ==================== CASE 1: BÉ T (ASD) - Giữ nguyên ==================== -->
+        <div id="case1-panel" class="case-panel animate-fade-in">
+            <div class="case-header-bg p-4 rounded-xl mb-6">
+                <h2 class="text-2xl font-bold text-slate-900">Ca lâm sàng 1: Bé T (5 tuổi) - Khó khăn giao tiếp & Hành vi lặp lại</h2>
+                <p class="text-slate-500 text-sm mt-1 case-summary">Chủ đề: Rối loạn phổ tự kỷ (ASD)</p>
+            </div>
+
+            <div class="flex space-x-2 bg-white p-1 rounded-lg border border-gray-200 w-fit mb-6">
+                <button onclick="switchSubTab('case1', 'raw')" id="case1-raw-btn" class="sub-tab-btn active px-4 py-2 text-sm font-medium rounded-md transition-all text-slate-600 hover:text-slate-900">
+                    <i class="fas fa-file-alt mr-2"></i>Đề bài chi tiết
+                </button>
+                <button onclick="switchSubTab('case1', 'analysis')" id="case1-analysis-btn" class="sub-tab-btn px-4 py-2 text-sm font-medium rounded-md transition-all text-slate-600 hover:text-slate-900">
+                    <i class="fas fa-microscope mr-2"></i>Phân tích & Giải quyết
+                </button>
+            </div>
+
+            <!-- Content: Raw Text -->
+            <div id="case1-raw" class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm leading-relaxed text-justify space-y-4 text-slate-700">
+                <p>T là bé trai 5 tuổi, hiện đang theo học lớp Mầm lớn tại một trường mầm non tư thục ở Tp.HCM. Bé được mẹ đưa đến phòng khám tâm lý trẻ em theo lời khuyên kiên quyết của Ban giám hiệu nhà trường sau nhiều lần giáo viên chủ nhiệm phản ánh về sự thiếu kết nối của bé trong lớp học. Giáo viên mô tả T "như sống trong một thế giới riêng", thường xuyên tránh giao tiếp bằng mắt, cực kỳ ít nói và có những hành vi lặp đi lặp lại kỳ lạ.</p>
+                
+                <p><strong>Bệnh sử và quá trình phát triển:</strong><br>
+                T sinh thường, đủ tháng, cân nặng lúc sinh là 3.2kg. Mẹ có thai kỳ khỏe mạnh và không gặp biến cố gì đặc biệt. Trong 12 tháng đầu đời, T phát triển vận động thô bình thường, biết lẫy, bò và đi đúng độ tuổi. Tuy nhiên, sự phát triển ngôn ngữ và giao tiếp của bé có dấu hiệu chững lại đáng báo động. Đến 18 tháng, trong khi các bạn cùng lứa bập bẹ gọi ba mẹ, T vẫn chưa nói được từ đơn nào có ý nghĩa. Đến 3 tuổi, vốn từ của bé vẫn rất nghèo nàn, chỉ phát âm được vài từ đơn lẻ và thường xuyên có hiện tượng "nhại lời" (echolalia) – lặp lại y nguyên câu hỏi của người lớn thay vì trả lời.</p>
+
+                <p>Mẹ bé chia sẻ trong buổi tham vấn đầu tiên: "Từ năm 2 tuổi, tôi thấy con ít nói hơn hẳn các bạn hàng xóm. Gọi tên con thì con cứ lờ đi như bị điếc, mặc dù tiếng tivi hay tiếng nhạc quảng cáo thì con nghe rất thính và chạy lại ngay. Con không bao giờ chỉ tay đòi đồ chơi hay khoe với mẹ thứ gì. Lúc đó tôi và bà nội chỉ nghĩ cháu tính trầm, thích yên tĩnh giống bố ngày xưa nên chủ quan không đi khám."</p>
+
+                <p><strong>Hành vi và Tương tác xã hội:</strong><br>
+                Tại trường, T hoàn toàn tách biệt. Giờ ra chơi, khi các bạn cùng nhau chơi cầu trượt hay đuổi bắt, T lại tìm một góc riêng, ngồi xoay bánh xe của chiếc xe tải đồ chơi liên tục hàng giờ đồng hồ hoặc xếp những chiếc bút màu thành một hàng thẳng tắp. Nếu có bạn nào vô tình đụng vào làm lệch hàng bút, T sẽ phản ứng dữ dội bằng cách hét lên chói tai, nằm lăn ra sàn ăn vạ hoặc thậm chí tự đập đầu mình vào sàn nhà. Bé chưa bao giờ tham gia các trò chơi giả vờ như "nấu ăn" hay "bác sĩ" – những trò chơi đòi hỏi trí tưởng tượng và sự tương tác qua lại.</p>
+
+                <p>Về giác quan, T cực kỳ nhạy cảm với âm thanh. Tiếng máy hút bụi, tiếng máy sấy tóc hay tiếng đóng cửa mạnh cũng có thể khiến bé hoảng loạn, bịt chặt tai và khóc thét. Về ngôn ngữ, dù đã 5 tuổi nhưng bé chủ yếu dùng hành động kéo tay người lớn để lấy đồ mình muốn. Khi nói, bé dùng ngôn ngữ để yêu cầu nhu cầu cơ bản ("uống nước", "mở tivi") chứ hoàn toàn không có chức năng chia sẻ cảm xúc hay hội thoại.</p>
+
+                <p><strong>Tiền sử gia đình:</strong><br>
+                Gia đình hạt nhân có 3 người. Cha làm kỹ sư xây dựng thường xuyên đi công tác xa, mẹ ở nhà nội trợ chăm sóc T. Không có tiền sử rối loạn tâm thần được chẩn đoán trong gia đình, tuy nhiên, mẹ cho biết cha của T là người khá khép kín, "khó giao tiếp", ít bạn bè và đặc biệt không thích những nơi đông người ồn ào.</p>
+            </div>
+
+            <!-- Content: Analysis -->
+            <div id="case1-analysis" class="hidden space-y-8">
+                
+                <!-- Câu 1 -->
+                <div class="bg-white p-6 rounded-xl border border-blue-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-blue-800 mb-4 border-b border-blue-100 pb-2">Câu 1: Phân tích Ca Lâm Sàng Bé T</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Nhận diện -->
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-900">1. Nhóm rối loạn tâm bệnh</h4>
+                            <p class="text-slate-700 mt-1">Dựa trên các triệu chứng khởi phát sớm trong giai đoạn phát triển (trước 3 tuổi) và ảnh hưởng đến nhiều lĩnh vực chức năng, trường hợp bé T thuộc nhóm: <strong>Rối loạn phát triển thần kinh (Neurodevelopmental Disorders)</strong>.</p>
+                        </div>
+
+                        <!-- Phân tích DSM-5 -->
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-3">2. Phân tích triệu chứng theo DSM-5 (Có dẫn chứng)</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-slate-50 p-4 rounded border">
+                                    <strong class="text-sm text-red-600 block mb-2">Tiêu chí A: Khiếm khuyết về giao tiếp & tương tác xã hội (Cần đủ 3 dấu hiệu)</strong>
+                                    <ul class="list-disc pl-4 text-sm text-slate-600 space-y-2">
+                                        <li><strong>Thiếu hụt về cảm xúc - xã hội qua lại:</strong> <span class="quote-ref">"Không đáp lại khi gọi tên"</span>, <span class="quote-ref">"Không có nhu cầu chơi chung"</span>, <span class="quote-ref">"Ngôn ngữ không dùng để chia sẻ cảm xúc hay hội thoại"</span>.</li>
+                                        <li><strong>Thiếu hụt về hành vi giao tiếp không lời:</strong> <span class="quote-ref">"Tránh giao tiếp bằng mắt"</span>, <span class="quote-ref">"Không bao giờ chỉ tay đòi đồ chơi hay khoe với mẹ"</span>, <span class="quote-ref">"Dùng hành động kéo tay người lớn thay vì lời nói"</span>.</li>
+                                        <li><strong>Thiếu hụt trong việc duy trì và hiểu các mối quan hệ:</strong> <span class="quote-ref">"Hoàn toàn tách biệt"</span>, <span class="quote-ref">"Không tham gia trò chơi giả vờ"</span>, <span class="quote-ref">"Giáo viên mô tả như sống trong thế giới riêng"</span>.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded border">
+                                    <strong class="text-sm text-red-600 block mb-2">Tiêu chí B: Hành vi, sở thích, hoạt động lặp lại & hạn hẹp (Cần ít nhất 2 dấu hiệu)</strong>
+                                    <ul class="list-disc pl-4 text-sm text-slate-600 space-y-2">
+                                        <li><strong>Vận động/sử dụng đồ vật rập khuôn:</strong> <span class="quote-ref">"Xếp bút màu thành hàng thẳng tắp"</span>, <span class="quote-ref">"Xoay bánh xe tải liên tục hàng giờ"</span>, <span class="quote-ref">"Nhại lời (echolalia)"</span>.</li>
+                                        <li><strong>Cố định vào các thói quen/nghi thức:</strong> <span class="quote-ref">"Hét lên nếu hàng bút bị làm lệch"</span>, <span class="quote-ref">"Phản ứng dữ dội khi thay đổi thói quen"</span>.</li>
+                                        <li><strong>Phản ứng bất thường với giác quan:</strong> <span class="quote-ref">"Phản ứng mạnh với tiếng động lớn (máy hút bụi, đóng cửa)"</span>, <span class="quote-ref">"Bịt tai hoặc khóc to"</span>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chẩn đoán -->
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-2">3. Giả thuyết chẩn đoán & Phân biệt</h4>
+                            <ul class="list-disc pl-5 text-sm text-slate-700 space-y-2">
+                                <li><strong>Chẩn đoán sơ bộ:</strong> <strong>Rối loạn phổ tự kỷ (Autism Spectrum Disorder - 299.00)</strong>. 
+                                    <br><em>Mức độ nghiêm trọng ước tính:</em> Mức độ 2 (Cần sự hỗ trợ đáng kể).</li>
+                                <li><strong>Chẩn đoán phân biệt:</strong>
+                                    <ul class="list-circle pl-5 mt-1 text-slate-500 italic">
+                                        <li><strong>Khiếm thính:</strong> Loại trừ dựa trên dữ kiện <span class="quote-ref">"tiếng nhạc quảng cáo thì nghe rất thính"</span>.</li>
+                                        <li><strong>Rối loạn giao tiếp xã hội (SCD):</strong> Loại trừ vì T CÓ các hành vi lặp lại rập khuôn (Tiêu chí B).</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Hỗ trợ -->
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-2">4. Định hướng hỗ trợ</h4>
+                            <div class="grid grid-cols-2 gap-3 text-sm">
+                                <div class="bg-green-50 p-3 rounded border border-green-100">
+                                    <strong>Can thiệp cá nhân:</strong>
+                                    <ul class="list-disc pl-4 mt-1">
+                                        <li>Trị liệu Âm ngữ (Speech Therapy) và Can thiệp hành vi (ABA).</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-green-50 p-3 rounded border border-green-100">
+                                    <strong>Hỗ trợ Gia đình & Giáo dục:</strong>
+                                    <ul class="list-disc pl-4 mt-1">
+                                        <li>Sử dụng hình ảnh giao tiếp (PECS) và Điều hòa giác quan.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Câu 2 -->
+                <div class="bg-white p-6 rounded-xl border border-purple-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-purple-800 mb-4 border-b border-purple-100 pb-2">Câu 2: Mô hình 4D áp dụng cho bé T</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Deviance (Sự lệch chuẩn)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Không biết chơi giả vờ, không giao tiếp mắt, nhại lời.</p>
+                        </div>
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Distress (Sự đau khổ)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Bé khóc thét, bịt tai khi nghe tiếng ồn; Cha mẹ và cô giáo căng thẳng.</p>
+                        </div>
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Dysfunction (Rối loạn chức năng)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Tách biệt hoàn toàn tại lớp (không thể kết bạn), ngôn ngữ hạn chế cản trở việc học.</p>
+                        </div>
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Danger (Sự nguy hiểm)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Hành vi tự đập đầu xuống sàn nhà khi tức giận.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== CASE 2: BÉ H (ADHD) - Giữ nguyên ==================== -->
+        <div id="case2-panel" class="case-panel hidden animate-fade-in">
+             <div class="case-header-bg p-4 rounded-xl mb-6">
+                <h2 class="text-2xl font-bold text-slate-900">Ca lâm sàng 2: Bé H (8 tuổi) - "Động cơ không tắt"</h2>
+                <p class="text-slate-500 text-sm mt-1 case-summary">Chủ đề: Rối loạn tăng động giảm chú ý (ADHD) - Thể kết hợp</p>
+            </div>
+
+            <div class="flex space-x-2 bg-white p-1 rounded-lg border border-gray-200 w-fit mb-6">
+                <button onclick="switchSubTab('case2', 'raw')" id="case2-raw-btn" class="sub-tab-btn active px-4 py-2 text-sm font-medium rounded-md transition-all text-slate-600 hover:text-slate-900">
+                    <i class="fas fa-file-alt mr-2"></i>Đề bài chi tiết
+                </button>
+                <button onclick="switchSubTab('case2', 'analysis')" id="case2-analysis-btn" class="sub-tab-btn px-4 py-2 text-sm font-medium rounded-md transition-all text-slate-600 hover:text-slate-900">
+                    <i class="fas fa-microscope mr-2"></i>Phân tích & Giải quyết
+                </button>
+            </div>
+
+            <div id="case2-raw" class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm leading-relaxed text-justify space-y-4 text-slate-700">
+                <p>H là một bé trai 8 tuổi, có khuôn mặt sáng sủa và đôi mắt lanh lợi, hiện đang học lớp 3 tại một trường tiểu học công lập. H được cha mẹ đưa đến khám tâm lý sau khi nhận được "tối hậu thư" từ nhà trường: nếu hành vi của H không cải thiện, bé có thể bị hạ hạnh kiểm hoặc buộc thôi học. Trong sổ liên lạc, giáo viên chủ nhiệm ghi chú dày đặc: "Không tập trung", "Thường xuyên làm phiền bạn", "Không thể ngồi yên".</p>
+
+                <p><strong>Tại trường học:</strong><br>
+                Cô giáo mô tả H như một "cơn lốc nhỏ". Bé không thể ngồi yên trên ghế quá 10 phút; thường xuyên vặn vẹo, rung đùi, hoặc viện cớ đi vệ sinh để ra khỏi chỗ. Trong giờ học, H hay nói leo khi cô chưa đặt xong câu hỏi, chen ngang vào câu chuyện của các bạn và thường xuyên làm rơi dụng cụ học tập gây tiếng ồn. Dù được đánh giá là thông minh, tiếp thu nhanh, nhưng kết quả học tập của H rất phập phù. Bài kiểm tra của bé thường đầy rẫy những lỗi sai ngớ ngẩn do bất cẩn: quên làm mặt sau của đề thi, tính toán sai dù viết đúng công thức, chữ viết nguệch ngoạc khó đọc. H cũng thường xuyên làm mất bút, thước, và để quên áo khoác hoặc bình nước tại trường.</p>
+
+                <p><strong>Tại gia đình:</strong><br>
+                Mẹ H, một kế toán viên, chia sẻ trong sự kiệt sức: "Mỗi tối dạy con học là một cuộc chiến. Cháu cứ học được 5 phút là lại khát nước, đi vệ sinh, hoặc ngóng ra cửa sổ. Bài tập 30 phút mà kéo dài 3 tiếng đồng hồ". Về sinh hoạt, H rất bừa bộn, phòng ốc lộn xộn, không bao giờ cất đồ chơi đúng chỗ dù bị nhắc nhở hàng ngày. Bé cũng rất bốc đồng, từng suýt bị xe tông vì lao ra đường nhặt bóng mà không quan sát, và đã từng trèo lên nóc cổng trường cao 2 mét để lấy quả cầu lông khiến bảo vệ phải giải cứu.</p>
+
+                <p><strong>Tiền sử phát triển:</strong><br>
+                Mẹ cho biết từ khi còn là trẻ sơ sinh, H đã rất khó dỗ ngủ, hay quấy khóc và ngủ rất ít. Khi biết đi lúc 11 tháng, bé đã bắt đầu leo trèo khắp nơi, không biết sợ nguy hiểm. Mẹ ví von con mình như "được gắn một cái động cơ không bao giờ tắt".</p>
+
+                <p><strong>Quan hệ xã hội:</strong><br>
+                H rất thích kết bạn và ban đầu các bạn cũng thích sự hoạt bát của H. Tuy nhiên, bé dần bị các bạn xa lánh vì lối chơi thô bạo, không tuân thủ luật chơi, hay giành lượt và dễ nổi nóng khi thua cuộc. Điều này khiến H bắt đầu cảm thấy buồn và tự ti, thỉnh thoảng nói "không ai thích con cả".</p>
+
+                <p><strong>Tiền sử gia đình:</strong><br>
+                Cha của H chia sẻ một cách ái ngại: "Ngày xưa tôi đi học cũng y hệt nó, bị thầy cô phạt quỳ hoài vì tội nói chuyện riêng và nghịch ngợm. Đến giờ tôi làm việc cũng hay quên trước quên sau, vợ phải nhắc suốt".</p>
+            </div>
+
+            <div id="case2-analysis" class="hidden space-y-8">
+                <!-- Câu 1 -->
+                <div class="bg-white p-6 rounded-xl border border-blue-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-blue-800 mb-4 border-b border-blue-100 pb-2">Câu 1: Phân tích Ca Lâm Sàng Bé H</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Nhận diện -->
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-900">1. Nhóm rối loạn tâm bệnh</h4>
+                            <p class="text-slate-700 mt-1">Các triệu chứng về sự chú ý kém, hiếu động thái quá và xung động xuất hiện trong nhiều môi trường gợi ý: <strong>Rối loạn Tăng động Giảm chú ý (ADHD)</strong>.</p>
+                        </div>
+
+                        <!-- Phân tích DSM-5 -->
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-3">2. Phân tích triệu chứng theo DSM-5 (Có dẫn chứng)</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-slate-50 p-4 rounded border">
+                                    <strong class="text-sm text-red-600 block mb-2">A1. Giảm chú ý (Cần ≥ 6)</strong>
+                                    <ul class="list-disc pl-4 text-sm text-slate-600 space-y-2">
+                                        <li><strong>Không chú ý chi tiết:</strong> <span class="quote-ref">"Lỗi sai ngớ ngẩn do bất cẩn"</span>, <span class="quote-ref">"Quên làm mặt sau đề thi"</span>.</li>
+                                        <li><strong>Khó duy trì sự chú ý:</strong> <span class="quote-ref">"Học 5 phút là ngóng ra cửa sổ"</span>, <span class="quote-ref">"Bài tập 30 phút kéo dài 3 tiếng"</span>.</li>
+                                        <li><strong>Hay quên/Làm mất đồ:</strong> <span class="quote-ref">"Làm mất bút, thước, để quên áo khoác"</span>.</li>
+                                        <li><strong>Khó tổ chức công việc:</strong> <span class="quote-ref">"Phòng ốc lộn xộn, bừa bộn"</span>.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded border">
+                                    <strong class="text-sm text-red-600 block mb-2">A2. Tăng động & Xung động (Cần ≥ 6)</strong>
+                                    <ul class="list-disc pl-4 text-sm text-slate-600 space-y-2">
+                                        <li><strong>Vận động không ngừng:</strong> <span class="quote-ref">"Vặn vẹo, rung đùi"</span>, <span class="quote-ref">"Như gắn động cơ không tắt"</span>.</li>
+                                        <li><strong>Rời bỏ chỗ ngồi:</strong> <span class="quote-ref">"Không ngồi yên quá 10 phút"</span>, <span class="quote-ref">"Viện cớ ra khỏi chỗ"</span>.</li>
+                                        <li><strong>Xung động:</strong> <span class="quote-ref">"Nói leo"</span>, <span class="quote-ref">"Chen ngang"</span>, <span class="quote-ref">"Lao ra đường không quan sát"</span>.</li>
+                                        <li><strong>Quá hiếu động:</strong> <span class="quote-ref">"Leo trèo khắp nơi"</span>, <span class="quote-ref">"Trèo lên cổng trường cao 2m"</span>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4 bg-yellow-50 p-3 rounded border border-yellow-100 text-sm">
+                                <strong>Các tiêu chí khác:</strong> Khởi phát trước 12 tuổi (<span class="quote-ref">"Từ sơ sinh đã khó ngủ, 11 tháng leo trèo"</span>) và gây suy giảm chức năng (học tập, xã hội).
+                            </div>
+                        </div>
+
+                        <!-- Chẩn đoán -->
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-2">3. Giả thuyết chẩn đoán & Phân biệt</h4>
+                            <ul class="list-disc pl-5 text-sm text-slate-700 space-y-2">
+                                <li><strong>Chẩn đoán sơ bộ:</strong> <strong>Rối loạn Tăng động Giảm chú ý (ADHD - 314.01)</strong>, Thể kết hợp.</li>
+                                <li><strong>Chẩn đoán phân biệt:</strong>
+                                    <ul class="list-circle pl-5 mt-1 text-slate-500 italic">
+                                        <li><strong>Rối loạn hành vi chống đối (ODD):</strong> Loại trừ do hành vi của H là do xung động chứ không phải thù địch, bé vẫn thấy buồn vì bị bạn bè xa lánh.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Hỗ trợ -->
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-2">4. Định hướng hỗ trợ</h4>
+                            <div class="grid grid-cols-2 gap-3 text-sm">
+                                <div class="bg-orange-50 p-3 rounded border border-orange-100">
+                                    <strong>Can thiệp Tâm lý - Hành vi:</strong>
+                                    <ul class="list-disc pl-4 mt-1">
+                                        <li>Liệu pháp hành vi nhận thức (CBT) quản lý xung động.</li>
+                                        <li>Huấn luyện phụ huynh, chia nhỏ nhiệm vụ.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-orange-50 p-3 rounded border border-orange-100">
+                                    <strong>Can thiệp Y khoa:</strong>
+                                    <ul class="list-disc pl-4 mt-1">
+                                        <li>Cân nhắc tham vấn về thuốc (Methylphenidate) nếu can thiệp hành vi không hiệu quả.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Câu 2 -->
+                <div class="bg-white p-6 rounded-xl border border-purple-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-purple-800 mb-4 border-b border-purple-100 pb-2">Câu 2: Mô hình 4D áp dụng cho bé H</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Deviance (Sự lệch chuẩn)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Không thể ngồi yên quá 10 phút, nói leo, trèo cổng trường.</p>
+                        </div>
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Distress (Sự đau khổ)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: H cảm thấy "buồn và tự ti" vì bị bạn xa lánh; Mẹ "kiệt sức" vì kèm học.</p>
+                        </div>
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Dysfunction (Rối loạn chức năng)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Kết quả học tập phập phù, có nguy cơ bị buộc thôi học.</p>
+                        </div>
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Danger (Sự nguy hiểm)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Lao ra đường nhặt bóng suýt bị xe tông; Trèo lên cổng trường cao 2m.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== CASE 3: BÉ L (IDD) - Giữ nguyên ==================== -->
+        <div id="case3-panel" class="case-panel hidden animate-fade-in">
+            <div class="case-header-bg p-4 rounded-xl mb-6">
+               <h2 class="text-2xl font-bold text-slate-900">Ca lâm sàng 3: Bé L (10 tuổi) - "Cô bé ngây thơ"</h2>
+               <p class="text-slate-500 text-sm mt-1 case-summary">Chủ đề: Khuyết tật trí tuệ (IDD)</p>
+           </div>
+
+           <div class="flex space-x-2 bg-white p-1 rounded-lg border border-gray-200 w-fit mb-6">
+               <button onclick="switchSubTab('case3', 'raw')" id="case3-raw-btn" class="sub-tab-btn active px-4 py-2 text-sm font-medium rounded-md transition-all text-slate-600 hover:text-slate-900">
+                   <i class="fas fa-file-alt mr-2"></i>Đề bài chi tiết
+               </button>
+               <button onclick="switchSubTab('case3', 'analysis')" id="case3-analysis-btn" class="sub-tab-btn px-4 py-2 text-sm font-medium rounded-md transition-all text-slate-600 hover:text-slate-900">
+                   <i class="fas fa-microscope mr-2"></i>Phân tích & Giải quyết
+               </button>
+           </div>
+
+           <div id="case3-raw" class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm leading-relaxed text-justify space-y-4 text-slate-700">
+               <p>L là bé gái 10 tuổi, hiện đang học lại lớp 2 lần thứ hai tại một trường tiểu học địa phương. L có vóc dáng nhỏ bé hơn so với tuổi, khuôn mặt hiền lành, hay cười nhưng ánh mắt có phần ngây ngô. Cha mẹ đưa L đến khám vì lo lắng về tương lai của con khi bé càng lớn càng tụt hậu quá xa so với bạn bè, và gần đây bé bị một nhóm bạn xấu lừa lấy hết tiền ăn sáng nhiều lần mà vẫn vui vẻ chơi cùng.</p>
+
+               <p><strong>Bệnh sử & Phát triển:</strong><br>
+               L là con đầu lòng, sinh non ở tuần thứ 34 do mẹ bị tiền sản giật, cân nặng lúc sinh chỉ 1.8kg và phải nằm lồng ấp 3 tuần. Quá trình phát triển của L chậm chạp ngay từ đầu: 9 tháng mới biết lẫy, 24 tháng mới biết đi chập chững, và đến tận 3 tuổi rưỡi mới nói được những từ đơn đầu tiên như "ba", "mẹ". Gia đình đã cho bé đi can thiệp sớm từ mẫu giáo nhưng sự tiến bộ diễn ra rất chậm.</p>
+
+               <p><strong>Năng lực Trí tuệ & Học tập:</strong><br>
+               Tại trường, L gặp khó khăn lớn trong việc tiếp thu kiến thức. Dù đã 10 tuổi, L vẫn chưa đọc thông thạo, thường xuyên đánh vần sai và không hiểu nội dung đoạn văn ngắn. Về toán học, bé chỉ có thể thực hiện các phép cộng trừ đơn giản trong phạm vi 10 bằng cách đếm ngón tay; bé hoàn toàn không hiểu khái niệm trừu tượng như "mượn" hay "nhớ" trong phép tính, và không phân biệt được mệnh giá tiền lớn (không biết tờ 500k lớn hơn tờ 20k). Trí nhớ ngắn hạn của L rất kém, cô giáo vừa dạy xong quay lại hỏi bé đã quên ngay.</p>
+
+               <p><strong>Kỹ năng Thích ứng & Xã hội:</strong><br>
+               Về sinh hoạt, L cần sự hỗ trợ nhiều hơn hẳn so với trẻ 10 tuổi. Mẹ vẫn phải nhắc nhở L đi tắm, giúp bé chải tóc và chọn quần áo phù hợp thời tiết (có lần trời nóng 35 độ bé vẫn mặc áo len dày). Bé chưa thể tự đi bộ đến trường dù trường chỉ cách nhà 500m vì không biết cách qua đường an toàn và dễ bị lạc phương hướng.</p>
+
+               <p>Về xã hội, L rất thân thiện, ngoan ngoãn và thích giao tiếp. Tuy nhiên, bé không chơi được với các bạn cùng tuổi 10 vì không hiểu luật chơi và cách nói chuyện phức tạp của họ. L thích chơi với các em nhỏ 5-6 tuổi, chơi các trò đơn giản như búp bê. Sự ngây thơ của L khiến bé dễ bị lợi dụng: bé từng đưa chiếc đồng hồ mới của mình cho bạn chỉ vì bạn nói "cho tớ mượn tớ khen cậu xinh". Bé không nhận thức được nguy hiểm xã hội, sẵn sàng đi theo người lạ nếu họ cho kẹo.</p>
+
+               <p><strong>Gia đình:</strong><br>
+               Cha mẹ L là công nhân, rất thương con nhưng trình độ văn hóa không cao, cảm thấy bất lực và không biết dạy con thế nào cho phù hợp.</p>
+           </div>
+
+           <div id="case3-analysis" class="hidden space-y-8">
+               <!-- Câu 1 -->
+               <div class="bg-white p-6 rounded-xl border border-blue-100 shadow-sm">
+                   <h3 class="text-lg font-bold text-blue-800 mb-4 border-b border-blue-100 pb-2">Câu 1: Phân tích Ca Lâm Sàng Bé L</h3>
+                   
+                   <div class="space-y-6">
+                       <!-- Nhận diện -->
+                       <div class="bg-blue-50 p-4 rounded-lg">
+                           <h4 class="font-semibold text-blue-900">1. Nhóm rối loạn tâm bệnh</h4>
+                           <p class="text-slate-700 mt-1">Sự thiếu hụt rõ rệt cả về năng lực trí tuệ và kỹ năng thích ứng gợi ý: <strong>Khuyết tật trí tuệ (Intellectual Disability - IDD)</strong>.</p>
+                       </div>
+
+                       <!-- Phân tích DSM-5 -->
+                       <div>
+                           <h4 class="font-semibold text-slate-800 mb-3">2. Phân tích triệu chứng theo DSM-5 (Có dẫn chứng)</h4>
+                           <div class="grid md:grid-cols-2 gap-4">
+                               <div class="bg-slate-50 p-4 rounded border">
+                                   <strong class="text-sm text-red-600 block mb-2">A. Khiếm khuyết chức năng trí tuệ</strong>
+                                   <ul class="list-disc pl-4 text-sm text-slate-600 space-y-2">
+                                       <li><strong>Học thuật kém:</strong> <span class="quote-ref">"10 tuổi chưa đọc thông thạo"</span>, <span class="quote-ref">"Đếm ngón tay phạm vi 10"</span>, <span class="quote-ref">"Học lại lớp 2 lần thứ hai"</span>.</li>
+                                       <li><strong>Tư duy trừu tượng kém:</strong> <span class="quote-ref">"Không hiểu khái niệm mượn/nhớ"</span>, <span class="quote-ref">"Không phân biệt được mệnh giá tiền"</span>.</li>
+                                   </ul>
+                               </div>
+                               <div class="bg-slate-50 p-4 rounded border">
+                                   <strong class="text-sm text-red-600 block mb-2">B. Khiếm khuyết chức năng thích ứng</strong>
+                                   <ul class="list-disc pl-4 text-sm text-slate-600 space-y-2">
+                                       <li><strong>Lĩnh vực thực tế:</strong> <span class="quote-ref">"Cần nhắc nhở tắm rửa, chọn quần áo"</span>, <span class="quote-ref">"Không thể tự đi bộ đến trường"</span>.</li>
+                                       <li><strong>Lĩnh vực xã hội:</strong> <span class="quote-ref">"Dễ bị lợi dụng (lừa tiền, đồng hồ)"</span>, <span class="quote-ref">"Không nhận thức nguy hiểm (đi theo người lạ)"</span>.</li>
+                                   </ul>
+                               </div>
+                           </div>
+                           <div class="mt-4 bg-yellow-50 p-3 rounded border border-yellow-100 text-sm">
+                               <strong>Tiêu chí C: Khởi phát sớm</strong>
+                               <ul class="list-disc pl-4 mt-1 text-slate-700">
+                                   <li>Chậm phát triển toàn diện từ nhỏ: <span class="quote-ref">"Sinh non 34 tuần, 24 tháng biết đi, 3.5 tuổi biết nói"</span>.</li>
+                               </ul>
+                           </div>
+                       </div>
+
+                       <!-- Chẩn đoán -->
+                       <div>
+                           <h4 class="font-semibold text-slate-800 mb-2">3. Giả thuyết chẩn đoán & Phân biệt</h4>
+                           <ul class="list-disc pl-5 text-sm text-slate-700 space-y-2">
+                               <li><strong>Chẩn đoán sơ bộ:</strong> <strong>Khuyết tật trí tuệ (IDD)</strong>, Mức độ Trung bình (Moderate).</li>
+                               <li><strong>Chẩn đoán phân biệt:</strong>
+                                   <ul class="list-circle pl-5 mt-1 text-slate-500 italic">
+                                       <li><strong>Khuyết tật học tập cụ thể:</strong> Loại trừ, vì bé L bị suy giảm toàn diện.</li>
+                                   </ul>
+                               </li>
+                           </ul>
+                       </div>
+
+                       <!-- Hỗ trợ -->
+                       <div>
+                           <h4 class="font-semibold text-slate-800 mb-2">4. Định hướng hỗ trợ</h4>
+                           <div class="grid grid-cols-2 gap-3 text-sm">
+                               <div class="bg-purple-50 p-3 rounded border border-purple-100">
+                                   <strong>Giáo dục Đặc biệt:</strong>
+                                   <ul class="list-disc pl-4 mt-1">
+                                       <li>Dạy kỹ năng tự phục vụ và kỹ năng xã hội an toàn.</li>
+                                   </ul>
+                               </div>
+                               <div class="bg-purple-50 p-3 rounded border border-purple-100">
+                                   <strong>Hỗ trợ Gia đình:</strong>
+                                   <ul class="list-disc pl-4 mt-1">
+                                       <li>Tư vấn cho cha mẹ và hướng nghiệp sớm.</li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+
+               <!-- Câu 2 -->
+               <div class="bg-white p-6 rounded-xl border border-purple-100 shadow-sm">
+                   <h3 class="text-lg font-bold text-purple-800 mb-4 border-b border-purple-100 pb-2">Câu 2: Mô hình 4D áp dụng cho bé L</h3>
+                   
+                   <div class="grid md:grid-cols-2 gap-4 text-sm">
+                       <div class="border p-3 rounded bg-white">
+                           <strong class="text-purple-700 block mb-1">Deviance (Sự lệch chuẩn)</strong>
+                           <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: 10 tuổi vẫn chơi với trẻ 5 tuổi; 3.5 tuổi mới biết nói.</p>
+                       </div>
+                       <div class="border p-3 rounded bg-white">
+                           <strong class="text-purple-700 block mb-1">Distress (Sự đau khổ)</strong>
+                           <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Cha mẹ "bất lực và lo lắng"; Bé bị lừa mất tiền.</p>
+                       </div>
+                       <div class="border p-3 rounded bg-white">
+                           <strong class="text-purple-700 block mb-1">Dysfunction (Rối loạn chức năng)</strong>
+                           <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Phải học lại lớp 2; Không biết tiêu tiền; Không tự chăm sóc cá nhân.</p>
+                       </div>
+                       <div class="border p-3 rounded bg-white">
+                           <strong class="text-purple-700 block mb-1">Danger (Sự nguy hiểm)</strong>
+                           <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: "Sẵn sàng đi theo người lạ nếu cho kẹo"; Không biết qua đường an toàn.</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+    
+
+        <!-- ==================== CASE 6: BÉ N (Specific Phobia + MDD) - MỚI ==================== -->
+        <div id="case6-panel" class="case-panel hidden animate-fade-in">
+            <div class="case-header-bg p-4 rounded-xl mb-6">
+                <h2 class="text-2xl font-bold text-slate-900">Ca lâm sàng 6: Bé N (12 tuổi) - Nỗi sợ tiêm chích và Cảm xúc tiêu cực</h2>
+                <p class="text-slate-500 text-sm mt-1 case-summary">Chủ đề: Ám sợ Đặc hiệu (Máu/Tiêm chích) + Rối loạn Trầm cảm Chủ yếu (MDD)</p>
+            </div>
+
+            <div class="flex space-x-2 bg-white p-1 rounded-lg border border-gray-200 w-fit mb-6">
+                <button onclick="switchSubTab('case6', 'raw')" id="case6-raw-btn" class="sub-tab-btn active px-4 py-2 text-sm font-medium rounded-md transition-all text-slate-600 hover:text-slate-900">
+                    <i class="fas fa-file-alt mr-2"></i>Đề bài chi tiết
+                </button>
+                <button onclick="switchSubTab('case6', 'analysis')" id="case6-analysis-btn" class="sub-tab-btn px-4 py-2 text-sm font-medium rounded-md transition-all text-slate-600 hover:text-slate-900">
+                    <i class="fas fa-microscope mr-2"></i>Phân tích & Giải quyết
+                </button>
+            </div>
+
+            <div id="case6-raw" class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm leading-relaxed text-justify space-y-4 text-slate-700">
+                <p>N là bé gái 12 tuổi, học lớp 7, được cha mẹ đưa đến phòng khám tâm lý do có sự thay đổi lớn về tính cách và kết quả học tập. Sự việc bắt đầu từ 3 tháng trước, khi N phải tiêm vắc xin cúm tại trường. Khi nhìn thấy kim tiêm, N lên cơn hoảng sợ, hét lớn và sau đó bị ngất xỉu ngay tại chỗ. Sự việc này khiến N bị một số bạn bè trong lớp trêu chọc là "yếu đuối".</p>
+                
+                <p><strong>Triệu chứng Ám sợ Đặc hiệu (Specific Phobia):</strong><br>
+                Nỗi sợ hãi của N đối với kim tiêm và máu đã tồn tại từ bé (phản ứng vật lý luôn là hạ huyết áp và ngất xỉu), nhưng sau sự kiện ở trường, nó trở nên trầm trọng. N có **sợ hãi hoặc lo lắng rõ rệt, dai dẳng** (persistent fear) về các tình huống thấy máu hoặc tiêm chích. N đã **hoàn toàn tránh né** bất kỳ hình ảnh y tế nào trên tivi hoặc mạng xã hội; thậm chí khi bị đứt tay nhẹ ở nhà, N cũng hoảng loạn và không dám nhìn. Gần đây, N đã **giả vờ ốm** để không phải đi khám nha khoa vì sợ dụng cụ tiêm thuốc tê (avoidance behavior). N thừa nhận nỗi sợ này là vô lý và quá mức nhưng không thể kiểm soát.</p>
+
+                <p><strong>Triệu chứng Trầm cảm Chủ yếu (MDD):</strong><br>
+                Từ sau khi bị bạn bè trêu chọc, N có dấu hiệu trầm cảm. N luôn cảm thấy **buồn bã, chán nản** (depressed mood) gần như mỗi ngày trong 3 tháng qua. N **mất hứng thú** với đội bóng rổ của trường (từng là đam mê lớn nhất), và không còn muốn đi chơi với bạn bè (social withdrawal). N thường xuyên <strong>cảm thấy mệt mỏi, thiếu năng lượng</strong>, và việc học tập trở nên khó khăn vì N **giảm khả năng tập trung** và hay quên (concentration deficit). N cũng bị **rối loạn giấc ngủ (ngủ quá nhiều)**, và cảm thấy mình **vô dụng, đáng xấu hổ** vì sự cố ngất xỉu (worthlessness/guilt). Điểm số học kỳ này của N giảm sút rõ rệt.</p>
+
+                <p><strong>Chức năng:</strong><br>
+                N đã xin rút khỏi đội bóng rổ, bỏ lỡ nhiều tiết học vì giả ốm, và hầu như chỉ nằm trong phòng. Cô bé luôn sợ hãi bị bạn bè nhìn thấy và phán xét, càng củng cố hành vi tránh né.</p>
+            </div>
+
+            <div id="case6-analysis" class="hidden space-y-8">
+                <!-- Câu 1 -->
+                <div class="bg-white p-6 rounded-xl border border-blue-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-blue-800 mb-4 border-b border-blue-100 pb-2">Câu 1: Phân tích Ca Lâm Sàng Bé N</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Nhận diện -->
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-900">1. Nhóm rối loạn tâm bệnh</h4>
+                            <p class="text-slate-700 mt-1">Sự đồng mắc giữa <strong>Rối loạn Lo âu (Specific Phobia)</strong> và <strong>Rối loạn Cảm xúc (MDD)</strong>. Nỗi sợ hãi đã tạo ra hậu quả tiêu cực, dẫn đến trầm cảm thứ phát.</p>
+                        </div>
+
+                        <!-- Phân tích DSM-5 -->
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-3">2. Phân tích triệu chứng theo DSM-5 (Có dẫn chứng)</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-slate-50 p-4 rounded border">
+                                    <strong class="text-sm text-red-600 block mb-2">Chẩn đoán Chính: Ám sợ Đặc hiệu (Máu/Tiêm chích)</strong>
+                                    <ul class="list-disc pl-4 text-sm text-slate-600 space-y-2">
+                                        <li><strong>Sợ hãi/Lo lắng dai dẳng:</strong> <span class="quote-ref">"Sợ hãi rõ rệt và dai dẳng"</span> về tiêm chích/máu.</li>
+                                        <li><strong>Phản ứng ngay lập tức:</strong> <span class="quote-ref">"Hét lớn và ngất xỉu ngay tại chỗ"</span> khi thấy kim tiêm (Phản ứng đặc trưng của thể BII).</li>
+                                        <li><strong>Tránh né:</strong> <span class="quote-ref">"Giả vờ ốm để không đi khám nha khoa"</span>, <span class="quote-ref">"Hoàn toàn tránh né hình ảnh y tế"</span>.</li>
+                                        <li><strong>Vô lý/Quá mức:</strong> <span class="quote-ref">"N thừa nhận nỗi sợ này là vô lý và quá mức"</span>.</li>
+                                        <li>**Lưu ý:** Thể Máu-Tiêm chích (Blood-Injection-Injury type), thường liên quan đến phản ứng co mạch và ngất xỉu.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded border">
+                                    <strong class="text-sm text-red-600 block mb-2">Bệnh Đồng Mắc: Rối loạn Trầm cảm Chủ yếu (MDD)</strong>
+                                    <ul class="list-disc pl-4 text-sm text-slate-600 space-y-2">
+                                        <li><strong>Mood trầm cảm:</strong> <span class="quote-ref">"Buồn bã, chán nản gần như mỗi ngày trong 3 tháng"</span>.</li>
+                                        <li><strong>Mất hứng thú/niềm vui:</strong> <span class="quote-ref">"Mất hứng thú với đội bóng rổ"</span>, <span class="quote-ref">"Không còn muốn đi chơi với bạn bè"</span>.</li>
+                                        <li><strong>Thay đổi giấc ngủ:</strong> <span class="quote-ref">"Rối loạn giấc ngủ (ngủ quá nhiều)"</span>.</li>
+                                        <li><strong>Cảm giác tội lỗi/vô dụng:</strong> <span class="quote-ref">"Cảm thấy mình vô dụng, đáng xấu hổ vì sự cố ngất xỉu"</span>.</li>
+                                        <li><strong>Giảm tập trung:</strong> <span class="quote-ref">"Giảm khả năng tập trung"</span>, <span class="quote-ref">"Điểm số học kỳ này giảm sút rõ rệt"</span>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chẩn đoán -->
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-2">3. Giả thuyết chẩn đoán & Phân biệt</h4>
+                            <ul class="list-disc pl-5 text-sm text-slate-700 space-y-2">
+                                <li><strong>Chẩn đoán chính:</strong> <strong>Ám sợ Đặc hiệu (Specific Phobia - 300.29)</strong>, Thể Máu - Tiêm chích - Chấn thương.</li>
+                                <li><strong>Bệnh đồng mắc:</strong> <strong>Rối loạn Trầm cảm Chủ yếu (MDD - 296.xx)</strong>, giai đoạn đơn lẻ, mức độ vừa.</li>
+                                <li><strong>Chẩn đoán phân biệt:</strong>
+                                    <ul class="list-circle pl-5 mt-1 text-slate-500 italic">
+                                        <li><strong>Rối loạn Lo âu Xã hội (SAD):</strong> Loại trừ, mặc dù có <span class="quote-ref">"sợ hãi bị bạn bè phán xét"</span>, nhưng triệu chứng lo âu chính vẫn là nỗi sợ vật thể cụ thể (kim tiêm), không phải sợ bị đánh giá tiêu cực trong môi trường xã hội nói chung.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Hỗ trợ -->
+                        <div>
+                            <h4 class="font-semibold text-slate-800 mb-2">4. Định hướng hỗ trợ</h4>
+                            <div class="grid grid-cols-2 gap-3 text-sm">
+                                <div class="bg-rose-50 p-3 rounded border border-rose-100">
+                                    <strong>Trị liệu Đặc hiệu (Phobia):</strong>
+                                    <ul class="list-disc pl-4 mt-1">
+                                        <li>Liệu pháp Phơi nhiễm Dần dần (Exposure Therapy) cho ám sợ.</li>
+                                        <li>Kỹ thuật Căng cơ Ứng dụng (Applied Tension) để chống lại phản ứng hạ huyết áp/ngất xỉu.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-rose-50 p-3 rounded border border-rose-100">
+                                    <strong>Trị liệu Đồng mắc (MDD):</strong>
+                                    <ul class="list-disc pl-4 mt-1">
+                                        <li>CBT để giải quyết nhận thức tiêu cực (cảm thấy vô dụng, đáng xấu hổ).</li>
+                                        <li>Kích hoạt Hành vi (Behavioral Activation) để khuyến khích N trở lại đội bóng rổ và tương tác xã hội.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Câu 2 -->
+                <div class="bg-white p-6 rounded-xl border border-purple-100 shadow-sm">
+                    <h3 class="text-lg font-bold text-purple-800 mb-4 border-b border-purple-100 pb-2">Câu 2: Mô hình 4D áp dụng cho bé N</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-4 text-sm">
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Deviance (Sự lệch chuẩn)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Sợ hãi vô lý đến mức ngất xỉu khi thấy kim tiêm (phản ứng vật lý cực đoan); Ngủ quá nhiều và mất hứng thú kéo dài.</p>
+                        </div>
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Distress (Sự đau khổ)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Cảm thấy buồn bã, chán nản; Cảm thấy mình <span class="quote-ref">"vô dụng, đáng xấu hổ"</span>; Bị bạn bè trêu chọc.</p>
+                        </div>
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Dysfunction (Rối loạn chức năng)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Rút khỏi đội bóng rổ; Bỏ lỡ nhiều tiết học (giả ốm); Điểm số học kỳ giảm sút.</p>
+                        </div>
+                        <div class="border p-3 rounded bg-white">
+                            <strong class="text-purple-700 block mb-1">Danger (Sự nguy hiểm)</strong>
+                            <p class="text-slate-800 bg-purple-50 p-2 rounded text-xs"><i class="fas fa-quote-left mr-1"></i> Dẫn chứng: Giả vờ ốm để tránh điều trị y tế cần thiết (nguy hiểm về sức khỏe vật lý); Cô lập xã hội có thể dẫn đến trầm cảm sâu hơn.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer class="bg-white border-t mt-auto py-6 text-center text-slate-400 text-sm">
+        <p>&copy; 2024 Phân tích Lâm sàng Tâm bệnh học</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Switch Main Tabs (Case 1, Case 2, Case 3, Case 4, Case 5, Case 6)
+        function switchMainTab(caseId) {
+            // Update Tab Buttons Style
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'text-slate-800');
+                btn.classList.add('text-slate-500');
+            });
+            document.getElementById(`tab-${caseId}`).classList.add('active', 'text-slate-800');
+            document.getElementById(`tab-${caseId}`).classList.remove('text-slate-500');
+
+            // Show/Hide Panels
+            document.querySelectorAll('.case-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            document.getElementById(`${caseId}-panel`).classList.remove('hidden');
+
+            // Ensure the raw tab is active by default when switching main cases
+            switchSubTab(caseId, 'raw');
+        }
+
+        // Switch Sub Tabs (Raw vs Analysis)
+        function switchSubTab(caseId, type) {
+            // Update Sub-Tab Buttons
+            const parentPanel = document.getElementById(`${caseId}-panel`);
+            parentPanel.querySelectorAll('.sub-tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-50', 'text-blue-700');
+                btn.classList.add('text-slate-600');
+            });
+            
+            // Set active button
+            const activeBtn = document.getElementById(`${caseId}-${type}-btn`);
+            if (activeBtn) {
+                activeBtn.classList.add('active', 'bg-blue-50', 'text-blue-700');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            // Show/Hide Content Areas
+            const rawContent = document.getElementById(`${caseId}-raw`);
+            const analysisContent = document.getElementById(`${caseId}-analysis`);
+
+            if (rawContent) rawContent.classList.add('hidden');
+            if (analysisContent) analysisContent.classList.add('hidden');
+            
+            if (type === 'raw' && rawContent) rawContent.classList.remove('hidden');
+            if (type === 'analysis' && analysisContent) analysisContent.classList.remove('hidden');
+        }
+
+        // Initialize the app state
+        window.onload = () => {
+            // Set Case 1 as active by default
+            switchMainTab('case1');
+        };
+    </script>
+</body>
+</html>
