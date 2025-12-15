@@ -11,6 +11,20 @@
         extend: {
           boxShadow: {
             soft: "0 10px 30px rgba(0,0,0,.12)"
+          },
+          colors: {
+            brand: {
+              50: "#EFF6FF",
+              100: "#DBEAFE",
+              200: "#BFDBFE",
+              300: "#93C5FD",
+              400: "#60A5FA",
+              500: "#3B82F6",
+              600: "#2563EB",
+              700: "#1D4ED8",
+              800: "#1E40AF",
+              900: "#1E3A8A"
+            }
           }
         }
       }
@@ -23,25 +37,25 @@
   </style>
 </head>
 
-<body class="min-h-screen bg-slate-950 text-slate-100">
+<body class="min-h-screen bg-slate-50 text-slate-700">
   <!-- Top glow -->
   <div class="pointer-events-none fixed inset-0 -z-10">
-    <div class="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-emerald-500/20 blur-3xl"></div>
-    <div class="absolute top-24 right-[-120px] h-[420px] w-[420px] rounded-full bg-teal-400/10 blur-3xl"></div>
+    <div class="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-brand-100 blur-3xl"></div>
+    <div class="absolute top-24 right-[-120px] h-[420px] w-[420px] rounded-full bg-brand-50 blur-3xl"></div>
   </div>
 
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur">
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-slate-50 backdrop-blur">
     <div class="mx-auto max-w-6xl px-4 py-4">
       <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
-          <p class="inline-flex items-center gap-2 text-xs font-semibold tracking-wide text-emerald-300/90">
-            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+          <p class="inline-flex items-center gap-2 text-xs font-semibold tracking-wide text-brand-600/90">
+            <span class="h-2 w-2 rounded-full bg-brand-400"></span>
             Tâm bệnh học phát triển • Rối loạn lo âu ở trẻ em & vị thành niên
           </p>
           <h1 class="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
             Rối loạn lo âu (DSM-5)
           </h1>
-          <p class="mt-1 text-sm text-slate-300">
+          <p class="mt-1 text-sm text-slate-700">
             Định nghĩa • Tiêu chí chẩn đoán DSM-5 • Đánh giá/Test • Can thiệp/Điều trị
           </p>
         </div>
@@ -50,23 +64,23 @@
         <nav class="w-full md:w-auto">
           <div id="tabs" class="flex flex-wrap items-center gap-2">
             <a data-tab="def" href="#def"
-               class="tab-btn rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 transition
-                      hover:bg-emerald-400/10 hover:border-emerald-300/30">
+               class="tab-btn rounded-full border border-slate-200 bg-blue-50 px-4 py-2 text-sm text-slate-700 transition
+                      hover:bg-brand-50 hover:border-brand-200">
               Định nghĩa
             </a>
             <a data-tab="dsm" href="#dsm"
-               class="tab-btn rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 transition
-                      hover:bg-emerald-400/10 hover:border-emerald-300/30">
+               class="tab-btn rounded-full border border-slate-200 bg-blue-50 px-4 py-2 text-sm text-slate-700 transition
+                      hover:bg-brand-50 hover:border-brand-200">
               Chẩn đoán DSM-5
             </a>
             <a data-tab="assess" href="#assess"
-               class="tab-btn rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 transition
-                      hover:bg-emerald-400/10 hover:border-emerald-300/30">
+               class="tab-btn rounded-full border border-slate-200 bg-blue-50 px-4 py-2 text-sm text-slate-700 transition
+                      hover:bg-brand-50 hover:border-brand-200">
               Đánh giá/Test
             </a>
             <a data-tab="treat" href="#treat"
-               class="tab-btn rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 transition
-                      hover:bg-emerald-400/10 hover:border-emerald-300/30">
+               class="tab-btn rounded-full border border-slate-200 bg-blue-50 px-4 py-2 text-sm text-slate-700 transition
+                      hover:bg-brand-50 hover:border-brand-200">
               Điều trị
             </a>
           </div>
@@ -78,43 +92,43 @@
   <main class="mx-auto max-w-6xl px-4 py-10">
     <!-- Hero cards -->
     <div class="grid gap-4 md:grid-cols-3">
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-soft">
+      <div class="rounded-2xl border border-slate-200 bg-blue-50 p-5 shadow-soft">
         <div class="flex items-center justify-between">
-          <p class="text-sm font-semibold text-emerald-200">Gợi ý nhận diện</p>
-          <span class="rounded-full bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">Tổng quan</span>
+          <p class="text-sm font-semibold text-brand-700">Gợi ý nhận diện</p>
+          <span class="rounded-full bg-brand-50 px-3 py-1 text-xs text-brand-700">Tổng quan</span>
         </div>
-        <p class="mt-3 text-sm text-slate-300">
-          Lo âu giúp ứng phó nguy hiểm, nhưng khi <span class="text-slate-100 font-medium">quá mức, kéo dài</span> và gây
-          <span class="text-slate-100 font-medium">suy giảm chức năng</span> thì trở thành rối loạn lo âu.
+        <p class="mt-3 text-sm text-slate-700">
+          Lo âu giúp ứng phó nguy hiểm, nhưng khi <span class="text-slate-700 font-medium">quá mức, kéo dài</span> và gây
+          <span class="text-slate-700 font-medium">suy giảm chức năng</span> thì trở thành rối loạn lo âu.
         </p>
       </div>
 
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-soft">
+      <div class="rounded-2xl border border-slate-200 bg-blue-50 p-5 shadow-soft">
         <div class="flex items-center justify-between">
-          <p class="text-sm font-semibold text-emerald-200">Khác nhau nhanh</p>
-          <span class="rounded-full bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">DSM-5</span>
+          <p class="text-sm font-semibold text-brand-700">Khác nhau nhanh</p>
+          <span class="rounded-full bg-brand-50 px-3 py-1 text-xs text-brand-700">DSM-5</span>
         </div>
-        <ul class="mt-3 space-y-2 text-sm text-slate-300">
+        <ul class="mt-3 space-y-2 text-sm text-slate-700">
           <li class="flex gap-2">
-            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-            <span><b class="text-slate-100">Lo lắng</b>: dự đoán về mối đe dọa trong tương lai.</span>
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+            <span><b class="text-slate-700">Lo lắng</b>: dự đoán về mối đe dọa trong tương lai.</span>
           </li>
           <li class="flex gap-2">
-            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-            <span><b class="text-slate-100">Sợ hãi</b>: phản ứng cảm xúc với mối đe dọa hiện tại/sắp xảy ra.</span>
+            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+            <span><b class="text-slate-700">Sợ hãi</b>: phản ứng cảm xúc với mối đe dọa hiện tại/sắp xảy ra.</span>
           </li>
         </ul>
       </div>
 
-      <div class="rounded-2xl border border-white/10 bg-white/5 p-5 shadow-soft">
+      <div class="rounded-2xl border border-slate-200 bg-blue-50 p-5 shadow-soft">
         <div class="flex items-center justify-between">
-          <p class="text-sm font-semibold text-emerald-200">Mục tiêu can thiệp</p>
-          <span class="rounded-full bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">Thực hành</span>
+          <p class="text-sm font-semibold text-brand-700">Mục tiêu can thiệp</p>
+          <span class="rounded-full bg-brand-50 px-3 py-1 text-xs text-brand-700">Thực hành</span>
         </div>
-        <ul class="mt-3 space-y-2 text-sm text-slate-300">
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Giảm triệu chứng lo âu & hành vi tránh né.</span></li>
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Nâng năng lực tự điều chỉnh cảm xúc.</span></li>
-          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Phục hồi chức năng học tập, xã hội, gia đình.</span></li>
+        <ul class="mt-3 space-y-2 text-sm text-slate-700">
+          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Giảm triệu chứng lo âu & hành vi tránh né.</span></li>
+          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Nâng năng lực tự điều chỉnh cảm xúc.</span></li>
+          <li class="flex gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Phục hồi chức năng học tập, xã hội, gia đình.</span></li>
         </ul>
       </div>
     </div>
@@ -124,46 +138,46 @@
       <div class="flex items-end justify-between gap-4">
         <div>
           <h2 class="text-xl font-semibold tracking-tight md:text-2xl">Định nghĩa theo DSM-5</h2>
-          <p class="mt-1 text-sm text-slate-300">Khung khái niệm để hiểu đúng “lo âu” trước khi chẩn đoán.</p>
+          <p class="mt-1 text-sm text-slate-700">Khung khái niệm để hiểu đúng “lo âu” trước khi chẩn đoán.</p>
         </div>
-        <span class="hidden md:inline-flex rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">
+        <span class="hidden md:inline-flex rounded-full border border-brand-200/60 bg-brand-50 px-3 py-1 text-xs text-brand-700">
           DSM-5
         </span>
       </div>
 
       <div class="mt-4 grid gap-4 md:grid-cols-2">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h3 class="text-base font-semibold text-emerald-200">Rối loạn lo âu là gì?</h3>
-          <p class="mt-2 text-sm leading-relaxed text-slate-300">
-            Theo DSM-5, <b class="text-slate-100">rối loạn lo âu</b> bao gồm các rối loạn có đặc điểm chung là
-            <b class="text-slate-100">sợ hãi</b>, <b class="text-slate-100">lo lắng quá mức</b> và
-            <b class="text-slate-100">các hành vi liên quan đến lo âu</b>.
+        <div class="rounded-2xl border border-slate-200 bg-blue-50 p-6">
+          <h3 class="text-base font-semibold text-brand-700">Rối loạn lo âu là gì?</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-700">
+            Theo DSM-5, <b class="text-slate-700">rối loạn lo âu</b> bao gồm các rối loạn có đặc điểm chung là
+            <b class="text-slate-700">sợ hãi</b>, <b class="text-slate-700">lo lắng quá mức</b> và
+            <b class="text-slate-700">các hành vi liên quan đến lo âu</b>.
           </p>
-          <div class="mt-4 grid gap-3 rounded-xl border border-white/10 bg-slate-950/40 p-4">
+          <div class="mt-4 grid gap-3 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
             <div>
-              <p class="text-sm font-semibold text-slate-100">Lo lắng</p>
-              <p class="text-sm text-slate-300">Dự đoán về mối đe dọa trong tương lai.</p>
+              <p class="text-sm font-semibold text-slate-700">Lo lắng</p>
+              <p class="text-sm text-slate-700">Dự đoán về mối đe dọa trong tương lai.</p>
             </div>
-            <div class="h-px bg-white/10"></div>
+            <div class="h-px bg-blue-100"></div>
             <div>
-              <p class="text-sm font-semibold text-slate-100">Sợ hãi</p>
-              <p class="text-sm text-slate-300">Phản ứng cảm xúc với mối đe dọa hiện tại hoặc sắp xảy ra.</p>
+              <p class="text-sm font-semibold text-slate-700">Sợ hãi</p>
+              <p class="text-sm text-slate-700">Phản ứng cảm xúc với mối đe dọa hiện tại hoặc sắp xảy ra.</p>
             </div>
           </div>
         </div>
 
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h3 class="text-base font-semibold text-emerald-200">Ghi chú lâm sàng (trẻ em/vị thành niên)</h3>
-          <p class="mt-2 text-sm leading-relaxed text-slate-300">
+        <div class="rounded-2xl border border-slate-200 bg-blue-50 p-6">
+          <h3 class="text-base font-semibold text-brand-700">Ghi chú lâm sàng (trẻ em/vị thành niên)</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-700">
             Ở trẻ, lo âu quá mức thường thể hiện qua: né tránh, than phiền cơ thể, mất ngủ, bám víu cha mẹ…
             Khi kéo dài và gây suy giảm chức năng, cần đánh giá theo tiêu chí chẩn đoán.
           </p>
-          <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <p class="text-sm font-semibold text-slate-100">Các rối loạn được trình bày trong nội dung DSM-5 (trong file)</p>
-            <ul class="mt-2 space-y-2 text-sm text-slate-300">
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Câm có chọn lọc (Selective Mutism)</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Ám sợ đặc hiệu (Specific Phobia)</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Rối loạn lo âu lan tỏa (Generalized Anxiety Disorder – GAD)</span></li>
+          <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+            <p class="text-sm font-semibold text-slate-700">Các rối loạn được trình bày trong nội dung DSM-5 (trong file)</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Câm có chọn lọc (Selective Mutism)</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Ám sợ đặc hiệu (Specific Phobia)</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Rối loạn lo âu lan tỏa (Generalized Anxiety Disorder – GAD)</span></li>
             </ul>
           </div>
         </div>
@@ -175,9 +189,9 @@
       <div class="flex items-end justify-between gap-4">
         <div>
           <h2 class="text-xl font-semibold tracking-tight md:text-2xl">Tiêu chí chẩn đoán theo DSM-5</h2>
-          <p class="mt-1 text-sm text-slate-300">Các tiêu chí dưới đây được liệt kê đầy đủ theo nội dung DSM-5 trong file.</p>
+          <p class="mt-1 text-sm text-slate-700">Các tiêu chí dưới đây được liệt kê đầy đủ theo nội dung DSM-5 trong file.</p>
         </div>
-        <span class="hidden md:inline-flex rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-xs text-emerald-200">
+        <span class="hidden md:inline-flex rounded-full border border-brand-200/60 bg-brand-50 px-3 py-1 text-xs text-brand-700">
           Checklist A–G / A–F
         </span>
       </div>
@@ -186,79 +200,79 @@
       <div class="mt-5 space-y-4">
 
         <!-- Selective Mutism -->
-        <details class="group rounded-2xl border border-white/10 bg-white/5 p-0 open:shadow-soft">
+        <details class="group rounded-2xl border border-slate-200 bg-blue-50 p-0 open:shadow-soft">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5">
             <div>
-              <p class="text-sm font-semibold text-emerald-200">Câm có chọn lọc (Selective Mutism)</p>
-              <p class="mt-1 text-sm text-slate-300">Tiêu chí DSM-5 (A–E)</p>
+              <p class="text-sm font-semibold text-brand-700">Câm có chọn lọc (Selective Mutism)</p>
+              <p class="mt-1 text-sm text-slate-700">Tiêu chí DSM-5 (A–E)</p>
             </div>
-            <span class="rounded-full border border-white/10 bg-slate-950/40 px-3 py-1 text-xs text-slate-200 transition group-open:border-emerald-300/30 group-open:bg-emerald-400/10 group-open:text-emerald-200">
+            <span class="rounded-full border border-slate-200 bg-slate-50/40 px-3 py-1 text-xs text-slate-700 transition group-open:border-brand-200 group-open:bg-brand-50 group-open:text-brand-700">
               Mở/Đóng
             </span>
           </summary>
 
           <div class="px-6 pb-6">
-            <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
-              <ol class="space-y-3 text-sm text-slate-300">
-                <li><b class="text-slate-100">A.</b> Thường xuyên không thể nói trong các tình huống xã hội đặc trưng mà bệnh nhân có thể nói được (ví dụ: tại trường học) nhưng có thể nói trong những tình huống khác.</li>
-                <li><b class="text-slate-100">B.</b> Rối loạn này làm ảnh hưởng đến hoạt động học tập ở trường, sự thành công trong nghề nghiệp hay các tương tác xã hội.</li>
-                <li><b class="text-slate-100">C.</b> Thời gian rối loạn kéo dài tối thiểu 1 tháng (không giới hạn trong tháng đầu tiên đến trường).</li>
-                <li><b class="text-slate-100">D.</b> Việc mất khả năng nói không do thiếu kiến thức, hoặc thiếu thoải mái khi cần sử dụng lời nói trong các tình huống xã hội.</li>
-                <li><b class="text-slate-100">E.</b> Rối loạn này không phải là rối loạn giao tiếp (ví dụ: nói lắp) và không chỉ xảy ra trong giai đoạn rối loạn phổ tự kỷ, tâm thần phân liệt hoặc nhóm bệnh loạn thần khác.</li>
+            <div class="rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+              <ol class="space-y-3 text-sm text-slate-700">
+                <li><b class="text-slate-700">A.</b> Thường xuyên không thể nói trong các tình huống xã hội đặc trưng mà bệnh nhân có thể nói được (ví dụ: tại trường học) nhưng có thể nói trong những tình huống khác.</li>
+                <li><b class="text-slate-700">B.</b> Rối loạn này làm ảnh hưởng đến hoạt động học tập ở trường, sự thành công trong nghề nghiệp hay các tương tác xã hội.</li>
+                <li><b class="text-slate-700">C.</b> Thời gian rối loạn kéo dài tối thiểu 1 tháng (không giới hạn trong tháng đầu tiên đến trường).</li>
+                <li><b class="text-slate-700">D.</b> Việc mất khả năng nói không do thiếu kiến thức, hoặc thiếu thoải mái khi cần sử dụng lời nói trong các tình huống xã hội.</li>
+                <li><b class="text-slate-700">E.</b> Rối loạn này không phải là rối loạn giao tiếp (ví dụ: nói lắp) và không chỉ xảy ra trong giai đoạn rối loạn phổ tự kỷ, tâm thần phân liệt hoặc nhóm bệnh loạn thần khác.</li>
               </ol>
             </div>
 
-            <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-              <p class="text-sm font-semibold text-slate-100">Gợi ý biểu hiện (tóm tắt lâm sàng trong file)</p>
-              <ul class="mt-2 space-y-2 text-sm text-slate-300">
-                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Chỉ nói/giao tiếp trong môi trường quen thuộc, không nói ở một số môi trường xã hội.</span></li>
-                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Có thể gật/lắc/ra hiệu, nhút nhát, phụ thuộc, tự cô lập, căng thẳng khi bị gọi trả lời.</span></li>
+            <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+              <p class="text-sm font-semibold text-slate-700">Gợi ý biểu hiện (tóm tắt lâm sàng trong file)</p>
+              <ul class="mt-2 space-y-2 text-sm text-slate-700">
+                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Chỉ nói/giao tiếp trong môi trường quen thuộc, không nói ở một số môi trường xã hội.</span></li>
+                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Có thể gật/lắc/ra hiệu, nhút nhát, phụ thuộc, tự cô lập, căng thẳng khi bị gọi trả lời.</span></li>
               </ul>
             </div>
           </div>
         </details>
 
         <!-- Specific Phobia -->
-        <details class="group rounded-2xl border border-white/10 bg-white/5 p-0 open:shadow-soft">
+        <details class="group rounded-2xl border border-slate-200 bg-blue-50 p-0 open:shadow-soft">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5">
             <div>
-              <p class="text-sm font-semibold text-emerald-200">Ám sợ đặc hiệu (Specific Phobia)</p>
-              <p class="mt-1 text-sm text-slate-300">Tiêu chí DSM-5 (A–G)</p>
+              <p class="text-sm font-semibold text-brand-700">Ám sợ đặc hiệu (Specific Phobia)</p>
+              <p class="mt-1 text-sm text-slate-700">Tiêu chí DSM-5 (A–G)</p>
             </div>
-            <span class="rounded-full border border-white/10 bg-slate-950/40 px-3 py-1 text-xs text-slate-200 transition group-open:border-emerald-300/30 group-open:bg-emerald-400/10 group-open:text-emerald-200">
+            <span class="rounded-full border border-slate-200 bg-slate-50/40 px-3 py-1 text-xs text-slate-700 transition group-open:border-brand-200 group-open:bg-brand-50 group-open:text-brand-700">
               Mở/Đóng
             </span>
           </summary>
 
           <div class="px-6 pb-6">
-            <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
-              <ol class="space-y-3 text-sm text-slate-300">
-                <li><b class="text-slate-100">A.</b> Nỗi sợ hãi hoặc lo âu rõ rệt về một đối tượng hoặc tình huống cụ thể (ví dụ: bay, độ cao, động vật, tiêm thuốc, nhìn thấy máu). <span class="text-slate-400">Lưu ý: Ở trẻ em có thể biểu hiện bằng khóc lóc, ăn vạ, cứng đờ người hoặc bám víu.</span></li>
-                <li><b class="text-slate-100">B.</b> Đối tượng hoặc tình huống gây ám ảnh sợ hầu như luôn luôn gây ra nỗi sợ hãi hoặc lo âu tức thì.</li>
-                <li><b class="text-slate-100">C.</b> Đối tượng hoặc tình huống gây ám ảnh sợ bị chủ động né tránh hoặc phải chịu đựng với sự sợ hãi hoặc lo âu dữ dội.</li>
-                <li><b class="text-slate-100">D.</b> Nỗi sợ hãi hoặc lo âu là không tương xứng với mối nguy hiểm thực tế mà đối tượng hoặc tình huống cụ thể đó gây ra và so với bối cảnh văn hóa-xã hội.</li>
-                <li><b class="text-slate-100">E.</b> Nỗi sợ, lo âu hoặc sự né tránh này mang tính dai dẳng, thường kéo dài từ 6 tháng trở lên.</li>
-                <li><b class="text-slate-100">F.</b> Nỗi sợ, lo âu hoặc sự né tránh gây ra đau khổ có ý nghĩa lâm sàng hoặc suy giảm chức năng trong các lĩnh vực xã hội, nghề nghiệp hoặc các lĩnh vực quan trọng khác.</li>
-                <li><b class="text-slate-100">G.</b> Sự nhiễu loạn không được giải thích bởi các triệu chứng của rối loạn tâm thần khác (ví dụ: hoảng sợ/ám sợ khoảng trống, ám ảnh cưỡng bức, PTSD, lo âu chia cách, hoặc tình huống xã hội như trong lo âu xã hội).</li>
+            <div class="rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+              <ol class="space-y-3 text-sm text-slate-700">
+                <li><b class="text-slate-700">A.</b> Nỗi sợ hãi hoặc lo âu rõ rệt về một đối tượng hoặc tình huống cụ thể (ví dụ: bay, độ cao, động vật, tiêm thuốc, nhìn thấy máu). <span class="text-slate-700">Lưu ý: Ở trẻ em có thể biểu hiện bằng khóc lóc, ăn vạ, cứng đờ người hoặc bám víu.</span></li>
+                <li><b class="text-slate-700">B.</b> Đối tượng hoặc tình huống gây ám ảnh sợ hầu như luôn luôn gây ra nỗi sợ hãi hoặc lo âu tức thì.</li>
+                <li><b class="text-slate-700">C.</b> Đối tượng hoặc tình huống gây ám ảnh sợ bị chủ động né tránh hoặc phải chịu đựng với sự sợ hãi hoặc lo âu dữ dội.</li>
+                <li><b class="text-slate-700">D.</b> Nỗi sợ hãi hoặc lo âu là không tương xứng với mối nguy hiểm thực tế mà đối tượng hoặc tình huống cụ thể đó gây ra và so với bối cảnh văn hóa-xã hội.</li>
+                <li><b class="text-slate-700">E.</b> Nỗi sợ, lo âu hoặc sự né tránh này mang tính dai dẳng, thường kéo dài từ 6 tháng trở lên.</li>
+                <li><b class="text-slate-700">F.</b> Nỗi sợ, lo âu hoặc sự né tránh gây ra đau khổ có ý nghĩa lâm sàng hoặc suy giảm chức năng trong các lĩnh vực xã hội, nghề nghiệp hoặc các lĩnh vực quan trọng khác.</li>
+                <li><b class="text-slate-700">G.</b> Sự nhiễu loạn không được giải thích bởi các triệu chứng của rối loạn tâm thần khác (ví dụ: hoảng sợ/ám sợ khoảng trống, ám ảnh cưỡng bức, PTSD, lo âu chia cách, hoặc tình huống xã hội như trong lo âu xã hội).</li>
               </ol>
             </div>
 
             <div class="mt-4 grid gap-4 md:grid-cols-2">
-              <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
-                <p class="text-sm font-semibold text-slate-100">Đặc điểm lâm sàng (tóm tắt)</p>
-                <ul class="mt-2 space-y-2 text-sm text-slate-300">
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Nỗi sợ dữ dội, phi lý ≥ 6 tháng; biết vô lý nhưng khó kiểm soát.</span></li>
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Né tránh cực độ dẫn đến giới hạn hoạt động, học tập hoặc giao tiếp.</span></li>
+              <div class="rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+                <p class="text-sm font-semibold text-slate-700">Đặc điểm lâm sàng (tóm tắt)</p>
+                <ul class="mt-2 space-y-2 text-sm text-slate-700">
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Nỗi sợ dữ dội, phi lý ≥ 6 tháng; biết vô lý nhưng khó kiểm soát.</span></li>
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Né tránh cực độ dẫn đến giới hạn hoạt động, học tập hoặc giao tiếp.</span></li>
                 </ul>
               </div>
 
-              <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
-                <p class="text-sm font-semibold text-slate-100">Phân loại thường gặp (trong file)</p>
-                <ul class="mt-2 space-y-2 text-sm text-slate-300">
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Loại động vật (rắn, côn trùng, chuột…)</span></li>
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Loại môi trường tự nhiên (độ cao, bão, nước sâu)</span></li>
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Loại máu – tiêm – chấn thương</span></li>
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Loại tình huống (đi máy bay, nơi kín, thang máy…)</span></li>
+              <div class="rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+                <p class="text-sm font-semibold text-slate-700">Phân loại thường gặp (trong file)</p>
+                <ul class="mt-2 space-y-2 text-sm text-slate-700">
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Loại động vật (rắn, côn trùng, chuột…)</span></li>
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Loại môi trường tự nhiên (độ cao, bão, nước sâu)</span></li>
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Loại máu – tiêm – chấn thương</span></li>
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Loại tình huống (đi máy bay, nơi kín, thang máy…)</span></li>
                 </ul>
               </div>
             </div>
@@ -266,46 +280,46 @@
         </details>
 
         <!-- GAD -->
-        <details class="group rounded-2xl border border-white/10 bg-white/5 p-0 open:shadow-soft">
+        <details class="group rounded-2xl border border-slate-200 bg-blue-50 p-0 open:shadow-soft">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5">
             <div>
-              <p class="text-sm font-semibold text-emerald-200">Rối loạn lo âu lan tỏa (Generalized Anxiety Disorder – GAD)</p>
-              <p class="mt-1 text-sm text-slate-300">Tiêu chí DSM-5 (A–F)</p>
+              <p class="text-sm font-semibold text-brand-700">Rối loạn lo âu lan tỏa (Generalized Anxiety Disorder – GAD)</p>
+              <p class="mt-1 text-sm text-slate-700">Tiêu chí DSM-5 (A–F)</p>
             </div>
-            <span class="rounded-full border border-white/10 bg-slate-950/40 px-3 py-1 text-xs text-slate-200 transition group-open:border-emerald-300/30 group-open:bg-emerald-400/10 group-open:text-emerald-200">
+            <span class="rounded-full border border-slate-200 bg-slate-50/40 px-3 py-1 text-xs text-slate-700 transition group-open:border-brand-200 group-open:bg-brand-50 group-open:text-brand-700">
               Mở/Đóng
             </span>
           </summary>
 
           <div class="px-6 pb-6">
-            <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
-              <ol class="space-y-3 text-sm text-slate-300">
-                <li><b class="text-slate-100">A.</b> Lo âu và lo lắng quá mức (lo lắng mong đợi) xảy ra trong nhiều ngày hơn là không, ít nhất 6 tháng, về một số sự kiện hoặc hoạt động (như công việc hoặc thành tích học tập).</li>
-                <li><b class="text-slate-100">B.</b> Cá nhân khó kiểm soát sự lo lắng.</li>
-                <li><b class="text-slate-100">C.</b> Lo âu và lo lắng liên quan đến ≥ 3 (hoặc nhiều hơn) trong 6 triệu chứng sau (ít nhất một số triệu chứng xuất hiện trong nhiều ngày hơn là không trong 6 tháng qua):
-                  <ul class="mt-2 space-y-2 rounded-lg border border-white/10 bg-slate-950/40 p-3">
-                    <li><span class="text-emerald-300 font-semibold">1)</span> Bồn chồn hoặc cảm thấy căng thẳng, bức bối hoặc căng thẳng.</li>
-                    <li><span class="text-emerald-300 font-semibold">2)</span> Dễ mệt mỏi.</li>
-                    <li><span class="text-emerald-300 font-semibold">3)</span> Khó tập trung hoặc tâm trí trống rỗng.</li>
-                    <li><span class="text-emerald-300 font-semibold">4)</span> Cáu kỉnh.</li>
-                    <li><span class="text-emerald-300 font-semibold">5)</span> Căng cơ.</li>
-                    <li><span class="text-emerald-300 font-semibold">6)</span> Rối loạn giấc ngủ (khó đi vào giấc ngủ, khó duy trì giấc ngủ, hoặc giấc ngủ không yên, không thỏa mãn).</li>
+            <div class="rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+              <ol class="space-y-3 text-sm text-slate-700">
+                <li><b class="text-slate-700">A.</b> Lo âu và lo lắng quá mức (lo lắng mong đợi) xảy ra trong nhiều ngày hơn là không, ít nhất 6 tháng, về một số sự kiện hoặc hoạt động (như công việc hoặc thành tích học tập).</li>
+                <li><b class="text-slate-700">B.</b> Cá nhân khó kiểm soát sự lo lắng.</li>
+                <li><b class="text-slate-700">C.</b> Lo âu và lo lắng liên quan đến ≥ 3 (hoặc nhiều hơn) trong 6 triệu chứng sau (ít nhất một số triệu chứng xuất hiện trong nhiều ngày hơn là không trong 6 tháng qua):
+                  <ul class="mt-2 space-y-2 rounded-lg border border-slate-200 bg-slate-50/40 p-3">
+                    <li><span class="text-brand-600 font-semibold">1)</span> Bồn chồn hoặc cảm thấy căng thẳng, bức bối hoặc căng thẳng.</li>
+                    <li><span class="text-brand-600 font-semibold">2)</span> Dễ mệt mỏi.</li>
+                    <li><span class="text-brand-600 font-semibold">3)</span> Khó tập trung hoặc tâm trí trống rỗng.</li>
+                    <li><span class="text-brand-600 font-semibold">4)</span> Cáu kỉnh.</li>
+                    <li><span class="text-brand-600 font-semibold">5)</span> Căng cơ.</li>
+                    <li><span class="text-brand-600 font-semibold">6)</span> Rối loạn giấc ngủ (khó đi vào giấc ngủ, khó duy trì giấc ngủ, hoặc giấc ngủ không yên, không thỏa mãn).</li>
                   </ul>
-                  <p class="mt-2 text-xs text-slate-400">
+                  <p class="mt-2 text-xs text-slate-700">
                     Lưu ý: Ở trẻ em, chỉ cần 1 triệu chứng.
                   </p>
                 </li>
-                <li><b class="text-slate-100">D.</b> Lo âu, lo lắng hoặc triệu chứng thể chất gây ra đau khổ có ý nghĩa lâm sàng hoặc suy giảm chức năng xã hội, nghề nghiệp hoặc các lĩnh vực quan trọng khác.</li>
-                <li><b class="text-slate-100">E.</b> Rối loạn này không do tác dụng sinh lý của một chất (ví dụ: lạm dụng thuốc, một loại thuốc) hoặc một tình trạng bệnh lý khác (ví dụ: cường giáp).</li>
-                <li><b class="text-slate-100">F.</b> Rối loạn này không được giải thích tốt hơn bởi một rối loạn tâm thần khác (ví dụ: lo lắng về các cơn hoảng sợ trong rối loạn hoảng sợ, đánh giá tiêu cực trong lo âu xã hội, ô nhiễm trong OCD, chia cách người thân trong lo âu chia ly, nhắc lại sự kiện sang chấn trong PTSD, tăng cân trong chán ăn tâm thần, than phiền thể chất trong rối loạn triệu chứng cơ thể, khiếm khuyết ngoại hình trong rối loạn ám ảnh dị dạng cơ thể, mắc bệnh nặng trong lo âu bệnh tật, hoặc nội dung niềm tin hoang tưởng trong tâm thần phân liệt/hoang tưởng).
+                <li><b class="text-slate-700">D.</b> Lo âu, lo lắng hoặc triệu chứng thể chất gây ra đau khổ có ý nghĩa lâm sàng hoặc suy giảm chức năng xã hội, nghề nghiệp hoặc các lĩnh vực quan trọng khác.</li>
+                <li><b class="text-slate-700">E.</b> Rối loạn này không do tác dụng sinh lý của một chất (ví dụ: lạm dụng thuốc, một loại thuốc) hoặc một tình trạng bệnh lý khác (ví dụ: cường giáp).</li>
+                <li><b class="text-slate-700">F.</b> Rối loạn này không được giải thích tốt hơn bởi một rối loạn tâm thần khác (ví dụ: lo lắng về các cơn hoảng sợ trong rối loạn hoảng sợ, đánh giá tiêu cực trong lo âu xã hội, ô nhiễm trong OCD, chia cách người thân trong lo âu chia ly, nhắc lại sự kiện sang chấn trong PTSD, tăng cân trong chán ăn tâm thần, than phiền thể chất trong rối loạn triệu chứng cơ thể, khiếm khuyết ngoại hình trong rối loạn ám ảnh dị dạng cơ thể, mắc bệnh nặng trong lo âu bệnh tật, hoặc nội dung niềm tin hoang tưởng trong tâm thần phân liệt/hoang tưởng).
               </ol>
             </div>
 
-            <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-              <p class="text-sm font-semibold text-slate-100">Hậu quả thường gặp (tóm tắt trong file)</p>
-              <ul class="mt-2 space-y-2 text-sm text-slate-300">
-                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Suy giảm năng suất học tập/công việc; khó tập trung, rối loạn giấc ngủ, nhiều triệu chứng cơ thể.</span></li>
-                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Tiến triển mạn tính, dao động theo stress; hiếm khi tự khỏi nếu không can thiệp.</span></li>
+            <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+              <p class="text-sm font-semibold text-slate-700">Hậu quả thường gặp (tóm tắt trong file)</p>
+              <ul class="mt-2 space-y-2 text-sm text-slate-700">
+                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Suy giảm năng suất học tập/công việc; khó tập trung, rối loạn giấc ngủ, nhiều triệu chứng cơ thể.</span></li>
+                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Tiến triển mạn tính, dao động theo stress; hiếm khi tự khỏi nếu không can thiệp.</span></li>
               </ul>
             </div>
           </div>
@@ -319,49 +333,49 @@
       <div class="flex items-end justify-between gap-4">
         <div>
           <h2 class="text-xl font-semibold tracking-tight md:text-2xl">Các loại đánh giá và test kiểm tra</h2>
-          <p class="mt-1 text-sm text-slate-300">Gợi ý công cụ sàng lọc và đánh giá mức độ ảnh hưởng chức năng.</p>
+          <p class="mt-1 text-sm text-slate-700">Gợi ý công cụ sàng lọc và đánh giá mức độ ảnh hưởng chức năng.</p>
         </div>
       </div>
 
       <div class="mt-5 grid gap-4 md:grid-cols-2">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h3 class="text-base font-semibold text-emerald-200">Thang đo tự báo cáo & quan sát hành vi</h3>
-          <ul class="mt-3 space-y-2 text-sm text-slate-300">
-            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><b class="text-slate-100">SCARED</b> – Screen for Child Anxiety Related Emotional Disorders (trẻ & cha mẹ)</span></li>
-            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><b class="text-slate-100">SCAS</b> – Spence Children’s Anxiety Scale</span></li>
-            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><b class="text-slate-100">RCMAS</b> – Revised Children’s Manifest Anxiety Scale</span></li>
-            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><b class="text-slate-100">MASC</b> – Multidimensional Anxiety Scale for Children</span></li>
+        <div class="rounded-2xl border border-slate-200 bg-blue-50 p-6">
+          <h3 class="text-base font-semibold text-brand-700">Thang đo tự báo cáo & quan sát hành vi</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span><b class="text-slate-700">SCARED</b> – Screen for Child Anxiety Related Emotional Disorders (trẻ & cha mẹ)</span></li>
+            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span><b class="text-slate-700">SCAS</b> – Spence Children’s Anxiety Scale</span></li>
+            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span><b class="text-slate-700">RCMAS</b> – Revised Children’s Manifest Anxiety Scale</span></li>
+            <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span><b class="text-slate-700">MASC</b> – Multidimensional Anxiety Scale for Children</span></li>
           </ul>
 
-          <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <p class="text-xs text-slate-400">
+          <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+            <p class="text-xs text-slate-700">
               Gợi ý sử dụng: chọn thang phù hợp tuổi, lấy đa nguồn (trẻ/cha mẹ/giáo viên) để giảm sai lệch bối cảnh.
             </p>
           </div>
         </div>
 
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h3 class="text-base font-semibold text-emerald-200">Đánh giá chức năng và mức độ ảnh hưởng</h3>
-          <p class="mt-2 text-sm text-slate-300">
+        <div class="rounded-2xl border border-slate-200 bg-blue-50 p-6">
+          <h3 class="text-base font-semibold text-brand-700">Đánh giá chức năng và mức độ ảnh hưởng</h3>
+          <p class="mt-2 text-sm text-slate-700">
             Dùng các thang để xác định mức độ suy giảm học tập, xã hội và cảm xúc:
           </p>
-          <ul class="mt-3 space-y-2 text-sm text-slate-300">
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
             <li class="flex gap-2">
-              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-              <span><b class="text-slate-100">CGAS</b> – Children’s Global Assessment Scale</span>
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+              <span><b class="text-slate-700">CGAS</b> – Children’s Global Assessment Scale</span>
             </li>
             <li class="flex gap-2">
-              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-              <span><b class="text-slate-100">CGI</b> – Clinical Global Impression</span>
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span>
+              <span><b class="text-slate-700">CGI</b> – Clinical Global Impression</span>
             </li>
           </ul>
 
-          <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <p class="text-sm font-semibold text-slate-100">Đánh giá yếu tố nguy cơ & bảo vệ (khung gợi ý)</p>
-            <ul class="mt-2 space-y-2 text-sm text-slate-300">
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Sinh học: di truyền, khí chất sợ hãi, tính ức chế hành vi.</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Môi trường: kiểu gắn bó, kiểm soát quá mức của cha mẹ, stress sớm.</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Nhận thức–hành vi: xu hướng diễn giải tiêu cực, né tránh.</span></li>
+          <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+            <p class="text-sm font-semibold text-slate-700">Đánh giá yếu tố nguy cơ & bảo vệ (khung gợi ý)</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Sinh học: di truyền, khí chất sợ hãi, tính ức chế hành vi.</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Môi trường: kiểu gắn bó, kiểm soát quá mức của cha mẹ, stress sớm.</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Nhận thức–hành vi: xu hướng diễn giải tiêu cực, né tránh.</span></li>
             </ul>
           </div>
         </div>
@@ -373,63 +387,63 @@
       <div class="flex items-end justify-between gap-4">
         <div>
           <h2 class="text-xl font-semibold tracking-tight md:text-2xl">Các cách điều trị và hỗ trợ</h2>
-          <p class="mt-1 text-sm text-slate-300">Nguyên tắc: can thiệp sớm, đa hệ thống (trẻ • gia đình • nhà trường • chuyên gia).</p>
+          <p class="mt-1 text-sm text-slate-700">Nguyên tắc: can thiệp sớm, đa hệ thống (trẻ • gia đình • nhà trường • chuyên gia).</p>
         </div>
       </div>
 
       <div class="mt-5 grid gap-4 md:grid-cols-2">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h3 class="text-base font-semibold text-emerald-200">Tâm lý trị liệu (ưu tiên)</h3>
+        <div class="rounded-2xl border border-slate-200 bg-blue-50 p-6">
+          <h3 class="text-base font-semibold text-brand-700">Tâm lý trị liệu (ưu tiên)</h3>
 
-          <div class="mt-3 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <p class="text-sm font-semibold text-slate-100">Liệu pháp nhận thức – hành vi (CBT)</p>
-            <p class="mt-1 text-sm text-slate-300">
+          <div class="mt-3 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+            <p class="text-sm font-semibold text-slate-700">Liệu pháp nhận thức – hành vi (CBT)</p>
+            <p class="mt-1 text-sm text-slate-700">
               Hiệu quả hàng đầu cho rối loạn lo âu ở trẻ (bao gồm lo âu chia ly, lo âu xã hội, ám sợ, lo âu lan tỏa).
             </p>
-            <ul class="mt-3 space-y-2 text-sm text-slate-300">
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Nhận diện và tái cấu trúc các suy nghĩ lo âu.</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Tiếp xúc dần với tình huống gây lo âu theo mức độ tăng dần.</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Rèn kỹ năng thư giãn, quản lý lo âu (hít thở, thư giãn cơ, chánh niệm).</span></li>
+            <ul class="mt-3 space-y-2 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Nhận diện và tái cấu trúc các suy nghĩ lo âu.</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Tiếp xúc dần với tình huống gây lo âu theo mức độ tăng dần.</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Rèn kỹ năng thư giãn, quản lý lo âu (hít thở, thư giãn cơ, chánh niệm).</span></li>
             </ul>
           </div>
 
-          <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <p class="text-sm font-semibold text-slate-100">Liệu pháp gia đình</p>
-            <ul class="mt-2 space-y-2 text-sm text-slate-300">
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Hướng dẫn cha mẹ không củng cố hành vi né tránh.</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Khuyến khích trẻ đối diện tình huống gây lo âu.</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Gia đình là yếu tố bảo vệ quan trọng, đặc biệt trong GAD và lo âu xã hội.</span></li>
+          <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+            <p class="text-sm font-semibold text-slate-700">Liệu pháp gia đình</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Hướng dẫn cha mẹ không củng cố hành vi né tránh.</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Khuyến khích trẻ đối diện tình huống gây lo âu.</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Gia đình là yếu tố bảo vệ quan trọng, đặc biệt trong GAD và lo âu xã hội.</span></li>
             </ul>
           </div>
 
-          <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <p class="text-sm font-semibold text-slate-100">Các liệu pháp khác</p>
-            <ul class="mt-2 space-y-2 text-sm text-slate-300">
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Trò chơi trị liệu (play therapy): dùng trò chơi như “ngôn ngữ” để trẻ biểu đạt cảm xúc và xung đột bên trong.</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Liệu pháp dựa vào trường học: nhóm kỹ năng đối phó, CBT ngắn hạn tại lớp.</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Chánh niệm (Mindfulness, ACT): tăng tự nhận thức và chấp nhận cảm xúc, hữu ích ở vị thành niên.</span></li>
+          <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+            <p class="text-sm font-semibold text-slate-700">Các liệu pháp khác</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Trò chơi trị liệu (play therapy): dùng trò chơi như “ngôn ngữ” để trẻ biểu đạt cảm xúc và xung đột bên trong.</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Liệu pháp dựa vào trường học: nhóm kỹ năng đối phó, CBT ngắn hạn tại lớp.</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Chánh niệm (Mindfulness, ACT): tăng tự nhận thức và chấp nhận cảm xúc, hữu ích ở vị thành niên.</span></li>
             </ul>
           </div>
         </div>
 
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h3 class="text-base font-semibold text-emerald-200">Điều trị hóa dược + Hỗ trợ hệ thống</h3>
+        <div class="rounded-2xl border border-slate-200 bg-blue-50 p-6">
+          <h3 class="text-base font-semibold text-brand-700">Điều trị hóa dược + Hỗ trợ hệ thống</h3>
 
-          <div class="mt-3 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <p class="text-sm font-semibold text-slate-100">Điều trị hóa dược</p>
-            <p class="mt-1 text-sm text-slate-300">Chỉ định khi: không đáp ứng đủ với trị liệu tâm lý, hoặc triệu chứng nặng gây suy giảm học tập, xã hội, cảm xúc.</p>
+          <div class="mt-3 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+            <p class="text-sm font-semibold text-slate-700">Điều trị hóa dược</p>
+            <p class="mt-1 text-sm text-slate-700">Chỉ định khi: không đáp ứng đủ với trị liệu tâm lý, hoặc triệu chứng nặng gây suy giảm học tập, xã hội, cảm xúc.</p>
 
             <div class="mt-3">
-              <p class="text-sm font-semibold text-slate-100">Nhóm thuốc thường dùng</p>
-              <ul class="mt-2 space-y-2 text-sm text-slate-300">
-                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><b class="text-slate-100">SSRI</b> (fluoxetine, sertraline, escitalopram) là lựa chọn hàng đầu.</span></li>
-                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span><b class="text-slate-100">SNRI</b> (venlafaxine) chỉ dùng trong trường hợp đặc biệt hoặc khi SSRI không hiệu quả.</span></li>
+              <p class="text-sm font-semibold text-slate-700">Nhóm thuốc thường dùng</p>
+              <ul class="mt-2 space-y-2 text-sm text-slate-700">
+                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span><b class="text-slate-700">SSRI</b> (fluoxetine, sertraline, escitalopram) là lựa chọn hàng đầu.</span></li>
+                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span><b class="text-slate-700">SNRI</b> (venlafaxine) chỉ dùng trong trường hợp đặc biệt hoặc khi SSRI không hiệu quả.</span></li>
               </ul>
             </div>
 
-            <div class="mt-3 rounded-lg border border-white/10 bg-amber-500/5 p-3">
+            <div class="mt-3 rounded-lg border border-slate-200 bg-amber-500/5 p-3">
               <p class="text-sm font-semibold text-amber-200">Lưu ý quan trọng</p>
-              <ul class="mt-2 space-y-2 text-sm text-slate-300">
+              <ul class="mt-2 space-y-2 text-sm text-slate-700">
                 <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-300"></span><span>Theo dõi chặt chẽ nguy cơ kích động hoặc ý tưởng tự sát ở tuổi vị thành niên.</span></li>
                 <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-300"></span><span>Không dùng đơn độc: luôn kết hợp trị liệu tâm lý.</span></li>
                 <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-amber-300"></span><span>Đánh giá định kỳ hiệu quả và tác dụng phụ.</span></li>
@@ -437,48 +451,48 @@
             </div>
           </div>
 
-          <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <p class="text-sm font-semibold text-slate-100">Hỗ trợ</p>
+          <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+            <p class="text-sm font-semibold text-slate-700">Hỗ trợ</p>
             <div class="mt-2 grid gap-3 md:grid-cols-1">
-              <div class="rounded-lg border border-white/10 bg-slate-950/40 p-3">
-                <p class="text-sm font-semibold text-emerald-200">Gia đình</p>
-                <ul class="mt-2 space-y-2 text-sm text-slate-300">
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Giáo dục phụ huynh về cơ chế lo âu, tránh la mắng hoặc bảo bọc quá mức.</span></li>
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Tăng gắn bó và cảm xúc an toàn với trẻ.</span></li>
+              <div class="rounded-lg border border-slate-200 bg-slate-50/40 p-3">
+                <p class="text-sm font-semibold text-brand-700">Gia đình</p>
+                <ul class="mt-2 space-y-2 text-sm text-slate-700">
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Giáo dục phụ huynh về cơ chế lo âu, tránh la mắng hoặc bảo bọc quá mức.</span></li>
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Tăng gắn bó và cảm xúc an toàn với trẻ.</span></li>
                 </ul>
               </div>
 
-              <div class="rounded-lg border border-white/10 bg-slate-950/40 p-3">
-                <p class="text-sm font-semibold text-emerald-200">Nhà trường</p>
-                <ul class="mt-2 space-y-2 text-sm text-slate-300">
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Xây dựng môi trường thân thiện, giảm áp lực học tập.</span></li>
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Phối hợp chuyên gia tâm lý hỗ trợ trẻ né tránh đi học.</span></li>
+              <div class="rounded-lg border border-slate-200 bg-slate-50/40 p-3">
+                <p class="text-sm font-semibold text-brand-700">Nhà trường</p>
+                <ul class="mt-2 space-y-2 text-sm text-slate-700">
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Xây dựng môi trường thân thiện, giảm áp lực học tập.</span></li>
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Phối hợp chuyên gia tâm lý hỗ trợ trẻ né tránh đi học.</span></li>
                 </ul>
               </div>
 
-              <div class="rounded-lg border border-white/10 bg-slate-950/40 p-3">
-                <p class="text-sm font-semibold text-emerald-200">Cộng đồng / y tế học đường</p>
-                <ul class="mt-2 space-y-2 text-sm text-slate-300">
-                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Tổ chức chương trình phòng ngừa lo âu, nâng cao kỹ năng sống, phát hiện sớm và can thiệp kịp thời.</span></li>
+              <div class="rounded-lg border border-slate-200 bg-slate-50/40 p-3">
+                <p class="text-sm font-semibold text-brand-700">Cộng đồng / y tế học đường</p>
+                <ul class="mt-2 space-y-2 text-sm text-slate-700">
+                  <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Tổ chức chương trình phòng ngừa lo âu, nâng cao kỹ năng sống, phát hiện sớm và can thiệp kịp thời.</span></li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <div class="mt-4 rounded-xl border border-white/10 bg-slate-950/40 p-4">
-            <p class="text-sm font-semibold text-slate-100">Phòng ngừa & tăng cường sức khỏe tâm thần</p>
-            <ul class="mt-2 space-y-2 text-sm text-slate-300">
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Tăng cường gắn bó an toàn giữa cha mẹ và trẻ.</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Xây dựng kỹ năng đối phó và khả năng tự điều chỉnh cảm xúc.</span></li>
-              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-400"></span><span>Khuyến khích trẻ tham gia hoạt động thể thao, nghệ thuật, nhóm bạn hỗ trợ.</span></li>
+          <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50/40 p-4">
+            <p class="text-sm font-semibold text-slate-700">Phòng ngừa & tăng cường sức khỏe tâm thần</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate-700">
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Tăng cường gắn bó an toàn giữa cha mẹ và trẻ.</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Xây dựng kỹ năng đối phó và khả năng tự điều chỉnh cảm xúc.</span></li>
+              <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-brand-400"></span><span>Khuyến khích trẻ tham gia hoạt động thể thao, nghệ thuật, nhóm bạn hỗ trợ.</span></li>
             </ul>
           </div>
         </div>
       </div>
 
-      <footer class="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6">
-        <p class="text-sm text-slate-300">
-          Gợi ý triển khai học tập: dùng tab để chuyển nhanh giữa phần <b class="text-slate-100">DSM-5</b>, <b class="text-slate-100">Test</b> và <b class="text-slate-100">Điều trị</b>.
+      <footer class="mt-10 rounded-2xl border border-slate-200 bg-blue-50 p-6">
+        <p class="text-sm text-slate-700">
+          Gợi ý triển khai học tập: dùng tab để chuyển nhanh giữa phần <b class="text-slate-700">DSM-5</b>, <b class="text-slate-700">Test</b> và <b class="text-slate-700">Điều trị</b>.
           Khi cần làm bài/ôn tập, bạn có thể mở từng accordion và học theo checklist A–G/A–F.
         </p>
       </footer>
@@ -493,13 +507,13 @@
     function setActive(tabKey) {
       tabs.forEach(t => {
         const isActive = t.dataset.tab === tabKey;
-        t.classList.toggle("bg-emerald-400/15", isActive);
-        t.classList.toggle("border-emerald-300/40", isActive);
-        t.classList.toggle("text-emerald-100", isActive);
+        t.classList.toggle("bg-brand-100", isActive);
+        t.classList.toggle("border-brand-200", isActive);
+        t.classList.toggle("text-brand-600", isActive);
 
-        t.classList.toggle("bg-white/5", !isActive);
-        t.classList.toggle("border-white/10", !isActive);
-        t.classList.toggle("text-slate-200", !isActive);
+        t.classList.toggle("bg-blue-50", !isActive);
+        t.classList.toggle("border-slate-200", !isActive);
+        t.classList.toggle("text-slate-700", !isActive);
       });
     }
 
