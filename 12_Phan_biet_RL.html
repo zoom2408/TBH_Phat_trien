@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>So sánh nhiều rối loạn | TBH Phát triển</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-slate-800">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold text-blue-700">TBH Phát triển · So sánh nhiều rối loạn</h1>
+      <nav class="flex gap-2 text-sm">
+        <a href="#compare" class="px-3 py-2 rounded-lg text-blue-700 bg-blue-50">So sánh</a>
+        <a href="#guide" class="px-3 py-2 rounded-lg text-slate-600 hover:bg-blue-50">Hướng dẫn</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <section class="max-w-7xl mx-auto px-6 py-10">
+    <h2 class="text-2xl font-semibold mb-3">Chọn nhiều rối loạn để so sánh (multiple select)</h2>
+    <p class="text-slate-600 max-w-3xl">Chọn <strong>2 hoặc nhiều</strong> rối loạn và trang sẽ dựng bảng so sánh theo cùng một hệ tiêu chí. Nếu nhiều cột, bảng sẽ tự <strong>scroll ngang</strong> để học dễ hơn.</p>
+  </section>
+
+  <!-- Compare -->
+  <section id="compare" class="max-w-7xl mx-auto px-6 pb-16">
+    <div class="grid md:grid-cols-3 gap-6 mb-6">
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium mb-1">Chọn rối loạn cần so sánh</label>
+
+        <!-- Custom multi-select dropdown -->
+        <div class="relative" id="msRoot">
+          <button id="msButton" type="button" class="w-full border rounded-lg p-3 text-left flex items-center justify-between hover:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-200">
+            <div>
+              <div class="text-xs text-slate-500">Đã chọn</div>
+              <div id="msSummary" class="font-medium">Chọn ít nhất 2 rối loạn…</div>
+            </div>
+            <svg class="w-5 h-5 text-slate-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <div id="msPanel" class="hidden absolute mt-2 w-full bg-white border rounded-xl shadow-lg z-20">
+            <div class="p-3 border-b">
+              <input id="msSearch" type="text" placeholder="Gõ để lọc…" class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-200" />
+              <div class="mt-2 flex gap-2">
+                <button id="btnSelectAll" class="text-xs px-3 py-1 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100">Chọn tất cả</button>
+                <button id="btnClear" class="text-xs px-3 py-1 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">Bỏ chọn</button>
+              </div>
+            </div>
+            <div id="msList" class="max-h-72 overflow-auto p-2"></div>
+            <div class="p-3 border-t bg-slate-50 flex items-center justify-between">
+              <span id="msCount" class="text-xs text-slate-600">0 đã chọn</span>
+              <button id="btnApply" class="text-sm px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">So sánh</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-500 mt-2">Tip: bạn có thể chọn 3–6 rối loạn để thấy pattern giống/khác rất nhanh.</p>
+      </div>
+
+      <div class="flex items-end">
+        <button id="btnCompare" class="w-full bg-blue-600 text-white rounded-lg py-3 hover:bg-blue-700">So sánh</button>
+      </div>
+    </div>
+
+    <div class="rounded-xl border bg-white">
+      <div class="flex items-center justify-between p-4 border-b">
+        <h3 class="font-semibold">Bảng so sánh</h3>
+        <span id="tableHint" class="text-xs text-slate-500">Nếu nhiều cột, kéo ngang để xem →</span>
+      </div>
+
+      <!-- Horizontal scroll container -->
+      <div class="overflow-x-auto">
+        <table class="min-w-max w-full text-sm">
+          <thead id="thead" class="bg-blue-50 text-blue-700"></thead>
+          <tbody id="tbody" class="divide-y"></tbody>
+        </table>
+      </div>
+
+      <div id="emptyState" class="p-8 text-sm text-slate-600">
+        Chưa có dữ liệu để so sánh. Hãy chọn <strong>ít nhất 2</strong> rối loạn ở dropdown phía trên.
+      </div>
+    </div>
+  </section>
+
+  <!-- Guide -->
+  <section id="guide" class="bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 py-12">
+      <h3 class="text-xl font-semibold mb-4">Hệ tiêu chí phân biệt (dùng trong bảng)</h3>
+      <ul class="grid md:grid-cols-2 gap-4 text-sm text-slate-700">
+        <li><strong>Lõi triệu chứng:</strong> yếu tố trung tâm, bền vững nhất của rối loạn.</li>
+        <li><strong>Tuổi khởi phát:</strong> phát triển sớm vs khởi phát theo sự kiện/stressor.</li>
+        <li><strong>Chức năng ảnh hưởng:</strong> học tập, xã hội, cảm xúc, hành vi, cơ thể.</li>
+        <li><strong>Thời gian & diễn tiến:</strong> mạn tính, theo đợt hay phụ thuộc stress.</li>
+        <li><strong>Phân biệt với:</strong> các rối loạn dễ nhầm nhất.</li>
+        <li><strong>Can thiệp chính:</strong> trụ cột điều trị/hỗ trợ.</li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    // --- Data: bạn có thể mở rộng thêm khi dự án có thêm rối loạn ---
+    const disorders = {
+      ASD: {
+        name: "Rối loạn phổ tự kỷ (ASD)",
+        core: "Thiếu hụt giao tiếp – tương tác xã hội + hành vi/sở thích lặp lại, hạn hẹp",
+        onset: "Khởi phát sớm (giai đoạn phát triển)",
+        function: "Xã hội, giao tiếp, hành vi thích nghi",
+        course: "Mạn tính, dạng phổ (Level 1–3)",
+        diff: "LD/SCD, ADHD, IDD",
+        treat: "Can thiệp sớm, giáo dục đặc biệt, ABA, ngôn ngữ trị liệu"
+      },
+      ADHD: {
+        name: "Rối loạn tăng động giảm chú ý (ADHD)",
+        core: "Giảm chú ý và/hoặc tăng động – bốc đồng",
+        onset: "Thường trước 12 tuổi",
+        function: "Chức năng điều hành, học tập, hành vi",
+        course: "Có thể dai dẳng đến trưởng thành",
+        diff: "ASD, ODD, lo âu, SLD",
+        treat: "Psychoeducation, CBT, huấn luyện phụ huynh, thuốc khi phù hợp"
+      },
+      ODD: {
+        name: "Rối loạn thách thức chống đối (ODD)",
+        core: "Khí sắc cáu kỉnh + hành vi chống đối/thách thức + thù địch/ác ý",
+        onset: "Thường < 8–10 tuổi",
+        function: "Quan hệ gia đình – trường học – bạn bè",
+        course: "Có thể cải thiện rõ nếu can thiệp sớm, nhất quán",
+        diff: "CD, DMDD, IED, ADHD",
+        treat: "Can thiệp hành vi, Parent Management Training, phối hợp nhà trường"
+      },
+      CD: {
+        name: "Rối loạn hành vi (Conduct Disorder - CD)",
+        core: "Vi phạm nghiêm trọng quyền người khác/quy tắc xã hội (hung hãn, phá hoại, lừa dối, vi phạm quy tắc)",
+        onset: "Khởi phát sớm (<10) hoặc vị thành niên (≥10)",
+        function: "Hành vi xã hội, học đường, pháp lý",
+        course: "Nguy cơ tiến triển nặng hơn nếu khởi phát sớm",
+        diff: "ODD, IED",
+        treat: "Can thiệp đa hệ (gia đình–trường–cộng đồng), quản lý hành vi"
+      },
+      LD: {
+        name: "Rối loạn ngôn ngữ (Language Disorder - LD)",
+        core: "Khó khăn dai dẳng trong tiếp thu & sử dụng ngôn ngữ (hiểu/sản xuất)",
+        onset: "Giai đoạn phát triển sớm",
+        function: "Giao tiếp, học tập, tương tác xã hội",
+        course: "Dai dẳng, có thể ảnh hưởng học thuật lâu dài",
+        diff: "ASD, SLD, khiếm thính",
+        treat: "Ngôn ngữ trị liệu, hỗ trợ học đường"
+      },
+      SLD: {
+        name: "Rối loạn học tập đặc hiệu (Specific Learning Disorder - SLD)",
+        core: "Khó đọc/viết/tính toán bền vững (≥6 tháng dù đã can thiệp)",
+        onset: "Những năm đầu đi học (có thể bộc lộ muộn khi yêu cầu tăng)",
+        function: "Học thuật, tự tin học tập",
+        course: "Kéo dài suốt đời (mức độ khác nhau)",
+        diff: "ADHD, IDD, LD",
+        treat: "Giáo dục đặc biệt, can thiệp theo kỹ năng (đọc/viết/toán)"
+      },
+      IDD: {
+        name: "Rối loạn phát triển trí tuệ (Intellectual Developmental Disorder - IDD)",
+        core: "Thiếu hụt chức năng trí tuệ + thiếu hụt chức năng thích ứng",
+        onset: "Trước 18 tuổi",
+        function: "Toàn diện (khái niệm–xã hội–thực hành)",
+        course: "Ổn định theo mức độ; cần hỗ trợ dài hạn",
+        diff: "ASD, SLD",
+        treat: "Hỗ trợ chức năng, kế hoạch giáo dục cá nhân, hòa nhập phù hợp"
+      },
+      ANX: {
+        name: "Rối loạn lo âu", 
+        core: "Sợ hãi/lo lắng quá mức + né tránh + triệu chứng cơ thể",
+        onset: "Trẻ em–vị thành niên (tùy loại)",
+        function: "Cảm xúc, xã hội, học tập",
+        course: "Dao động theo stress, có thể mạn tính nếu không trị",
+        diff: "Trầm cảm, PTSD",
+        treat: "CBT, can thiệp gia đình, thuốc khi phù hợp"
+      },
+      DEP: {
+        name: "Rối loạn trầm cảm",
+        core: "Khí sắc trầm buồn và/hoặc mất hứng thú + triệu chứng cơ thể/nhận thức",
+        onset: "Thường từ thiếu niên trở lên",
+        function: "Cảm xúc, động lực, chức năng xã hội",
+        course: "Theo đợt, nguy cơ tái phát",
+        diff: "Lo âu, điều chỉnh, PTSD",
+        treat: "Tâm trị liệu (CBT/IPT), thuốc khi phù hợp, tăng vận động & hỗ trợ"
+      },
+      PTSD: {
+        name: "Rối loạn stress sau sang chấn (PTSD)",
+        core: "Tái trải nghiệm + né tránh + thay đổi nhận thức/cảm xúc + tăng cảnh giác",
+        onset: "Sau phơi nhiễm sang chấn",
+        function: "Cảm xúc, sinh lý, quan hệ",
+        course: "Kéo dài ≥ 1 tháng",
+        diff: "Lo âu, trầm cảm",
+        treat: "Liệu pháp tập trung sang chấn (TF-CBT/EMDR), hỗ trợ an toàn"
+      },
+      SSD: {
+        name: "Rối loạn triệu chứng cơ thể (Somatic Symptom Disorder - SSD)",
+        core: "Tập trung quá mức vào triệu chứng cơ thể + lo âu/suy nghĩ/hành vi không tương xứng",
+        onset: "Có thể từ sớm, thường rõ ở thiếu niên–người lớn",
+        function: "Nhận thức sức khỏe, hành vi tìm kiếm khám chữa",
+        course: "Dai dẳng (thường > 6 tháng)",
+        diff: "Lo âu, trầm cảm",
+        treat: "CBT, quản lý stress, theo dõi y khoa hợp lý (tránh xét nghiệm lặp lại)"
+      }
+    };
+
+    const criteria = [
+      ["Lõi triệu chứng", "core"],
+      ["Tuổi khởi phát", "onset"],
+      ["Chức năng ảnh hưởng", "function"],
+      ["Diễn tiến", "course"],
+      ["Chẩn đoán phân biệt", "diff"],
+      ["Can thiệp chính", "treat"]
+    ];
+
+    // --- Multi select UI ---
+    const msButton = document.getElementById('msButton');
+    const msPanel = document.getElementById('msPanel');
+    const msList = document.getElementById('msList');
+    const msSearch = document.getElementById('msSearch');
+    const msSummary = document.getElementById('msSummary');
+    const msCount = document.getElementById('msCount');
+    const btnApply = document.getElementById('btnApply');
+    const btnCompare = document.getElementById('btnCompare');
+    const btnSelectAll = document.getElementById('btnSelectAll');
+    const btnClear = document.getElementById('btnClear');
+
+    const thead = document.getElementById('thead');
+    const tbody = document.getElementById('tbody');
+    const emptyState = document.getElementById('emptyState');
+
+    let selectedKeys = new Set(["ASD", "ADHD"]); // default
+
+    function openPanel(){
+      msPanel.classList.remove('hidden');
+      msSearch.focus();
+    }
+    function closePanel(){
+      msPanel.classList.add('hidden');
+      msSearch.value = '';
+      renderOptions();
+    }
+
+    msButton.addEventListener('click', () => {
+      if(msPanel.classList.contains('hidden')) openPanel(); else closePanel();
+    });
+
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+      const root = document.getElementById('msRoot');
+      if (!root.contains(e.target)) closePanel();
+    });
+
+    function renderOptions(){
+      const q = (msSearch.value || '').trim().toLowerCase();
+      msList.innerHTML = '';
+
+      Object.entries(disorders)
+        .filter(([k,v]) => v.name.toLowerCase().includes(q))
+        .forEach(([k,v]) => {
+          const row = document.createElement('label');
+          row.className = "flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 cursor-pointer";
+          row.innerHTML = `
+            <input type="checkbox" class="mt-1 accent-blue-600" ${selectedKeys.has(k) ? 'checked' : ''} data-key="${k}" />
+            <div>
+              <div class="font-medium">${v.name}</div>
+              <div class="text-xs text-slate-500">${v.core}</div>
+            </div>
+          `;
+          msList.appendChild(row);
+        });
+
+      // bind checkbox change
+      msList.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', (e) => {
+          const key = e.target.getAttribute('data-key');
+          if(e.target.checked) selectedKeys.add(key);
+          else selectedKeys.delete(key);
+          updateSummary();
+        });
+      });
+
+      updateSummary();
+    }
+
+    function updateSummary(){
+      const arr = Array.from(selectedKeys);
+      msCount.textContent = `${arr.length} đã chọn`;
+
+      if(arr.length === 0){
+        msSummary.textContent = 'Chọn ít nhất 2 rối loạn…';
+        return;
+      }
+      const names = arr.map(k => disorders[k].name);
+      if(names.length <= 3) msSummary.textContent = names.join(', ');
+      else msSummary.textContent = `${names.slice(0,2).join(', ')} + ${names.length-2} rối loạn khác`;
+    }
+
+    msSearch.addEventListener('input', renderOptions);
+
+    btnSelectAll.addEventListener('click', (e) => {
+      e.preventDefault();
+      Object.keys(disorders).forEach(k => selectedKeys.add(k));
+      renderOptions();
+    });
+
+    btnClear.addEventListener('click', (e) => {
+      e.preventDefault();
+      selectedKeys.clear();
+      renderOptions();
+    });
+
+    function renderTable(){
+      const keys = Array.from(selectedKeys);
+
+      // validation
+      if(keys.length < 2){
+        thead.innerHTML = '';
+        tbody.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      // Head
+      const headRow = document.createElement('tr');
+      headRow.innerHTML = `<th class="p-3 text-left sticky left-0 bg-blue-50 z-10 min-w-[220px]">Tiêu chí nhận diện</th>`;
+      keys.forEach(k => {
+        headRow.innerHTML += `<th class="p-3 text-left min-w-[320px]">${disorders[k].name}</th>`;
+      });
+      thead.innerHTML = '';
+      thead.appendChild(headRow);
+
+      // Body
+      tbody.innerHTML = '';
+      criteria.forEach(([label, field]) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td class="p-3 font-medium sticky left-0 bg-white z-10 min-w-[220px]">${label}</td>`;
+        keys.forEach(k => {
+          const val = disorders[k][field] || '';
+          tr.innerHTML += `<td class="p-3 min-w-[320px]">${val}</td>`;
+        });
+        tbody.appendChild(tr);
+      });
+
+      // gentle UX: auto-close panel
+      closePanel();
+    }
+
+    btnApply.addEventListener('click', (e) => { e.preventDefault(); renderTable(); });
+    btnCompare.addEventListener('click', (e) => { e.preventDefault(); renderTable(); });
+
+    // Init
+    renderOptions();
+    renderTable();
+  </script>
+</body>
+</html>
