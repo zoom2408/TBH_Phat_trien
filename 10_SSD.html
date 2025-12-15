@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rối loạn triệu chứng cơ thể (SSD) — Học nhanh</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: "#EFF6FF",
+              100: "#DBEAFE",
+              200: "#BFDBFE",
+              300: "#93C5FD",
+              400: "#60A5FA",
+              500: "#3B82F6",
+              600: "#2563EB",
+              700: "#1D4ED8",
+              800: "#1E40AF",
+              900: "#1E3A8A"
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    html { scroll-behavior: smooth; }
+    /* Smooth offset for sticky header */
+    section { scroll-margin-top: 96px; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 selection:bg-brand-500/30 selection:text-slate-50">
+  <!-- Top bar -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/70 bg-slate-950/75 backdrop-blur">
+    <div class="mx-auto max-w-6xl px-4 py-4">
+      <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-400/10 ring-1 ring-brand-400/20 grid place-items-center">
+            <span class="text-xl">🩺</span>
+          </div>
+          <div>
+            <h1 class="text-lg font-semibold leading-tight">Rối loạn triệu chứng cơ thể (SSD)</h1>
+            <p class="text-sm text-slate-300">Bản học nhanh theo DSM-5, tập trung: nhận biết, chẩn đoán, đánh giá, can thiệp</p>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <nav class="flex flex-wrap items-center gap-2" aria-label="Tab menu">
+          <a href="#tong-quan" data-tab="tong-quan" class="tab inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ring-1 transition">
+            <span>1</span><span>Tổng quan</span>
+          </a>
+          <a href="#dsm5" data-tab="dsm5" class="tab inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ring-1 transition">
+            <span>2</span><span>DSM-5</span>
+          </a>
+          <a href="#danh-gia" data-tab="danh-gia" class="tab inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ring-1 transition">
+            <span>3</span><span>Đánh giá & Test</span>
+          </a>
+          <a href="#dieu-tri" data-tab="dieu-tri" class="tab inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium ring-1 transition">
+            <span>4</span><span>Điều trị</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Helper line -->
+      <div class="mt-3 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+        <div class="flex flex-wrap items-center gap-2 text-xs text-slate-300">
+          <span class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 ring-1 ring-slate-800">Anchor tabs ✅</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 ring-1 ring-slate-800">Active/Inactive/Hover ✅</span>
+          <span class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 ring-1 ring-slate-800">Checklist tương tác ✅</span>
+        </div>
+        <p class="text-xs text-slate-400">Gợi ý: lăn chuột, tab sẽ tự đổi trạng thái theo phần bạn đang đọc.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-10">
+
+    <!-- HERO -->
+    <div class="rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900/60 to-slate-950 p-6 md:p-8">
+      <div class="grid gap-6 md:grid-cols-12 md:items-center">
+        <div class="md:col-span-7">
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">SSD không phải là “giả bệnh”.</h2>
+          <p class="mt-3 text-slate-300 leading-relaxed">
+            Trọng tâm của SSD là <span class="text-slate-100 font-medium">sự chú ý/lo âu quá mức</span> và <span class="text-slate-100 font-medium">hành vi phản ứng</span>
+            đối với triệu chứng cơ thể, gây suy giảm chức năng rõ rệt.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <div class="rounded-2xl bg-slate-900/70 p-4 ring-1 ring-slate-800">
+              <p class="text-xs text-slate-400">Nhắc nhớ nhanh</p>
+              <p class="mt-1 text-sm">Triệu chứng có thể <span class="font-medium">có</span> hoặc <span class="font-medium">không</span> kèm bệnh lý y khoa.</p>
+            </div>
+            <div class="rounded-2xl bg-slate-900/70 p-4 ring-1 ring-slate-800">
+              <p class="text-xs text-slate-400">Điểm then chốt</p>
+              <p class="mt-1 text-sm">Mức lo âu/đầu tư năng lượng <span class="font-medium">không tương xứng</span> với triệu chứng.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-5">
+          <div class="rounded-3xl border border-brand-500/20 bg-gradient-to-br from-brand-500/10 via-slate-900/40 to-slate-950 p-6">
+            <h3 class="text-sm font-semibold text-brand-200">Mini-card: Dấu hiệu gợi ý SSD</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-200">
+              <li class="flex gap-2"><span class="mt-0.5">•</span><span>Phàn nàn cơ thể ở nhiều vùng/đổi vùng, cảm giác thật.</span></li>
+              <li class="flex gap-2"><span class="mt-0.5">•</span><span>Lo âu cao, tập trung vào triệu chứng, đi khám lặp lại.</span></li>
+              <li class="flex gap-2"><span class="mt-0.5">•</span><span>Bắt đầu sớm (thường trước 30 tuổi), liên quan stress/bệnh tật/chấn thương.</span></li>
+              <li class="flex gap-2"><span class="mt-0.5">•</span><span>Ở trẻ: đau bụng/đau đầu… như “ngôn ngữ” của cảm xúc.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: TỔNG QUAN -->
+    <section id="tong-quan" class="mt-10">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-xl md:text-2xl font-semibold">1) Tổng quan & định nghĩa (DSM-5)</h2>
+          <p class="mt-2 text-slate-300">Nắm “khung” trước khi vào tiêu chí.</p>
+        </div>
+        <span class="hidden md:inline-flex items-center rounded-full bg-brand-500/10 px-3 py-1 text-xs text-brand-200 ring-1 ring-brand-500/20">Blue theme</span>
+      </div>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-12">
+        <div class="md:col-span-7 rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+          <h3 class="text-base font-semibold">Định nghĩa ngắn gọn</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-300">
+            SSD được đặc trưng bởi việc cá nhân <span class="text-slate-100 font-medium">tập trung đáng kể vào triệu chứng cơ thể</span>
+            đến mức gây <span class="text-slate-100 font-medium">suy giảm nghiêm trọng</span> hoặc có vấn đề về chức năng.
+            Triệu chứng có thể có hoặc không liên quan đến bệnh lý y khoa, nhưng người bệnh thực sự trải nghiệm triệu chứng và tin rằng mình bị bệnh.
+          </p>
+
+          <div class="mt-5 rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+            <p class="text-xs text-slate-400">Tip học nhanh</p>
+            <p class="mt-1 text-sm text-slate-200">
+              DSM-5 chuyển trọng tâm: không còn “phải là triệu chứng không giải thích được bằng y khoa”, mà là <span class="font-medium">phản ứng quá mức</span> với triệu chứng.
+            </p>
+          </div>
+        </div>
+
+        <div class="md:col-span-5 grid gap-4">
+          <div class="rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="text-base font-semibold">Bản đồ 3 lớp</h3>
+            <ol class="mt-3 space-y-2 text-sm text-slate-300">
+              <li class="flex gap-2"><span class="text-brand-300">①</span><span><b class="text-slate-100">Triệu chứng cơ thể</b> gây khó chịu/gián đoạn.</span></li>
+              <li class="flex gap-2"><span class="text-brand-300">②</span><span><b class="text-slate-100">Suy nghĩ/cảm xúc/hành vi</b> quá mức.</span></li>
+              <li class="flex gap-2"><span class="text-brand-300">③</span><span><b class="text-slate-100">Dai dẳng</b> (thường &gt; 6 tháng).</span></li>
+            </ol>
+          </div>
+
+          <div class="rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="text-base font-semibold">Stress liên quan (tham khảo trong bài học)</h3>
+            <p class="mt-2 text-sm text-slate-300">SSD thường dao động theo mức căng thẳng. Bạn có thể ghi nhớ 5 “kiểu stress” hay gặp trong thực hành:</p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span class="rounded-full bg-slate-950/40 px-3 py-1 text-xs ring-1 ring-slate-800">Stress thường ngày</span>
+              <span class="rounded-full bg-slate-950/40 px-3 py-1 text-xs ring-1 ring-slate-800">Stress cộng dồn/quá tải</span>
+              <span class="rounded-full bg-slate-950/40 px-3 py-1 text-xs ring-1 ring-slate-800">Stress khủng hoảng</span>
+              <span class="rounded-full bg-slate-950/40 px-3 py-1 text-xs ring-1 ring-slate-800">Distress (tiêu cực)</span>
+              <span class="rounded-full bg-slate-950/40 px-3 py-1 text-xs ring-1 ring-slate-800">Eustress (tích cực)</span>
+            </div>
+            <p class="mt-3 text-xs text-slate-400">(Gợi ý học: stress không phải tiêu chí chẩn đoán SSD, nhưng là “nhiên liệu” làm triệu chứng bùng lên.)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: DSM-5 -->
+    <section id="dsm5" class="mt-12">
+      <h2 class="text-xl md:text-2xl font-semibold">2) Tiêu chí chẩn đoán SSD theo DSM-5</h2>
+      <p class="mt-2 text-slate-300">Checklist dưới đây giúp bạn nhận diện nhanh và dễ nhớ.</p>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-12">
+        <div class="md:col-span-7 rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+          <div class="flex items-center justify-between gap-3">
+            <h3 class="text-base font-semibold">Checklist DSM-5 (A–C)</h3>
+            <button id="resetChecklist" class="rounded-full bg-brand-500/15 px-4 py-2 text-xs font-medium text-brand-200 ring-1 ring-brand-500/25 hover:bg-brand-500/20 active:scale-[0.99] transition">Reset checklist</button>
+          </div>
+
+          <div class="mt-4 space-y-4">
+            <!-- A -->
+            <div class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+              <label class="flex cursor-pointer items-start gap-3">
+                <input type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-600 bg-slate-900 text-brand-500 focus:ring-brand-500/40" data-crit="A" />
+                <span>
+                  <span class="font-semibold text-slate-100">A.</span>
+                  <span class="text-slate-300">Một hoặc nhiều triệu chứng cơ thể gây khó chịu hoặc dẫn đến gián đoạn đáng kể trong cuộc sống hàng ngày.</span>
+                </span>
+              </label>
+            </div>
+
+            <!-- B -->
+            <div class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+              <p class="text-sm text-slate-200"><span class="font-semibold text-slate-100">B.</span> Suy nghĩ/cảm xúc/hành vi <b>quá mức</b> liên quan triệu chứng, biểu hiện bởi <b>ít nhất 1</b> mục:</p>
+              <div class="mt-3 grid gap-2">
+                <label class="flex cursor-pointer items-start gap-3 rounded-xl bg-slate-900/50 p-3 ring-1 ring-slate-800/60 hover:ring-brand-500/20 transition">
+                  <input type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-600 bg-slate-900 text-brand-500 focus:ring-brand-500/40" data-crit="B" />
+                  <span class="text-sm text-slate-300">Suy nghĩ dai dẳng và <b class="text-slate-100">không tương xứng</b> về mức độ nghiêm trọng của triệu chứng.</span>
+                </label>
+                <label class="flex cursor-pointer items-start gap-3 rounded-xl bg-slate-900/50 p-3 ring-1 ring-slate-800/60 hover:ring-brand-500/20 transition">
+                  <input type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-600 bg-slate-900 text-brand-500 focus:ring-brand-500/40" data-crit="B" />
+                  <span class="text-sm text-slate-300">Mức độ lo lắng <b class="text-slate-100">cao và dai dẳng</b> về sức khỏe hoặc triệu chứng.</span>
+                </label>
+                <label class="flex cursor-pointer items-start gap-3 rounded-xl bg-slate-900/50 p-3 ring-1 ring-slate-800/60 hover:ring-brand-500/20 transition">
+                  <input type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-600 bg-slate-900 text-brand-500 focus:ring-brand-500/40" data-crit="B" />
+                  <span class="text-sm text-slate-300">Dành <b class="text-slate-100">quá nhiều thời gian/năng lượng</b> cho triệu chứng hoặc mối lo sức khỏe.</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- C -->
+            <div class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+              <label class="flex cursor-pointer items-start gap-3">
+                <input type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-600 bg-slate-900 text-brand-500 focus:ring-brand-500/40" data-crit="C" />
+                <span>
+                  <span class="font-semibold text-slate-100">C.</span>
+                  <span class="text-slate-300">Tình trạng có triệu chứng <b class="text-slate-100">dai dẳng</b> (thường &gt; 6 tháng), dù triệu chứng có thể không liên tục.</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="mt-5 rounded-2xl border border-brand-500/20 bg-brand-500/10 p-4">
+            <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p class="text-sm font-semibold text-brand-200">Kết quả checklist (học tập)</p>
+                <p class="text-xs text-slate-300">Đây là công cụ học, không thay thế chẩn đoán lâm sàng.</p>
+              </div>
+              <div class="text-sm">
+                <span class="text-slate-300">Trạng thái:</span>
+                <span id="checkStatus" class="ml-2 inline-flex items-center rounded-full bg-slate-950/40 px-3 py-1 text-xs ring-1 ring-slate-800">Chưa đủ dữ liệu</span>
+              </div>
+            </div>
+            <div class="mt-3 grid gap-3 md:grid-cols-3">
+              <div class="rounded-xl bg-slate-950/40 p-3 ring-1 ring-slate-800">
+                <p class="text-xs text-slate-400">A (có/không)</p>
+                <p id="statA" class="mt-1 text-sm font-semibold">—</p>
+              </div>
+              <div class="rounded-xl bg-slate-950/40 p-3 ring-1 ring-slate-800">
+                <p class="text-xs text-slate-400">B (đếm mục)</p>
+                <p id="statB" class="mt-1 text-sm font-semibold">0</p>
+              </div>
+              <div class="rounded-xl bg-slate-950/40 p-3 ring-1 ring-slate-800">
+                <p class="text-xs text-slate-400">C (có/không)</p>
+                <p id="statC" class="mt-1 text-sm font-semibold">—</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-5 grid gap-4">
+          <div class="rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="text-base font-semibold">Biệt định mức độ (DSM-5)</h3>
+            <div class="mt-3 space-y-2 text-sm text-slate-300">
+              <p><span class="inline-flex w-16 justify-center rounded-full bg-slate-950/40 px-3 py-1 text-xs ring-1 ring-slate-800">Nhẹ</span> Chỉ <b class="text-slate-100">1</b> biểu hiện thuộc tiêu chuẩn B.</p>
+              <p><span class="inline-flex w-16 justify-center rounded-full bg-slate-950/40 px-3 py-1 text-xs ring-1 ring-slate-800">Vừa</span> <b class="text-slate-100">≥ 2</b> biểu hiện thuộc tiêu chuẩn B.</p>
+              <p><span class="inline-flex w-16 justify-center rounded-full bg-slate-950/40 px-3 py-1 text-xs ring-1 ring-slate-800">Nặng</span> <b class="text-slate-100">≥ 2</b> biểu hiện B + bệnh nhân phàn nàn nhiều.</p>
+            </div>
+            <div class="mt-4 rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+              <p class="text-xs text-slate-400">Mẹo</p>
+              <p class="mt-1 text-sm text-slate-200">Trong checklist bên trái, số mục B bạn tick sẽ gợi ý nhanh “nhẹ/vừa/nặng”.</p>
+            </div>
+          </div>
+
+          <div class="rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="text-base font-semibold">DSM-5 vs ICD-11 (nhớ nhanh)</h3>
+            <div class="mt-3 grid gap-3">
+              <div class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+                <p class="text-xs text-slate-400">Tên gọi</p>
+                <p class="mt-1 text-sm"><b class="text-slate-100">DSM-5:</b> SSD | <b class="text-slate-100">ICD-11:</b> Bodily Distress Disorder</p>
+              </div>
+              <div class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+                <p class="text-xs text-slate-400">Thời gian</p>
+                <p class="mt-1 text-sm"><b class="text-slate-100">DSM-5:</b> thường &gt; 6 tháng | <b class="text-slate-100">ICD-11:</b> ≥ 3 tháng</p>
+              </div>
+              <div class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+                <p class="text-xs text-slate-400">Trọng tâm</p>
+                <p class="mt-1 text-sm">Cả hai đều nhấn mạnh: <b class="text-slate-100">triệu chứng gây khó chịu</b> + <b class="text-slate-100">chú ý/lo âu quá mức</b>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ĐÁNH GIÁ -->
+    <section id="danh-gia" class="mt-12">
+      <h2 class="text-xl md:text-2xl font-semibold">3) Đánh giá & một số thang đo/test hỗ trợ</h2>
+      <p class="mt-2 text-slate-300">Mục tiêu: vừa loại trừ bệnh lý y khoa, vừa nhận diện “mẫu phản ứng” điển hình của SSD.</p>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-12">
+        <div class="md:col-span-7 rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+          <h3 class="text-base font-semibold">Quy trình 4 bước (tóm tắt)</h3>
+          <ol class="mt-4 space-y-3 text-sm text-slate-300">
+            <li class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+              <div class="flex items-start gap-3">
+                <span class="grid h-7 w-7 place-items-center rounded-full bg-brand-500/15 text-xs font-semibold text-brand-200 ring-1 ring-brand-500/25">1</span>
+                <div>
+                  <p class="font-semibold text-slate-100">Khai thác bệnh sử</p>
+                  <p class="mt-1">Triệu chứng (đau, mệt…), thời gian xuất hiện, mức ảnh hưởng, và phản ứng của bệnh nhân (lo âu, đi khám nhiều lần…).</p>
+                </div>
+              </div>
+            </li>
+            <li class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+              <div class="flex items-start gap-3">
+                <span class="grid h-7 w-7 place-items-center rounded-full bg-brand-500/15 text-xs font-semibold text-brand-200 ring-1 ring-brand-500/25">2</span>
+                <div>
+                  <p class="font-semibold text-slate-100">Khám và xét nghiệm (loại trừ y khoa)</p>
+                  <p class="mt-1">Khám toàn diện và xét nghiệm cận lâm sàng để loại trừ bệnh thực thể. Trong SSD, kết quả có thể bình thường hoặc không giải thích hết triệu chứng.</p>
+                </div>
+              </div>
+            </li>
+            <li class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+              <div class="flex items-start gap-3">
+                <span class="grid h-7 w-7 place-items-center rounded-full bg-brand-500/15 text-xs font-semibold text-brand-200 ring-1 ring-brand-500/25">3</span>
+                <div>
+                  <p class="font-semibold text-slate-100">Đánh giá tâm thần</p>
+                  <p class="mt-1">Dùng tiêu chuẩn DSM-5 để loại trừ/nhận diện rối loạn đi kèm (trầm cảm, lo âu…).</p>
+                </div>
+              </div>
+            </li>
+            <li class="rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+              <div class="flex items-start gap-3">
+                <span class="grid h-7 w-7 place-items-center rounded-full bg-brand-500/15 text-xs font-semibold text-brand-200 ring-1 ring-brand-500/25">4</span>
+                <div>
+                  <p class="font-semibold text-slate-100">Đánh giá dấu hiệu “không phù hợp”</p>
+                  <p class="mt-1">Xem các dấu hiệu nổi bật: triệu chứng ảnh hưởng vận động/cảm giác/chức năng khác không phù hợp với bệnh cơ thể.</p>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="md:col-span-5 rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+          <h3 class="text-base font-semibold">Thang đo/test gợi ý (click để xem)</h3>
+          <p class="mt-2 text-sm text-slate-300">Dùng cho sàng lọc, theo dõi mức độ, và đo hiệu quả điều trị.</p>
+
+          <div class="mt-4 grid gap-3">
+            <button class="scale-card text-left rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800 hover:ring-brand-500/25 transition" data-modal-title="PHQ-15" data-modal-body="Thang đo 15 mục về triệu chứng cơ thể; thường dùng để sàng lọc và theo dõi mức độ than phiền cơ thể.">
+              <p class="text-sm font-semibold text-slate-100">PHQ-15</p>
+              <p class="mt-1 text-xs text-slate-400">Triệu chứng cơ thể (somatic symptom severity)</p>
+            </button>
+            <button class="scale-card text-left rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800 hover:ring-brand-500/25 transition" data-modal-title="SSS-8" data-modal-body="Thang 8 mục đánh giá gánh nặng triệu chứng cơ thể; ngắn gọn, phù hợp theo dõi định kỳ.">
+              <p class="text-sm font-semibold text-slate-100">SSS-8</p>
+              <p class="mt-1 text-xs text-slate-400">Somatic Symptom Scale-8</p>
+            </button>
+            <button class="scale-card text-left rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800 hover:ring-brand-500/25 transition" data-modal-title="SOMS-7" data-modal-body="Bộ câu hỏi về triệu chứng cơ thể theo tuần; hỗ trợ lượng hóa tần suất/mức độ triệu chứng.">
+              <p class="text-sm font-semibold text-slate-100">SOMS-7</p>
+              <p class="mt-1 text-xs text-slate-400">Somatic Symptom Scale (7 ngày)</p>
+            </button>
+            <button class="scale-card text-left rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800 hover:ring-brand-500/25 transition" data-modal-title="SSEQ" data-modal-body="Thang đo liên quan đến trải nghiệm/diễn giải triệu chứng cơ thể; dùng như công cụ theo dõi và tham khảo trong can thiệp.">
+              <p class="text-sm font-semibold text-slate-100">SSEQ</p>
+              <p class="mt-1 text-xs text-slate-400">Somatic Symptom Experience Questionnaire (tham khảo)</p>
+            </button>
+          </div>
+
+          <div class="mt-5 rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+            <p class="text-xs text-slate-400">Chẩn đoán phân biệt (nhớ nhanh)</p>
+            <ul class="mt-2 space-y-2 text-sm text-slate-300">
+              <li class="flex gap-2"><span class="mt-0.5">•</span><span><b class="text-slate-100">RL lo âu bệnh tật (IAD):</b> lo dai dẳng nhưng thường không có triệu chứng thể chất đáng kể.</span></li>
+              <li class="flex gap-2"><span class="mt-0.5">•</span><span><b class="text-slate-100">GAD:</b> lo âu nhiều lĩnh vực; SSD tập trung chủ yếu vào triệu chứng cơ thể/sợ bệnh.</span></li>
+              <li class="flex gap-2"><span class="mt-0.5">•</span><span><b class="text-slate-100">RL hoang tưởng:</b> niềm tin cố định cường độ hoang tưởng (SSD thường không tới mức đó).</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ĐIỀU TRỊ -->
+    <section id="dieu-tri" class="mt-12">
+      <h2 class="text-xl md:text-2xl font-semibold">4) Can thiệp & điều trị (gợi ý thực hành)</h2>
+      <p class="mt-2 text-slate-300">Mục tiêu: giảm lo âu về sức khỏe, giảm hành vi kiểm tra/đi khám quá mức, tăng chức năng sống.</p>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-12">
+        <div class="md:col-span-8 rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+          <h3 class="text-base font-semibold">Các hướng can thiệp chính</h3>
+
+          <div class="mt-4 grid gap-3">
+            <details class="group rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800 open:ring-brand-500/20 transition">
+              <summary class="flex cursor-pointer list-none items-center justify-between">
+                <span class="text-sm font-semibold text-slate-100">CBT (Liệu pháp nhận thức – hành vi) | hiệu quả nhất hiện nay</span>
+                <span class="text-slate-400 group-open:rotate-180 transition">⌄</span>
+              </summary>
+              <div class="mt-3 text-sm text-slate-300 leading-relaxed">
+                Giúp bệnh nhân nhận diện và điều chỉnh <b class="text-slate-100">suy nghĩ sai lệch</b>, giảm lo âu sức khỏe,
+                giảm hành vi kiểm tra cơ thể và tìm kiếm y tế quá mức.
+              </div>
+            </details>
+
+            <details class="group rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800 open:ring-brand-500/20 transition">
+              <summary class="flex cursor-pointer list-none items-center justify-between">
+                <span class="text-sm font-semibold text-slate-100">ACT (Chấp nhận & cam kết)</span>
+                <span class="text-slate-400 group-open:rotate-180 transition">⌄</span>
+              </summary>
+              <div class="mt-3 text-sm text-slate-300 leading-relaxed">
+                Tập trung giúp bệnh nhân <b class="text-slate-100">chấp nhận</b> trải nghiệm khó chịu, giảm né tránh,
+                tăng hành động phù hợp với <b class="text-slate-100">giá trị sống</b>. Có thể kết hợp kỹ thuật chánh niệm.
+              </div>
+            </details>
+
+            <details class="group rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800 open:ring-brand-500/20 transition">
+              <summary class="flex cursor-pointer list-none items-center justify-between">
+                <span class="text-sm font-semibold text-slate-100">EFT (Tập trung vào cảm xúc)</span>
+                <span class="text-slate-400 group-open:rotate-180 transition">⌄</span>
+              </summary>
+              <div class="mt-3 text-sm text-slate-300 leading-relaxed">
+                Hỗ trợ nhận diện và điều hòa cảm xúc liên quan stress/xung đột nội tâm,
+                thường hữu ích ở người <b class="text-slate-100">khó biểu lộ cảm xúc</b>.
+              </div>
+            </details>
+
+            <details class="group rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800 open:ring-brand-500/20 transition">
+              <summary class="flex cursor-pointer list-none items-center justify-between">
+                <span class="text-sm font-semibold text-slate-100">Chánh niệm & thư giãn</span>
+                <span class="text-slate-400 group-open:rotate-180 transition">⌄</span>
+              </summary>
+              <div class="mt-3 text-sm text-slate-300 leading-relaxed">
+                Giảm lo âu, giảm chú ý quá mức vào cơ thể, cải thiện kiểm soát stress.
+                Gợi ý: MBCT, hít thở sâu, thư giãn cơ.
+              </div>
+            </details>
+          </div>
+
+          <div class="mt-6 rounded-2xl border border-brand-500/20 bg-brand-500/10 p-5">
+            <h4 class="text-sm font-semibold text-brand-200">Mô hình phối hợp đa ngành (khuyến nghị)</h4>
+            <p class="mt-2 text-sm text-slate-300">
+              Phối hợp <b class="text-slate-100">bác sĩ gia đình – tâm thần – nhà trị liệu</b>.
+              Duy trì lịch hẹn định kỳ, hạn chế xét nghiệm không cần thiết, kết hợp giáo dục bệnh nhân.
+            </p>
+          </div>
+        </div>
+
+        <div class="md:col-span-4 grid gap-4">
+          <div class="rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="text-base font-semibold">Dược trị liệu (khi cần)</h3>
+            <p class="mt-2 text-sm text-slate-300">
+              Thường chỉ dùng khi có <b class="text-slate-100">trầm cảm/lo âu kèm theo</b> (ví dụ: SSRI, SNRI).
+              Tránh lạm dụng thuốc an thần và opioid.
+            </p>
+            <div class="mt-4 rounded-2xl bg-slate-950/40 p-4 ring-1 ring-slate-800">
+              <p class="text-xs text-slate-400">Cảnh báo thực hành</p>
+              <p class="mt-1 text-sm text-slate-200">Can thiệp y khoa quá mức (thủ thuật xâm lấn, phẫu thuật không cần thiết) có thể tạo biến chứng.</p>
+            </div>
+          </div>
+
+          <div class="rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+            <h3 class="text-base font-semibold">Kế hoạch 3 dòng (gợi ý viết bài)</h3>
+            <ol class="mt-3 space-y-2 text-sm text-slate-300">
+              <li class="flex gap-2"><span class="text-brand-300">1)</span><span>Giải thích mô hình SSD: triệu chứng thật + lo âu quá mức + vòng xoắn kiểm tra.</span></li>
+              <li class="flex gap-2"><span class="text-brand-300">2)</span><span>Đặt lịch follow-up cố định, tối ưu giao tiếp bác sĩ–bệnh nhân.</span></li>
+              <li class="flex gap-2"><span class="text-brand-300">3)</span><span>Ưu tiên CBT/ACT + kỹ thuật thư giãn; thuốc chỉ khi có rối loạn đi kèm.</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <footer class="mt-10 rounded-3xl border border-slate-800 bg-slate-900/40 p-6">
+        <p class="text-sm text-slate-300">
+          Ghi chú: Trang này phục vụ học tập (tâm bệnh học phát triển). Nếu dùng cho ca lâm sàng, luôn cần đánh giá toàn diện và tham khảo chuyên gia.
+        </p>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 z-[60] hidden">
+    <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm"></div>
+    <div class="relative mx-auto mt-24 w-[min(92vw,560px)] rounded-3xl border border-slate-800 bg-slate-950 p-6 shadow-xl">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <p id="modalTitle" class="text-base font-semibold text-slate-100">Title</p>
+          <p id="modalBody" class="mt-2 text-sm text-slate-300">Body</p>
+        </div>
+        <button id="modalClose" class="rounded-full bg-slate-900 px-3 py-1.5 text-xs text-slate-200 ring-1 ring-slate-800 hover:ring-brand-500/25">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -------------------------
+    // Tabs: active/inactive/hover states
+    // -------------------------
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+
+    function setTabState(activeId) {
+      tabs.forEach(t => {
+        const isActive = t.dataset.tab === activeId;
+        t.classList.toggle('bg-brand-500/15', isActive);
+        t.classList.toggle('text-brand-100', isActive);
+        t.classList.toggle('ring-brand-500/25', isActive);
+
+        t.classList.toggle('bg-slate-900/40', !isActive);
+        t.classList.toggle('text-slate-200', !isActive);
+        t.classList.toggle('ring-slate-800', !isActive);
+
+        // hover styles
+        t.classList.add('hover:ring-brand-500/25', 'hover:bg-brand-500/10');
+      });
+    }
+
+    // Default tab
+    setTabState('tong-quan');
+
+    // Update active tab on scroll
+    const sectionIds = ['tong-quan', 'dsm5', 'danh-gia', 'dieu-tri'];
+    const sections = sectionIds.map(id => document.getElementById(id));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // pick the most visible entry
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setTabState(visible.target.id);
+      },
+      { root: null, threshold: [0.25, 0.4, 0.6] }
+    );
+
+    sections.forEach(s => s && observer.observe(s));
+
+    // -------------------------
+    // Checklist logic (learning tool)
+    // -------------------------
+    const checkStatus = document.getElementById('checkStatus');
+    const statA = document.getElementById('statA');
+    const statB = document.getElementById('statB');
+    const statC = document.getElementById('statC');
+
+    const critInputs = Array.from(document.querySelectorAll('input[type="checkbox"][data-crit]'));
+
+    function updateChecklist() {
+      const A = critInputs.some(i => i.dataset.crit === 'A' && i.checked);
+      const C = critInputs.some(i => i.dataset.crit === 'C' && i.checked);
+      const Bcount = critInputs.filter(i => i.dataset.crit === 'B' && i.checked).length;
+
+      statA.textContent = A ? 'Đạt' : 'Chưa';
+      statC.textContent = C ? 'Đạt' : 'Chưa';
+      statB.textContent = String(Bcount);
+
+      // Determine status (educational)
+      let statusText = 'Chưa đủ tiêu chí';
+      let statusClass = 'bg-rose-500/10 text-rose-200 ring-1 ring-rose-500/20';
+
+      if (A || Bcount || C) {
+        if (A && C && Bcount >= 1) {
+          // severity hint by Bcount
+          const sev = (Bcount === 1) ? 'Nhẹ' : (Bcount >= 2 ? 'Vừa/Nặng (xem bối cảnh)' : '');
+          statusText = `Gợi ý: đạt A + B + C | Mức độ: ${sev}`;
+          statusClass = 'bg-emerald-500/10 text-emerald-200 ring-1 ring-emerald-500/20';
+        } else {
+          statusText = 'Chưa đủ tiêu chí (thiếu A/B/C)';
+        }
+      } else {
+        statusText = 'Chưa đủ dữ liệu';
+        statusClass = 'bg-slate-950/40 text-slate-200 ring-1 ring-slate-800';
+      }
+
+      checkStatus.textContent = statusText;
+      checkStatus.className = `ml-2 inline-flex items-center rounded-full px-3 py-1 text-xs ${statusClass}`;
+    }
+
+    critInputs.forEach(i => i.addEventListener('change', updateChecklist));
+
+    document.getElementById('resetChecklist').addEventListener('click', () => {
+      critInputs.forEach(i => (i.checked = false));
+      updateChecklist();
+    });
+
+    updateChecklist();
+
+    // -------------------------
+    // Modal for scales
+    // -------------------------
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalClose = document.getElementById('modalClose');
+
+    function openModal(title, body) {
+      modalTitle.textContent = title;
+      modalBody.textContent = body;
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+    }
+
+    document.querySelectorAll('[data-modal-title]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        openModal(btn.dataset.modalTitle, btn.dataset.modalBody);
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal || e.target === modal.firstElementChild) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+  </script>
+</body>
+</html>
