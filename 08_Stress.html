@@ -1,1186 +1,533 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Stress &amp; Rối loạn Trầm cảm | TBH Phát triển</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-elevated: #0b1020;
-      --primary: #4ade80;
-      --primary-soft: rgba(74, 222, 128, 0.08);
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.12);
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --danger: #fb7185;
-      --border: #1f2937;
-      --radius-xl: 18px;
-      --radius-lg: 12px;
-      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.7);
-      --transition-fast: 0.18s ease-out;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RL Trầm cảm & PTSD (DSM-5) | TBH Phát triển</title>
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 42%, #020617 100%);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 24px 16px 40px;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.4), transparent);
-      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
-    }
-
-    .header-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 14px 16px 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #bbf7d0 0, #4ade80 26%, #22c55e 52%, #22c55e 70%, #052e16 100%);
-      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5), 0 0 24px rgba(34, 197, 94, 0.65);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .brand-logo::after {
-      content: "";
-      position: absolute;
-      inset: 32%;
-      border-radius: 999px;
-      border: 2px solid rgba(15, 23, 42, 0.45);
-      box-shadow: inset 0 0 8px rgba(15, 23, 42, 0.85);
-    }
-
-    .brand-text-title {
-      font-size: 15px;
-      font-weight: 650;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #e5e7eb;
-    }
-
-    .brand-text-sub {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: flex-end;
-    }
-
-    .nav-chip {
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 5px 10px;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      background: radial-gradient(circle at top left, rgba(52, 211, 153, 0.26), transparent 58%);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--primary);
-      box-shadow: 0 0 10px rgba(74, 222, 128, 0.9);
-    }
-
-    main { flex: 1; }
-
-    .hero {
-      margin-top: 16px;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    @media (max-width: 880px) {
-      .hero { grid-template-columns: minmax(0, 1fr); }
-    }
-
-    .hero-left {
-      padding: 22px 20px 20px;
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top left, rgba(74, 222, 128, 0.08), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.12), transparent 60%),
-        rgba(15, 23, 42, 0.94);
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .pill {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .pill strong { color: var(--primary); }
-
-    .pill-badge {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--primary);
-    }
-
-    .pill-small { padding: 3px 8px; font-size: 10px; }
-
-    .hero-title {
-      font-size: clamp(26px, 3vw, 32px);
-      letter-spacing: 0.02em;
-      margin: 4px 0 8px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(to right, #4ade80, #22c55e, #22d3ee);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 14px;
-      color: var(--muted);
-      max-width: 540px;
-      margin-bottom: 14px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .hero-stat {
-      padding: 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: radial-gradient(circle at top left, rgba(248, 250, 252, 0.03), transparent 70%);
-      font-size: 12px;
-    }
-
-    .hero-stat-label {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      margin-bottom: 2px;
-    }
-
-    .hero-stat-value {
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    .mini-label { font-size: 11px; color: var(--muted); }
-
-    .hero-cta-row {
-      margin-top: 16px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      border-radius: 999px;
-      border: none;
-      padding: 9px 16px;
-      font-size: 13px;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      background: radial-gradient(circle at 10% 0%, #bbf7d0, #22c55e 28%, #16a34a 52%, #22c55e 80%);
-      color: #022c22;
-      box-shadow: 0 12px 25px rgba(22, 163, 74, 0.7);
-      transform: translateY(0);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 32px rgba(22, 163, 74, 0.85);
-      filter: brightness(1.05);
-    }
-
-    .btn-secondary {
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 8px 14px;
-      font-size: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.85);
-      cursor: pointer;
-      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(15, 23, 42, 1);
-      border-color: rgba(148, 163, 184, 1);
-      color: #e5e7eb;
-    }
-
-    .hero-right {
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top, rgba(74, 222, 128, 0.14), transparent 56%),
-        radial-gradient(circle at bottom, rgba(56, 189, 248, 0.18), transparent 50%),
-        #020617;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 18px 16px 16px;
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .panel-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 2px;
-    }
-
-    .panel-title {
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #e5e7eb;
-    }
-
-    .badge-outline {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      padding: 3px 9px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .card {
-      border-radius: 14px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: rgba(15, 23, 42, 0.96);
-      padding: 10px;
-      font-size: 12px;
-    }
-
-    .card + .card { margin-top: 7px; }
-
-    .card-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.11em;
-      color: var(--muted);
-      margin-bottom: 2px;
-    }
-
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .chip {
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 4px 9px;
-      font-size: 11px;
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 3.1fr) minmax(0, 2.2fr);
-      gap: 20px;
-      margin-top: 24px;
-    }
-
-    @media (max-width: 880px) {
-      .layout { grid-template-columns: minmax(0, 1fr); }
-    }
-
-    .section-card {
-      border-radius: var(--radius-xl);
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(55, 65, 81, 0.95);
-      box-shadow: var(--shadow-soft);
-      padding: 18px 16px 16px;
-      margin-bottom: 14px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 4px;
-    }
-
-    .section-eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .section-title {
-      font-size: 17px;
-      margin: 2px 0 4px;
-    }
-
-    .section-title span { color: var(--primary); }
-
-    .section-body {
-      font-size: 13px;
-      color: #e5e7eb;
-    }
-
-    .section-body p { margin: 4px 0 8px; }
-
-    .section-body ul {
-      margin: 6px 0 4px 18px;
-      padding-left: 2px;
-    }
-
-    .section-body li { margin-bottom: 4px; }
-
-    .tagline {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 6px;
-    }
-
-    @media (max-width: 640px) {
-      .two-column { grid-template-columns: minmax(0, 1fr); }
-    }
-
-    .callout {
-      border-radius: 12px;
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      background: rgba(15, 23, 42, 0.95);
-      padding: 9px 10px;
-      font-size: 12px;
-      margin-top: 8px;
-    }
-
-    .callout-danger {
-      border-color: rgba(248, 113, 113, 0.8);
-      background: radial-gradient(circle at top left, rgba(248, 113, 113, 0.18), transparent 55%), rgba(15, 23, 42, 0.96);
-    }
-
-    .callout-label {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--danger);
-      margin-bottom: 3px;
-    }
-
-    .widget {
-      border-radius: var(--radius-xl);
-      background: rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(55, 65, 81, 0.95);
-      padding: 16px 14px 14px;
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 14px;
-      font-size: 13px;
-    }
-
-    .widget-title {
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #e5e7eb;
-      margin-bottom: 6px;
-    }
-
-    .widget-sub {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .checklist {
-      list-style: none;
-      padding: 0;
-      margin: 6px 0 0;
-    }
-
-    .checklist li {
-      display: grid;
-      grid-template-columns: 18px minmax(0, 1fr) 42px;
-      gap: 6px;
-      align-items: center;
-      padding: 5px 4px;
-      border-radius: 8px;
-      transition: background var(--transition-fast);
-    }
-
-    .checklist li:hover { background: rgba(15, 23, 42, 1); }
-
-    .check-icon {
-      width: 14px;
-      height: 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      color: var(--primary);
-    }
-
-    .badge-score {
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 2px 7px;
-      font-size: 11px;
-      text-align: center;
-      color: var(--muted);
-    }
-
-    .pill-danger {
-      border-color: rgba(248, 113, 113, 0.8);
-      color: #fecaca;
-      background: rgba(127, 29, 29, 0.7);
-    }
-
-    .scale-row {
-      margin-top: 4px;
-      display: flex;
-      gap: 6px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .scale-dot-row { display: flex; gap: 4px; }
-
-    .scale-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(55, 65, 81, 0.9);
-    }
-
-    .scale-dot.active {
-      background: var(--primary);
-      box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
-    }
-
-    .toc {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .toc button {
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 4px 9px;
-      font-size: 11px;
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--muted);
-      cursor: pointer;
-      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
-    }
-
-    .toc button.active {
-      border-color: rgba(56, 189, 248, 0.9);
-      color: #e5e7eb;
-      background: rgba(15, 118, 110, 0.5);
-    }
-
-    footer {
-      border-top: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 14px 16px 18px;
-      font-size: 11px;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 18px;
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.98));
-    }
-
-    .kbd {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 6px;
-      border: 1px solid rgba(75, 85, 99, 0.9);
-      padding: 1px 5px;
-      font-size: 11px;
-      background: rgba(15, 23, 42, 0.9);
-      margin: 0 2px;
-    }
-
-    .shortcut-row {
-      margin-top: 8px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 6px;
-      font-size: 11px;
-    }
-
-    .shortcut-pill {
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      padding: 3px 9px;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      color: var(--muted);
-    }
-  </style>
-
-  <!-- JS được nạp ở <head> để đảm bảo scrollToSection tồn tại cho inline onclick -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Expose globally for inline onclick handlers.
-    window.scrollToSection = function scrollToSection(id) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      window.scrollTo({
-        top: el.getBoundingClientRect().top + window.scrollY - 80,
-        behavior: 'smooth'
-      });
+    // Tailwind runtime config
+    tailwind.config = {
+      theme: {
+        extend: {
+          boxShadow: {
+            soft: "0 10px 30px rgba(2, 44, 34, 0.10)",
+          },
+          colors: {
+            brand: {
+              50: "#EFF6FF",
+              100: "#DBEAFE",
+              200: "#BFDBFE",
+              300: "#93C5FD",
+              400: "#60A5FA",
+              500: "#3B82F6",
+              600: "#2563EB",
+              700: "#1D4ED8",
+              800: "#1E40AF",
+              900: "#1E3A8A"
+            }
+          }
+        }
+      }
     };
-
-    function setActiveToc(id) {
-      var buttons = document.querySelectorAll('.toc button');
-      buttons.forEach(function (b) { b.classList.remove('active'); });
-      var btn = document.querySelector('.toc button[data-target="' + id + '"]');
-      if (btn) btn.classList.add('active');
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-      // TOC buttons
-      var tocButtons = document.querySelectorAll('.toc button');
-      tocButtons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var target = btn.getAttribute('data-target');
-          if (!target) return;
-          setActiveToc(target);
-          window.scrollToSection(target);
-        });
-      });
-
-      // Keyboard shortcuts (1–5)
-      document.addEventListener('keydown', function (e) {
-        var map = {
-          '1': 'sec-dsm-def',
-          '2': 'sec-epi',
-          '3': 'sec-signs',
-          '4': 'sec-screening',
-          '5': 'sec-treatment'
-        };
-        var id = map[e.key];
-        if (!id) return;
-        setActiveToc(id);
-        window.scrollToSection(id);
-      });
-
-      // --- Basic "tests" (run in console) ---
-      // These are lightweight sanity checks to catch broken markup/IDs.
-      (function runSanityChecks() {
-        var requiredIds = ['sec-dsm-def', 'sec-epi', 'sec-signs', 'sec-screening', 'sec-treatment'];
-        var missing = requiredIds.filter(function (id) { return !document.getElementById(id); });
-        if (typeof window.scrollToSection !== 'function') {
-          console.error('[TBH] Test failed: scrollToSection is not defined as a function');
-        }
-        if (missing.length) {
-          console.warn('[TBH] Missing section IDs:', missing);
-        } else {
-          console.log('[TBH] Sanity checks passed ✅');
-        }
-      })();
-    });
   </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    /* offset for sticky header */
+    section { scroll-margin-top: 104px; }
+    .glass { backdrop-filter: blur(10px); }
+  </style>
 </head>
-<body>
-  <div class="page">
-    <header>
-      <div class="header-inner">
-        <div class="brand">
-          <div class="brand-logo"></div>
-          <div class="brand-text">
-            <div class="brand-text-title">TBH Phát triển</div>
-            <div class="brand-text-sub">Stress &amp; Rối loạn trầm cảm</div>
+
+<body class="bg-gradient-to-b from-brand-50 via-white to-brand-50 text-slate-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-brand-100/70 bg-white/70 glass">
+    <div class="mx-auto max-w-6xl px-4 py-4">
+      <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div class="flex items-start gap-3">
+          <div class="mt-0.5 h-10 w-10 rounded-2xl bg-brand-600 shadow-soft flex items-center justify-center text-white">
+            <span class="text-lg">🧠</span>
+          </div>
+          <div>
+            <h1 class="text-lg md:text-xl font-semibold tracking-tight">Rối loạn trầm cảm & Các rối loạn liên quan stress</h1>
+            <p class="text-sm text-slate-600">Bài học tập trung: <span class="font-medium text-brand-700">PTSD (DSM-5)</span> và liên hệ với trầm cảm</p>
           </div>
         </div>
-        <nav>
-          <div class="nav-chip"><span class="nav-dot"></span> DSM-5 • ICD-11</div>
-          <div class="nav-chip">Đối tượng: Học sinh / SV</div>
+
+        <!-- Tabs -->
+        <nav class="flex flex-wrap gap-2" aria-label="Tab menu">
+          <a data-tab href="#tong-quan" class="tab px-3 py-2 rounded-xl text-sm font-medium transition border border-transparent">Tổng quan</a>
+          <a data-tab href="#tieu-chi-dsm5" class="tab px-3 py-2 rounded-xl text-sm font-medium transition border border-transparent">DSM-5: PTSD & Stress</a>
+          <a data-tab href="#danh-gia" class="tab px-3 py-2 rounded-xl text-sm font-medium transition border border-transparent">Đánh giá & Test</a>
+          <a data-tab href="#dieu-tri" class="tab px-3 py-2 rounded-xl text-sm font-medium transition border border-transparent">Điều trị</a>
         </nav>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <div class="container">
-        <section class="hero">
-          <div class="hero-left">
-            <div class="hero-pill-row">
-              <div class="pill"><span class="pill-badge"></span>Module <strong>Tâm bệnh học phát triển</strong></div>
-              <div class="pill">Chủ đề: <strong>Stress &amp; Rối loạn trầm cảm</strong></div>
-            </div>
+  <main class="mx-auto max-w-6xl px-4 py-8 md:py-10">
 
-            <h1 class="hero-title">Hiểu đúng về <span>Stress</span> &amp; <span>Trầm cảm</span></h1>
-            <p class="hero-subtitle">
-              Stress là phản ứng tự nhiên, nhưng khi kéo dài và không được quản lý, nó có thể chuyển thành
-              rối loạn trầm cảm. Trang này giúp bạn nắm: định nghĩa, dịch tễ, dấu hiệu DSM-5, các test sàng lọc
-              và hướng điều trị dựa trên bằng chứng.
-            </p>
-
-            <div class="hero-grid">
-              <div class="hero-stat">
-                <div class="hero-stat-label">Tỷ lệ hiện mắc</div>
-                <div class="hero-stat-value">≈ 5% dân số</div>
-                <div class="mini-label">Trầm cảm (WHO ước tính)</div>
-              </div>
-              <div class="hero-stat">
-                <div class="hero-stat-label">Nguy cơ theo giới</div>
-                <div class="hero-stat-value">Nữ gấp ~2 lần nam</div>
-                <div class="mini-label">Tỷ lệ mắc MDD</div>
-              </div>
-              <div class="hero-stat">
-                <div class="hero-stat-label">Thời gian tối thiểu</div>
-                <div class="hero-stat-value">≥ 2 tuần</div>
-                <div class="mini-label">Để chẩn đoán MDD</div>
-              </div>
-            </div>
-
-            <div class="hero-cta-row">
-              <button class="btn-primary" type="button" onclick="scrollToSection('sec-dsm-def')">
-                Bắt đầu từ định nghĩa
-                <span>↓</span>
-              </button>
-              <button class="btn-secondary" type="button" onclick="scrollToSection('sec-screening')">
-                Xem nhanh các test sàng lọc
-              </button>
-            </div>
+    <!-- Hero card -->
+    <div class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6 md:p-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <p class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700 border border-brand-100">
+            <span>🎯</span> Mục tiêu học nhanh
+          </p>
+          <h2 class="mt-3 text-2xl md:text-3xl font-semibold tracking-tight">Hiểu PTSD theo DSM-5, biết cách đánh giá và điều trị</h2>
+          <p class="mt-2 text-slate-600 max-w-2xl">
+            Trang này gom: định nghĩa, tiêu chí chẩn đoán stress liên quan sang chấn (nhấn mạnh PTSD),
+            các thang đo sàng lọc và hướng điều trị. Dùng tab để nhảy đúng phần.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 gap-3 w-full md:w-auto">
+          <div class="rounded-2xl border border-brand-100 bg-brand-50 p-4">
+            <div class="text-xs text-brand-700 font-semibold">PTSD</div>
+            <div class="mt-1 text-sm text-slate-700">≥ 1 tháng + 4 cụm triệu chứng</div>
           </div>
-
-          <aside class="hero-right">
-            <div class="panel-title-row">
-              <div class="panel-title">Bảng tóm tắt học nhanh</div>
-              <div class="badge-outline">Quiz-friendly</div>
-            </div>
-
-            <div class="card">
-              <div class="card-label">1. Stress là gì?</div>
-              <div>
-                Phản ứng sinh lý – tâm lý trước yêu cầu / đe doạ từ môi trường. Không phải một rối loạn DSM-5,
-                nhưng liên quan đến Rối loạn thích ứng, Acute Stress Disorder và PTSD.
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-label">2. Nhóm rối loạn trầm cảm (DSM-5)</div>
-              <div class="chip-row">
-                <span class="chip">Major Depressive Disorder</span>
-                <span class="chip">Persistent Depressive Disorder (Dysthymia)</span>
-                <span class="chip">Premenstrual Dysphoric Disorder</span>
-                <span class="chip">Substance/Medical-Induced</span>
-                <span class="chip">Depressive Disorder due to GMC</span>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-label">3. Tiêu chí lõi của MDD</div>
-              <div>
-                ≥ 5 triệu chứng trong ≥ 2 tuần, trong đó phải có: khí sắc trầm buồn <strong>hoặc</strong>
-                giảm hứng thú / khoái cảm (anhedonia).
-              </div>
-            </div>
-          </aside>
-        </section>
-
-        <section class="section-card" style="margin-top:20px;" id="sec-toc">
-          <div class="section-header">
-            <div>
-              <div class="section-eyebrow">Lộ trình học</div>
-              <h2 class="section-title">Điều hướng <span>nội dung</span></h2>
-            </div>
-            <div class="tagline">Gợi ý: học theo thứ tự từ 1 → 5</div>
+          <div class="rounded-2xl border border-brand-100 bg-brand-50 p-4">
+            <div class="text-xs text-brand-700 font-semibold">Stress</div>
+            <div class="mt-1 text-sm text-slate-700">Phản ứng sinh lý + tâm lý trước stressor</div>
           </div>
-          <div class="section-body">
-            <div class="toc">
-              <button type="button" class="active" data-target="sec-dsm-def">1. Định nghĩa DSM-5 / ICD-11</button>
-              <button type="button" data-target="sec-epi">2. Dịch tễ học</button>
-              <button type="button" data-target="sec-signs">3. Dấu hiệu theo DSM-5</button>
-              <button type="button" data-target="sec-screening">4. Test sàng lọc</button>
-              <button type="button" data-target="sec-treatment">5. Điều trị &amp; tự chăm sóc</button>
-            </div>
-          </div>
-        </section>
-
-        <div class="layout">
-          <section>
-            <article class="section-card" id="sec-dsm-def">
-              <div class="section-header">
-                <div>
-                  <div class="section-eyebrow">1 • Định nghĩa</div>
-                  <h2 class="section-title">Stress &amp; các rối loạn <span>trầm cảm</span></h2>
-                </div>
-                <div class="pill pill-small">DSM-5 &amp; ICD-11</div>
-              </div>
-              <div class="section-body">
-                <h3>1.1 Stress</h3>
-                <p>
-                  <strong>Stress</strong> là phản ứng của cơ thể và tâm trí trước các yêu cầu, áp lực hay đe doạ từ môi trường.
-                  Về bản chất, stress không tốt cũng không xấu, nó giúp chúng ta thích nghi. Vấn đề xuất hiện khi stress
-                  <strong>kéo dài, quá mức và không được điều tiết</strong> → nguy cơ phát triển rối loạn trầm cảm, lo âu.
-                </p>
-                <ul>
-                  <li><strong>Eustress</strong>: tăng động lực học tập, làm việc.</li>
-                  <li><strong>Distress</strong>: gây kiệt sức, suy giảm cảm xúc, dễ dẫn đến rối loạn.</li>
-                </ul>
-                <p>
-                  Trong DSM-5, stress liên quan đến: <em>Adjustment Disorder</em>, <em>Acute Stress Disorder</em>, <em>PTSD</em>.
-                  Tuy nhiên, “stress” không phải một rối loạn độc lập.
-                </p>
-
-                <h3 style="margin-top:10px;">1.2 Nhóm rối loạn trầm cảm theo DSM-5</h3>
-                <div class="two-column">
-                  <ul>
-                    <li>Major Depressive Disorder (MDD)</li>
-                    <li>Persistent Depressive Disorder (Dysthymia)</li>
-                    <li>Disruptive Mood Dysregulation Disorder (trẻ em)</li>
-                  </ul>
-                  <ul>
-                    <li>Premenstrual Dysphoric Disorder</li>
-                    <li>Substance/Medication-Induced Depressive Disorder</li>
-                    <li>Depressive Disorder do bệnh lý nội khoa</li>
-                  </ul>
-                </div>
-
-                <h3 style="margin-top:10px;">1.3 Định nghĩa MDD (Major Depressive Disorder)</h3>
-                <p>
-                  <strong>DSM-5:</strong> MDD là rối loạn khí sắc đặc trưng bởi tối thiểu <strong>1 giai đoạn trầm cảm nặng</strong>
-                  kéo dài ≥ 2 tuần, với khí sắc trầm buồn hoặc giảm hứng thú là trung tâm, đi kèm triệu chứng nhận thức,
-                  cảm xúc và cơ thể, gây suy giảm đáng kể chức năng.
-                </p>
-
-                <div class="callout">
-                  <div class="callout-label">ICD-11 (tóm tắt)</div>
-                  <p style="margin:0;">
-                    ICD-11 phân loại trầm cảm theo mức độ (nhẹ – vừa – nặng) dựa trên số lượng triệu chứng và
-                    mức suy giảm chức năng; có thể ghi nhận có/không có triệu chứng loạn thần.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="section-card" id="sec-epi">
-              <div class="section-header">
-                <div>
-                  <div class="section-eyebrow">2 • Dịch tễ học</div>
-                  <h2 class="section-title">Trầm cảm <span>phổ biến</span> đến mức nào?</h2>
-                </div>
-                <div class="pill pill-small">Góc nhìn sức khỏe cộng đồng</div>
-              </div>
-              <div class="section-body">
-                <ul>
-                  <li>Khoảng <strong>5%</strong> người trưởng thành toàn cầu đang mắc trầm cảm tại một thời điểm.</li>
-                  <li><strong>Nữ</strong> có tỉ lệ mắc MDD cao hơn <strong>nam</strong> khoảng <strong>2:1</strong>.</li>
-                  <li>Tuổi khởi phát hay gặp: <strong>cuối vị thành niên</strong> → <strong>đầu trưởng thành</strong>.</li>
-                  <li>Stress học đường, áp lực thi cử, xung đột gia đình, bắt nạt… là yếu tố nguy cơ quan trọng.</li>
-                  <li>Trầm cảm góp phần lớn vào <strong>gánh nặng bệnh tật</strong> và liên quan nguy cơ tự sát.</li>
-                </ul>
-                <div class="callout">
-                  <div class="callout-label">Gợi ý suy nghĩ</div>
-                  <p style="margin:0;">
-                    Với tỉ lệ 5%, trong lớp 40 bạn có thể có ~2 bạn đang trải nghiệm trầm cảm ở mức độ nào đó, nhưng chưa chắc đã nói ra.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="section-card" id="sec-signs">
-              <div class="section-header">
-                <div>
-                  <div class="section-eyebrow">3 • Dấu hiệu nhận biết</div>
-                  <h2 class="section-title">Tiêu chí DSM-5 cho <span>MDD</span></h2>
-                </div>
-                <div class="pill pill-small">≥ 5 triệu chứng / 2 tuần</div>
-              </div>
-              <div class="section-body">
-                <p>
-                  DSM-5 yêu cầu <strong>≥ 5 triệu chứng</strong> trong <strong>≥ 2 tuần</strong>, thay đổi so với trước đó, và phải có ít nhất một trong hai:
-                  (1) khí sắc trầm buồn hoặc (2) giảm hứng thú/khoái cảm.
-                </p>
-                <ul>
-                  <li><strong>(1)</strong> Khí sắc trầm buồn phần lớn thời gian.</li>
-                  <li><strong>(2)</strong> Giảm rõ rệt hứng thú/khoái cảm (anhedonia).</li>
-                  <li><strong>(3)</strong> Thay đổi cân nặng/ăn uống đáng kể.</li>
-                  <li><strong>(4)</strong> Mất ngủ hoặc ngủ quá nhiều.</li>
-                  <li><strong>(5)</strong> Kích động hoặc chậm chạp tâm thần–vận động.</li>
-                  <li><strong>(6)</strong> Mệt mỏi, mất năng lượng.</li>
-                  <li><strong>(7)</strong> Cảm giác vô dụng hoặc tội lỗi quá mức/không phù hợp.</li>
-                  <li><strong>(8)</strong> Giảm tập trung/khó quyết định.</li>
-                  <li><strong>(9)</strong> Ý nghĩ chết/ý tưởng tự sát/kế hoạch/hành vi.</li>
-                </ul>
-
-                <div class="callout callout-danger">
-                  <div class="callout-label">Cờ đỏ cần chú ý</div>
-                  <p style="margin:0;">
-                    Có ý nghĩ tự sát dù chưa có kế hoạch cụ thể cũng cần được đánh giá/hỗ trợ ngay.
-                  </p>
-                </div>
-
-                <h3 style="margin-top:10px;">Dysthymia (Persistent Depressive Disorder)</h3>
-                <p>
-                  Khí sắc trầm buồn kéo dài <strong>≥ 2 năm</strong> (trẻ em ≥ 1 năm) + ≥ 2 triệu chứng (ăn/ngủ, năng lượng thấp, tự ti,
-                  khó tập trung, vô vọng...). Mức độ có thể nhẹ hơn nhưng dai dẳng.
-                </p>
-              </div>
-            </article>
-
-            <article class="section-card" id="sec-screening">
-              <div class="section-header">
-                <div>
-                  <div class="section-eyebrow">4 • Test sàng lọc</div>
-                  <h2 class="section-title">Các thang đo <span>trầm cảm</span> thường dùng</h2>
-                </div>
-                <div class="pill pill-small">Sàng lọc ≠ chẩn đoán</div>
-              </div>
-              <div class="section-body">
-                <p>
-                  Các thang đo giúp <strong>sàng lọc nguy cơ</strong> và theo dõi tiến triển. Kết quả cần được diễn giải bởi chuyên gia.
-                </p>
-
-                <h3>4.1 PHQ-9</h3>
-                <ul>
-                  <li>9 câu hỏi, mỗi câu 0–3 điểm (tổng 0–27).</li>
-                  <li>Bám sát 9 tiêu chí DSM-5 của MDD.</li>
-                  <li>Gợi ý mức độ: 5–9 (nhẹ), 10–14 (trung bình), 15–19 (vừa-nặng), 20+ (nặng).</li>
-                </ul>
-
-                <h3>4.2 BDI-II</h3>
-                <ul>
-                  <li>21 mục, đánh giá cả cảm xúc, nhận thức và cơ thể.</li>
-                </ul>
-
-                <h3>4.3 Một số thang khác</h3>
-                <ul>
-                  <li><strong>HADS</strong>, <strong>CES-D</strong>, <strong>GAD-7</strong> (lo âu thường đi kèm trầm cảm).</li>
-                </ul>
-
-                <div class="callout">
-                  <div class="callout-label">Tips học thi</div>
-                  <p style="margin:0;">
-                    Câu hay gặp: “Test nào dựa trực tiếp trên tiêu chí DSM-5 cho trầm cảm?” → <strong>PHQ-9</strong>.
-                  </p>
-                </div>
-              </div>
-            </article>
-
-            <article class="section-card" id="sec-treatment">
-              <div class="section-header">
-                <div>
-                  <div class="section-eyebrow">5 • Điều trị</div>
-                  <h2 class="section-title">Điều trị <span>trầm cảm</span> &amp; quản lý stress</h2>
-                </div>
-                <div class="pill pill-small">Evidence-based</div>
-              </div>
-              <div class="section-body">
-                <h3>5.1 Tâm lý trị liệu</h3>
-                <ul>
-                  <li><strong>CBT</strong>: hiệu quả với trầm cảm nhẹ–vừa.</li>
-                  <li><strong>MBCT, ACT, DBT</strong>: giảm ruminating, tăng linh hoạt tâm lý.</li>
-                  <li><strong>Trị liệu gia đình/nhóm</strong>: hữu ích khi stress đến từ quan hệ.</li>
-                </ul>
-
-                <h3>5.2 Thuốc chống trầm cảm</h3>
-                <ul>
-                  <li>Dùng khi: vừa–nặng, có ý nghĩ tự sát, hoặc không đáp ứng trị liệu tâm lý đơn thuần.</li>
-                  <li>Nhóm thường dùng: <strong>SSRI</strong>, <strong>SNRI</strong> và các thuốc khác theo chỉ định bác sĩ.</li>
-                  <li>Không tự ý ngừng/đổi thuốc.</li>
-                </ul>
-
-                <h3>5.3 Phương pháp nâng cao</h3>
-                <ul>
-                  <li><strong>TMS</strong>, <strong>ECT</strong> cho trầm cảm kháng trị hoặc nặng.</li>
-                </ul>
-
-                <h3>5.4 Điều chỉnh lối sống</h3>
-                <ul>
-                  <li>Ngủ đủ 7–9 giờ, hạn chế màn hình trước ngủ.</li>
-                  <li>Tập thể dục 3–5 buổi/tuần.</li>
-                  <li>Dinh dưỡng cân bằng, hạn chế chất kích thích.</li>
-                  <li>Duy trì kết nối xã hội.</li>
-                  <li>Mindfulness, journaling, quản lý thời gian.</li>
-                </ul>
-
-                <div class="callout callout-danger">
-                  <div class="callout-label">Khi nào cần giúp đỡ khẩn cấp?</div>
-                  <p style="margin:0;">
-                    Khi có ý nghĩ tự sát/kế hoạch/hành vi tự làm hại mình: liên hệ người thân tin cậy, cơ sở y tế gần nhất hoặc đường dây hỗ trợ.
-                  </p>
-                </div>
-              </div>
-            </article>
-          </section>
-
-          <aside>
-            <section class="widget" id="widget-stress-vs-dep">
-              <h3 class="widget-title">Phân biệt Stress • Thích ứng • Trầm cảm</h3>
-              <p class="widget-sub">Bảng mini để ôn thi trắc nghiệm.</p>
-              <table style="width:100%;border-collapse:collapse;font-size:12px;">
-                <thead>
-                  <tr>
-                    <th style="text-align:left;padding:4px;border-bottom:1px solid rgba(55,65,81,0.9);">Đặc điểm</th>
-                    <th style="text-align:left;padding:4px;border-bottom:1px solid rgba(55,65,81,0.9);">Stress</th>
-                    <th style="text-align:left;padding:4px;border-bottom:1px solid rgba(55,65,81,0.9);">RLC Thích ứng</th>
-                    <th style="text-align:left;padding:4px;border-bottom:1px solid rgba(55,65,81,0.9);">MDD</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style="padding:4px;">Nguyên nhân rõ</td>
-                    <td style="padding:4px;">✔</td>
-                    <td style="padding:4px;">✔</td>
-                    <td style="padding:4px;">Không nhất thiết</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:4px;">Thời gian</td>
-                    <td style="padding:4px;">Biến thiên</td>
-                    <td style="padding:4px;">≤ 6 tháng sau stressor</td>
-                    <td style="padding:4px;">≥ 2 tuần</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:4px;">Triệu chứng chính</td>
-                    <td style="padding:4px;">Căng thẳng/lo âu</td>
-                    <td style="padding:4px;">Khó thích nghi</td>
-                    <td style="padding:4px;">Buồn sâu/anhedonia</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:4px;">Suy giảm chức năng</td>
-                    <td style="padding:4px;">Nhẹ–vừa</td>
-                    <td style="padding:4px;">Vừa</td>
-                    <td style="padding:4px;">Vừa–nặng</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:4px;">Nguy cơ tự sát</td>
-                    <td style="padding:4px;">Thấp</td>
-                    <td style="padding:4px;">Thấp–vừa</td>
-                    <td style="padding:4px;">Vừa–cao</td>
-                  </tr>
-                </tbody>
-              </table>
-            </section>
-
-            <section class="widget" id="widget-phq9">
-              <h3 class="widget-title">PHQ-9 • Cách đọc điểm</h3>
-              <p class="widget-sub">9 câu hỏi – mỗi câu 0 đến 3 điểm, tổng 0–27.</p>
-              <ul class="checklist">
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>
-                    <div>0–4 điểm</div>
-                    <div class="mini-label">Gần như không có trầm cảm</div>
-                  </div>
-                  <div class="badge-score">Nhẹ</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>
-                    <div>5–9 điểm</div>
-                    <div class="mini-label">Triệu chứng mức nhẹ</div>
-                  </div>
-                  <div class="badge-score">Theo dõi</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>
-                    <div>10–14 điểm</div>
-                    <div class="mini-label">Trầm cảm trung bình</div>
-                  </div>
-                  <div class="badge-score">Cân nhắc</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>
-                    <div>15–19 điểm</div>
-                    <div class="mini-label">Vừa–nặng</div>
-                  </div>
-                  <div class="badge-score">Điều trị</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>
-                    <div>20–27 điểm</div>
-                    <div class="mini-label">Trầm cảm nặng</div>
-                  </div>
-                  <div class="badge-score pill-danger">Ưu tiên</div>
-                </li>
-              </ul>
-            </section>
-
-            <section class="widget" id="widget-selfcare">
-              <h3 class="widget-title">Checklist tự chăm sóc</h3>
-              <p class="widget-sub">Cho những ngày stress nhiều, mood đi xuống.</p>
-              <ul class="checklist">
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>Hôm nay mình đã ăn đủ ít nhất 2 bữa?</div>
-                  <div class="badge-score">Cơ thể</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>Mình ngủ được &gt; 6 tiếng đêm qua?</div>
-                  <div class="badge-score">Giấc ngủ</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>Đã vận động tối thiểu 10–15 phút?</div>
-                  <div class="badge-score">Vận động</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>Có kết nối với 1 người tin cậy?</div>
-                  <div class="badge-score">Kết nối</div>
-                </li>
-                <li>
-                  <div class="check-icon">✓</div>
-                  <div>Đã ghi lại suy nghĩ/cảm xúc?</div>
-                  <div class="badge-score">Journaling</div>
-                </li>
-              </ul>
-            </section>
-
-            <section class="widget" id="widget-severity">
-              <h3 class="widget-title">Mức độ trầm cảm (ICD-11)</h3>
-              <p class="widget-sub">Minimap hóa kiến thức để dễ nhớ.</p>
-              <div class="scale-row"><span class="mini-label">Số triệu chứng &amp; mức suy giảm:</span></div>
-              <div class="scale-row">
-                <span class="badge-score">Nhẹ</span>
-                <div class="scale-dot-row">
-                  <span class="scale-dot active"></span>
-                  <span class="scale-dot active"></span>
-                  <span class="scale-dot"></span>
-                </div>
-                <span class="mini-label">Vài triệu chứng, vẫn làm được phần lớn hoạt động.</span>
-              </div>
-              <div class="scale-row">
-                <span class="badge-score">Vừa</span>
-                <div class="scale-dot-row">
-                  <span class="scale-dot active"></span>
-                  <span class="scale-dot active"></span>
-                  <span class="scale-dot active"></span>
-                </div>
-                <span class="mini-label">Nhiều triệu chứng, suy giảm rõ rệt.</span>
-              </div>
-              <div class="scale-row">
-                <span class="badge-score pill-danger">Nặng</span>
-                <div class="scale-dot-row">
-                  <span class="scale-dot active"></span>
-                  <span class="scale-dot active"></span>
-                  <span class="scale-dot active"></span>
-                </div>
-                <span class="mini-label">Nhiều triệu chứng + nguy cơ tự sát, suy giảm nặng.</span>
-              </div>
-            </section>
-          </aside>
         </div>
       </div>
-    </main>
+    </div>
 
-    <footer>
-      <div>TBH Phát triển • Stress &amp; Rối loạn trầm cảm • Dùng cho mục đích học tập, không thay thế chẩn đoán y khoa.</div>
-      <div class="shortcut-row">
-        <div class="shortcut-pill">Tới <span class="kbd">1</span> Định nghĩa</div>
-        <div class="shortcut-pill">Tới <span class="kbd">2</span> Dịch tễ</div>
-        <div class="shortcut-pill">Tới <span class="kbd">3</span> Dấu hiệu</div>
-        <div class="shortcut-pill">Tới <span class="kbd">4</span> Test</div>
-        <div class="shortcut-pill">Tới <span class="kbd">5</span> Điều trị</div>
+    <!-- Section: Overview -->
+    <section id="tong-quan" class="mt-8">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl md:text-2xl font-semibold tracking-tight">Tổng quan</h3>
+        <span class="text-xs text-slate-500">(Anchor: #tong-quan)</span>
+      </div>
+
+      <div class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <article class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6">
+          <h4 class="font-semibold">1) Định nghĩa RL trầm cảm (DSM-5)</h4>
+          <p class="mt-2 text-slate-700 text-sm leading-relaxed">
+            Nhóm <b>Rối loạn trầm cảm</b> là các rối loạn có đặc trưng cốt lõi là <b>khí sắc trầm</b> và/hoặc <b>mất hứng thú</b>,
+            kèm những thay đổi về giấc ngủ, năng lượng, ăn uống, vận động, tập trung, cảm giác vô dụng/tội lỗi,
+            và có thể có ý nghĩ chết hoặc tự sát. Chẩn đoán dựa trên <b>đủ tiêu chí triệu chứng</b> và <b>mức suy giảm chức năng</b>,
+            đồng thời loại trừ nguyên nhân do chất/bệnh lý cơ thể.
+          </p>
+          <div class="mt-4 rounded-2xl bg-brand-50 border border-brand-100 p-4">
+            <p class="text-xs text-brand-800 font-semibold">Ghi chú học tập</p>
+            <p class="mt-1 text-sm text-slate-700">Trầm cảm và PTSD hay đồng mắc: sang chấn kéo dài có thể làm tăng nguy cơ khí sắc trầm, né tránh, rút lui xã hội.</p>
+          </div>
+        </article>
+
+        <article class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6">
+          <h4 class="font-semibold">2) Stress là gì?</h4>
+          <p class="mt-2 text-slate-700 text-sm leading-relaxed">
+            <b>Stress</b> là phản ứng bên trong mang tính <b>sinh lý</b> và <b>tâm lý</b> trước các tác nhân gây stress (stressor),
+            thường là thách thức/khó khăn đòi hỏi nhiều hơn so với nguồn lực ứng phó hiện có.
+          </p>
+          <ul class="mt-3 text-sm text-slate-700 list-disc pl-5 space-y-1">
+            <li>Stress thường ngày (mức cơ bản)</li>
+            <li>Stress cộng dồn (căng thẳng/quá tải)</li>
+            <li>Stress khủng hoảng (sốc)</li>
+            <li>Stress tiêu cực (distress)</li>
+            <li>Stress tích cực (eustress)</li>
+          </ul>
+          <div class="mt-4 text-xs text-slate-500">Tip: stress ≠ sang chấn. Sang chấn thường liên quan đe doạ tính mạng/chấn thương nghiêm trọng/bạo lực tình dục.</div>
+        </article>
+
+        <article class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6">
+          <h4 class="font-semibold">3) Sang chấn & PTSD (trọng tâm)</h4>
+          <p class="mt-2 text-slate-700 text-sm leading-relaxed">
+            <b>PTSD (DSM-5: F43.1)</b> là rối loạn xuất hiện sau khi cá nhân trải qua/chứng kiến một sự kiện sang chấn
+            (tử vong/có nguy cơ tử vong, chấn thương nghiêm trọng hoặc bạo lực tình dục), và kéo dài
+            <b>ít nhất 1 tháng</b> với 4 cụm triệu chứng chính.
+          </p>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <div class="rounded-2xl border border-brand-100 bg-brand-50 p-4">
+              <div class="text-xs font-semibold text-brand-800">4 cụm</div>
+              <div class="mt-1 text-sm text-slate-700">Thâm nhập, Né tránh, Nhận thức/cảm xúc tiêu cực, Kích động</div>
+            </div>
+            <div class="rounded-2xl border border-brand-100 bg-brand-50 p-4">
+              <div class="text-xs font-semibold text-brand-800">Mốc thời gian</div>
+              <div class="mt-1 text-sm text-slate-700">≥ 1 tháng (nếu sớm hơn: cân nhắc Acute Stress Disorder)</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section: DSM-5 criteria -->
+    <section id="tieu-chi-dsm5" class="mt-10">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl md:text-2xl font-semibold tracking-tight">DSM-5: Tiêu chí chẩn đoán các loại stress (nhấn mạnh PTSD)</h3>
+        <span class="text-xs text-slate-500">(Anchor: #tieu-chi-dsm5)</span>
+      </div>
+
+      <div class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <article class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6 lg:col-span-2">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h4 class="font-semibold">A) PTSD (Post-traumatic Stress Disorder)</h4>
+              <p class="mt-1 text-sm text-slate-600">Bấm từng tiêu chí để mở (accordion). Dùng để học thuộc nhanh.</p>
+            </div>
+            <span class="text-xs font-semibold text-brand-700 bg-brand-50 border border-brand-100 px-2.5 py-1 rounded-full">DSM-5</span>
+          </div>
+
+          <div class="mt-5 space-y-3">
+            <!-- Accordion item -->
+            <details class="group rounded-2xl border border-brand-100 bg-brand-50/40 p-4" open>
+              <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="h-8 w-8 rounded-xl bg-brand-600 text-white flex items-center justify-center text-sm font-semibold">A</span>
+                  <span class="font-semibold">Phơi nhiễm sang chấn</span>
+                </div>
+                <span class="text-brand-700 group-open:rotate-180 transition">▾</span>
+              </summary>
+              <div class="mt-3 text-sm text-slate-700 leading-relaxed">
+                Tiếp xúc với cái chết thực sự hoặc bị đe doạ, thương tích nghiêm trọng, hoặc bạo lực tình dục (bằng một hoặc nhiều cách).
+                <div class="mt-2 text-xs text-slate-500">Gợi ý học: A = “Sang chấn thật” (thực tế hoặc đe doạ).</div>
+              </div>
+            </details>
+
+            <details class="group rounded-2xl border border-brand-100 bg-white p-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="h-8 w-8 rounded-xl bg-brand-600 text-white flex items-center justify-center text-sm font-semibold">B</span>
+                  <span class="font-semibold">Triệu chứng thâm nhập (cần ≥ 1)</span>
+                </div>
+                <span class="text-brand-700 group-open:rotate-180 transition">▾</span>
+              </summary>
+              <ul class="mt-3 text-sm text-slate-700 list-disc pl-5 space-y-1">
+                <li>Ký ức đau buồn tái diễn, không tự chủ và xâm nhập.</li>
+                <li>Ác mộng tái diễn đau khổ liên quan sang chấn.</li>
+                <li>Phản ứng phân ly (flashbacks): cảm thấy/hành động như thể sang chấn đang tái diễn.</li>
+                <li>Đau khổ tâm lý dữ dội hoặc kéo dài khi gặp tín hiệu gợi nhớ.</li>
+                <li>Phản ứng sinh lý rõ rệt khi gặp tín hiệu gợi nhớ.</li>
+              </ul>
+              <div class="mt-2 text-xs text-slate-500">Ghi chú trẻ em: có thể tái hiện qua chơi lặp chủ đề sang chấn.</div>
+            </details>
+
+            <details class="group rounded-2xl border border-brand-100 bg-white p-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="h-8 w-8 rounded-xl bg-brand-600 text-white flex items-center justify-center text-sm font-semibold">C</span>
+                  <span class="font-semibold">Né tránh / tách biệt (cần ≥ 1)</span>
+                </div>
+                <span class="text-brand-700 group-open:rotate-180 transition">▾</span>
+              </summary>
+              <ul class="mt-3 text-sm text-slate-700 list-disc pl-5 space-y-1">
+                <li>Tránh né (hoặc nỗ lực tránh né) ký ức, suy nghĩ, cảm xúc đau buồn liên quan sang chấn.</li>
+                <li>Tránh né (hoặc nỗ lực tránh né) lời nhắc bên ngoài: người, nơi, cuộc trò chuyện, hoạt động, đồ vật, tình huống…</li>
+              </ul>
+            </details>
+
+            <details class="group rounded-2xl border border-brand-100 bg-white p-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="h-8 w-8 rounded-xl bg-brand-600 text-white flex items-center justify-center text-sm font-semibold">D</span>
+                  <span class="font-semibold">Thay đổi tiêu cực nhận thức/cảm xúc (cần ≥ 2)</span>
+                </div>
+                <span class="text-brand-700 group-open:rotate-180 transition">▾</span>
+              </summary>
+              <ul class="mt-3 text-sm text-slate-700 list-disc pl-5 space-y-1">
+                <li>Không nhớ lại được một khía cạnh quan trọng của sang chấn (quên phân ly).</li>
+                <li>Niềm tin/kỳ vọng tiêu cực dai dẳng và phóng đại về bản thân, người khác hoặc thế giới.</li>
+                <li>Nhận thức dai dẳng, méo mó về nguyên nhân/hậu quả (tự đổ lỗi hoặc đổ lỗi người khác).</li>
+                <li>Trạng thái cảm xúc tiêu cực dai dẳng (sợ hãi, kinh hoàng, tức giận, tội lỗi, xấu hổ…).</li>
+                <li>Giảm rõ rệt quan tâm/tham gia hoạt động quan trọng.</li>
+                <li>Cảm giác tách biệt/xa lánh người khác.</li>
+                <li>Giảm khả năng trải nghiệm cảm xúc tích cực (hạnh phúc, thỏa mãn, yêu thương…).</li>
+              </ul>
+            </details>
+
+            <details class="group rounded-2xl border border-brand-100 bg-white p-4">
+              <summary class="cursor-pointer list-none flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2">
+                  <span class="h-8 w-8 rounded-xl bg-brand-600 text-white flex items-center justify-center text-sm font-semibold">E</span>
+                  <span class="font-semibold">Dễ kích động & thay đổi phản ứng (cần ≥ 2)</span>
+                </div>
+                <span class="text-brand-700 group-open:rotate-180 transition">▾</span>
+              </summary>
+              <ul class="mt-3 text-sm text-slate-700 list-disc pl-5 space-y-1">
+                <li>Dễ cáu gắt hoặc bùng phát cơn giận.</li>
+                <li>Hành vi tự huỷ hoặc liều lĩnh.</li>
+                <li>Tăng cảnh giác (hypervigilance).</li>
+                <li>Phản ứng giật mình quá mức.</li>
+                <li>Khó tập trung.</li>
+                <li>Rối loạn giấc ngủ.</li>
+              </ul>
+            </details>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div class="rounded-2xl border border-brand-100 bg-white p-4">
+                <div class="text-xs font-semibold text-brand-800">F. Thời gian</div>
+                <div class="mt-1 text-sm text-slate-700">Các triệu chứng kéo dài <b>&ge; 1 tháng</b>.</div>
+              </div>
+              <div class="rounded-2xl border border-brand-100 bg-white p-4">
+                <div class="text-xs font-semibold text-brand-800">G. Suy giảm</div>
+                <div class="mt-1 text-sm text-slate-700">Gây đau khổ hoặc suy giảm đáng kể trong xã hội, học tập, nghề nghiệp…</div>
+              </div>
+              <div class="rounded-2xl border border-brand-100 bg-white p-4">
+                <div class="text-xs font-semibold text-brand-800">H. Loại trừ</div>
+                <div class="mt-1 text-sm text-slate-700">Không do chất/thuốc hay bệnh lý khác giải thích tốt hơn.</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <aside class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6">
+          <h4 class="font-semibold">B) Các rối loạn stress khác (DSM-5)</h4>
+          <p class="mt-2 text-sm text-slate-700">
+            Khi học PTSD, nên biết 2 “họ hàng” hay gặp để phân biệt theo <b>mốc thời gian</b> và <b>tác nhân</b>.
+          </p>
+
+          <div class="mt-4 space-y-3">
+            <div class="rounded-2xl border border-brand-100 bg-brand-50 p-4">
+              <div class="text-sm font-semibold">Acute Stress Disorder (ASD)</div>
+              <div class="mt-1 text-sm text-slate-700">Triệu chứng xuất hiện sớm sau sang chấn, kéo dài từ <b>3 ngày</b> đến <b>1 tháng</b>. Nếu &gt; 1 tháng và đủ tiêu chí tương ứng → chuyển sang PTSD.</div>
+            </div>
+
+            <div class="rounded-2xl border border-brand-100 bg-brand-50 p-4">
+              <div class="text-sm font-semibold">Adjustment Disorder (AD)</div>
+              <div class="mt-1 text-sm text-slate-700">Phản ứng không thích nghi với tác nhân gây căng thẳng, thường khởi phát trong <b>3 tháng</b> và không kéo dài quá <b>6 tháng</b> sau khi stressor chấm dứt.</div>
+              <div class="mt-2 text-xs text-slate-600">Có thể có thể trầm cảm (F43.21) hoặc lo âu (F43.22)…</div>
+            </div>
+
+            <div class="rounded-2xl border border-brand-100 bg-white p-4">
+              <div class="text-xs font-semibold text-brand-800">Mẹo phân biệt nhanh</div>
+              <ul class="mt-2 text-sm text-slate-700 list-disc pl-5 space-y-1">
+                <li><b>ASD</b>: 3 ngày–1 tháng sau sang chấn</li>
+                <li><b>PTSD</b>: ≥ 1 tháng + cụm B/C/D/E</li>
+                <li><b>AD</b>: stressor “đời thường” hơn, phản ứng không tương xứng + suy giảm, giới hạn 6 tháng</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Section: Assessment -->
+    <section id="danh-gia" class="mt-10">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl md:text-2xl font-semibold tracking-tight">Các loại đánh giá và vài test kiểm tra</h3>
+        <span class="text-xs text-slate-500">(Anchor: #danh-gia)</span>
+      </div>
+
+      <div class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <article class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6 lg:col-span-2">
+          <h4 class="font-semibold">1) Quy trình đánh giá gợi ý (lâm sàng)</h4>
+          <ol class="mt-3 text-sm text-slate-700 list-decimal pl-5 space-y-2">
+            <li><b>Phỏng vấn & khai thác sang chấn</b>: thời điểm, mức độ, yếu tố kích hoạt, mốc khởi phát triệu chứng.</li>
+            <li><b>Đánh giá tiêu chí DSM-5 PTSD</b>: A–H, đặc biệt B/C/D/E.</li>
+            <li><b>Đo mức độ nặng</b>: thang đo tự báo cáo hoặc phỏng vấn có cấu trúc.</li>
+            <li><b>Đồng mắc</b>: trầm cảm, lo âu, lạm dụng chất, rối loạn giấc ngủ…</li>
+            <li><b>Nguy cơ an toàn</b>: ý nghĩ/hành vi tự sát, tự hại, bạo lực, tự huỷ/liều lĩnh.</li>
+          </ol>
+          <div class="mt-5 rounded-2xl border border-brand-100 bg-brand-50 p-4">
+            <div class="text-sm font-semibold">Tip cho bài học</div>
+            <p class="mt-1 text-sm text-slate-700">Đánh giá PTSD không chỉ hỏi “có sang chấn không”, mà phải map sang chấn → cụm triệu chứng → thời gian → suy giảm.</p>
+          </div>
+        </article>
+
+        <aside class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6">
+          <h4 class="font-semibold">2) Test sàng lọc nhanh (gợi ý)</h4>
+
+          <div class="mt-4 space-y-3">
+            <div class="rounded-2xl border border-brand-100 bg-white p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <div class="text-sm font-semibold">PC-PTSD-5</div>
+                  <div class="text-xs text-slate-500">Sàng lọc PTSD</div>
+                </div>
+                <span class="text-xs font-semibold text-brand-700 bg-brand-50 border border-brand-100 px-2.5 py-1 rounded-full">PTSD</span>
+              </div>
+              <p class="mt-2 text-sm text-slate-700">Bộ câu hỏi ngắn để sàng lọc khả năng PTSD, dùng ở chăm sóc ban đầu hoặc tiền khám.</p>
+            </div>
+
+            <div class="rounded-2xl border border-brand-100 bg-white p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <div class="text-sm font-semibold">PHQ-9</div>
+                  <div class="text-xs text-slate-500">Sàng lọc trầm cảm</div>
+                </div>
+                <span class="text-xs font-semibold text-brand-700 bg-brand-50 border border-brand-100 px-2.5 py-1 rounded-full">Trầm cảm</span>
+              </div>
+              <p class="mt-2 text-sm text-slate-700">Đo mức độ triệu chứng trầm cảm trong 2 tuần gần đây. Hữu ích để theo dõi tiến triển điều trị.</p>
+            </div>
+
+            <div class="rounded-2xl border border-brand-100 bg-white p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <div class="text-sm font-semibold">BDI-II / HAM-D</div>
+                  <div class="text-xs text-slate-500">Đánh giá mức độ nặng</div>
+                </div>
+                <span class="text-xs font-semibold text-brand-700 bg-brand-50 border border-brand-100 px-2.5 py-1 rounded-full">Theo dõi</span>
+              </div>
+              <p class="mt-2 text-sm text-slate-700">Dùng để lượng hoá mức độ trầm cảm (tự báo cáo hoặc phỏng vấn), hỗ trợ lập kế hoạch can thiệp.</p>
+            </div>
+          </div>
+
+          <div class="mt-4 text-xs text-slate-500">Lưu ý: test sàng lọc ≠ chẩn đoán. Chẩn đoán cần đối chiếu DSM-5 + đánh giá lâm sàng.</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Section: Treatment -->
+    <section id="dieu-tri" class="mt-10">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl md:text-2xl font-semibold tracking-tight">Các cách điều trị (PTSD trọng tâm, có liên hệ trầm cảm)</h3>
+        <span class="text-xs text-slate-500">(Anchor: #dieu-tri)</span>
+      </div>
+
+      <div class="mt-4 grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <article class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6">
+          <h4 class="font-semibold">1) Can thiệp sớm sau sang chấn</h4>
+          <div class="mt-3 rounded-2xl border border-brand-100 bg-brand-50 p-4">
+            <div class="text-sm font-semibold">Sơ cứu tâm lý (Psychological First Aid)</div>
+            <p class="mt-2 text-sm text-slate-700">Có thể cần can thiệp khủng hoảng và quản lý stress quan trọng ngay sau sang chấn (khoảng <b>24–72 giờ</b>), nhằm bình thường hoá trải nghiệm và khuyến khích bộc lộ cảm xúc.</p>
+          </div>
+          <ul class="mt-3 text-sm text-slate-700 list-disc pl-5 space-y-2">
+            <li>Đảm bảo an toàn, giảm kích hoạt (noise, crowds), tạo nhịp sinh hoạt cơ bản.</li>
+            <li>Hỗ trợ kết nối xã hội và nguồn lực (gia đình, bạn bè, dịch vụ chuyên môn).</li>
+            <li>Giáo dục tâm lý: phản ứng stress sau sang chấn có thể xảy ra, không “yếu đuối”.</li>
+          </ul>
+        </article>
+
+        <article class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6">
+          <h4 class="font-semibold">2) Tâm lý trị liệu (first-line cho PTSD)</h4>
+          <p class="mt-2 text-sm text-slate-700">Các liệu pháp tập trung vào sang chấn thường là lựa chọn ưu tiên (tuỳ bối cảnh, độ tuổi, mức an toàn).</p>
+          <div class="mt-4 space-y-3">
+            <div class="rounded-2xl border border-brand-100 bg-white p-4">
+              <div class="text-sm font-semibold">Trauma-Focused CBT</div>
+              <p class="mt-1 text-sm text-slate-700">Tái cấu trúc nhận thức, phơi nhiễm có kiểm soát, kỹ năng điều hoà cảm xúc.</p>
+            </div>
+            <div class="rounded-2xl border border-brand-100 bg-white p-4">
+              <div class="text-sm font-semibold">EMDR</div>
+              <p class="mt-1 text-sm text-slate-700">Xử lý ký ức sang chấn bằng kích thích song phương (theo phác đồ EMDR).</p>
+            </div>
+            <div class="rounded-2xl border border-brand-100 bg-white p-4">
+              <div class="text-sm font-semibold">Can thiệp gia đình / hệ thống</div>
+              <p class="mt-1 text-sm text-slate-700">Đặc biệt hữu ích với trẻ vị thành niên: giảm né tránh, tăng hỗ trợ và ổn định môi trường.</p>
+            </div>
+          </div>
+          <div class="mt-4 text-xs text-slate-500">Nếu đồng mắc trầm cảm: thường kết hợp CBT trầm cảm, kích hoạt hành vi, can thiệp giấc ngủ.</div>
+        </article>
+
+        <article class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6">
+          <h4 class="font-semibold">3) Hoá dược trị liệu</h4>
+          <p class="mt-2 text-sm text-slate-700">Thuốc có thể hỗ trợ giảm triệu chứng, nhất là khi nặng hoặc đồng mắc.</p>
+          <div class="mt-4 rounded-2xl border border-brand-100 bg-brand-50 p-4">
+            <div class="text-sm font-semibold">SSRI và thuốc chống trầm cảm</div>
+            <p class="mt-2 text-sm text-slate-700">Các thuốc chống trầm cảm (đặc biệt là <b>SSRI</b>) được sử dụng và có hiệu quả giảm triệu chứng cơ bản của PTSD, tuy nhiên hiệu quả được ghi nhận <b>dưới 60%</b>.</p>
+          </div>
+          <ul class="mt-3 text-sm text-slate-700 list-disc pl-5 space-y-2">
+            <li>Chỉ định và theo dõi cần bác sĩ chuyên khoa.</li>
+            <li>Song song trị liệu tâm lý giúp giảm tái phát và tăng chức năng.</li>
+            <li>Đặc biệt chú ý giấc ngủ, lạm dụng chất, và nguy cơ tự sát.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="mt-6 rounded-3xl border border-brand-100 bg-white shadow-soft p-6">
+        <h4 class="font-semibold">Checklist học thuộc (PTSD)</h4>
+        <div class="mt-3 grid grid-cols-1 md:grid-cols-4 gap-3">
+          <div class="rounded-2xl bg-brand-50 border border-brand-100 p-4">
+            <div class="text-xs font-semibold text-brand-800">1) Sang chấn</div>
+            <div class="mt-1 text-sm text-slate-700">Có A</div>
+          </div>
+          <div class="rounded-2xl bg-brand-50 border border-brand-100 p-4">
+            <div class="text-xs font-semibold text-brand-800">2) Cụm triệu chứng</div>
+            <div class="mt-1 text-sm text-slate-700">B≥1, C≥1, D≥2, E≥2</div>
+          </div>
+          <div class="rounded-2xl bg-brand-50 border border-brand-100 p-4">
+            <div class="text-xs font-semibold text-brand-800">3) Thời gian</div>
+            <div class="mt-1 text-sm text-slate-700">F: ≥ 1 tháng</div>
+          </div>
+          <div class="rounded-2xl bg-brand-50 border border-brand-100 p-4">
+            <div class="text-xs font-semibold text-brand-800">4) Ảnh hưởng</div>
+            <div class="mt-1 text-sm text-slate-700">G + loại trừ H</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-10 pb-6">
+      <div class="rounded-3xl border border-brand-100 bg-white shadow-soft p-6">
+        <p class="text-sm text-slate-700">
+          <span class="font-semibold">Gợi ý sử dụng:</span> Nhấn tab để cuộn tới phần, hoặc cuộn trang để tab tự highlight.
+        </p>
+        <p class="mt-2 text-xs text-slate-500">
+          Lưu ý học thuật: Nội dung DSM-5 PTSD và nhóm stress/sang chấn được tóm lược để học tập, không thay thế thăm khám chuyên môn.
+        </p>
       </div>
     </footer>
-  </div>
+
+  </main>
+
+  <script>
+    // Tabs: active/inactive/hover states
+    const tabs = Array.from(document.querySelectorAll('[data-tab]'));
+
+    function setTabState(activeHref) {
+      tabs.forEach(t => {
+        const isActive = t.getAttribute('href') === activeHref;
+        t.className = "tab px-3 py-2 rounded-xl text-sm font-medium transition border" +
+          (isActive
+            ? " bg-brand-600 text-white border-brand-600 shadow-soft"
+            : " bg-white/60 text-slate-700 border-brand-100 hover:bg-brand-50 hover:text-brand-800 hover:border-brand-200");
+        t.setAttribute('aria-current', isActive ? 'page' : 'false');
+      });
+    }
+
+    // Smooth scroll with offset (sticky header)
+    tabs.forEach(t => {
+      t.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = t.getAttribute('href');
+        const el = document.querySelector(id);
+        if (!el) return;
+        const header = document.querySelector('header');
+        const offset = (header?.offsetHeight || 0) + 16;
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+        setTabState(id);
+        history.replaceState(null, '', id);
+      });
+    });
+
+    // Active tab on scroll
+    const sections = tabs
+      .map(t => document.querySelector(t.getAttribute('href')))
+      .filter(Boolean);
+
+    const io = new IntersectionObserver((entries) => {
+      // pick the most visible
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => (b.intersectionRatio - a.intersectionRatio));
+      if (visible.length) {
+        const id = '#' + visible[0].target.id;
+        setTabState(id);
+      }
+    }, { root: null, threshold: [0.25, 0.4, 0.6], rootMargin: "-30% 0px -60% 0px" });
+
+    sections.forEach(s => io.observe(s));
+
+    // Init
+    setTabState(location.hash && document.querySelector(location.hash) ? location.hash : '#tong-quan');
+
+    // Basic runtime self-tests (helpful when embedding into LMS / CMS)
+    (function runSelfTests(){
+      const results = [];
+      results.push({ name: 'Tabs exist', pass: tabs.length > 0, meta: { count: tabs.length } });
+      results.push({ name: 'Sections mapped to tabs', pass: sections.length === tabs.length, meta: { sections: sections.length, tabs: tabs.length } });
+      results.push({ name: 'Initial active tab set', pass: document.querySelector('[data-tab][aria-current="page"]') !== null });
+
+      const failed = results.filter(r => !r.pass);
+      if (failed.length) {
+        console.warn('[SelfTest] Failed:', failed);
+      } else {
+        console.info('[SelfTest] OK:', results);
+      }
+    })();
+  </script>
 </body>
 </html>
