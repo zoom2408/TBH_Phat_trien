@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rối loạn Trầm cảm (DSM-5) | Web học tương tác</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="theme-color" content="#2563eb">
+  <style>
+    html { scroll-behavior: smooth; }
+    .tab-active { background: rgb(37 99 235); color: white; box-shadow: 0 10px 25px rgba(37,99,235,.2); }
+    .tab-inactive { background: white; color: rgb(30 64 175); border: 1px solid rgb(219 234 254); }
+    .tab-inactive:hover { background: rgb(239 246 255); }
+    .section-anchor { scroll-margin-top: 96px; }
+  </style>
+</head>
+
+<body class="bg-white text-slate-900">
+  <!-- Top bar -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+      <div class="h-10 w-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold">TBH</div>
+      <div class="min-w-0">
+        <h1 class="text-base sm:text-lg font-semibold leading-tight truncate">
+          Rối loạn Trầm cảm (DSM-5) — học nhanh, nhìn là nhớ
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-600 truncate">
+          Trọng tâm: Trầm cảm chủ yếu (MDD) + dịch tễ + tiêu chí phân biệt + stress theo DSM-5 + test + điều trị
+        </p>
+      </div>
+      <div class="ml-auto hidden sm:flex items-center gap-2">
+        <a href="#quiz" class="px-3 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700">
+          Làm mini-quiz
+        </a>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <nav class="max-w-6xl mx-auto px-4 pb-3">
+      <div class="flex flex-wrap gap-2">
+        <a data-tab href="#dinh-nghia" class="tab tab-active px-3 py-2 rounded-xl text-sm font-semibold transition">
+          Định nghĩa
+        </a>
+        <a data-tab href="#dich-te" class="tab tab-inactive px-3 py-2 rounded-xl text-sm font-semibold transition">
+          Dịch tễ & Yếu tố nguy cơ
+        </a>
+        <a data-tab href="#tieu-chi-mdd" class="tab tab-inactive px-3 py-2 rounded-xl text-sm font-semibold transition">
+          DSM-5: Tiêu chí MDD
+        </a>
+        <a data-tab href="#stress-dsm5" class="tab tab-inactive px-3 py-2 rounded-xl text-sm font-semibold transition">
+          Stress theo DSM-5
+        </a>
+        <a data-tab href="#chan-doan-phan-biet" class="tab tab-inactive px-3 py-2 rounded-xl text-sm font-semibold transition">
+          Phân biệt
+        </a>
+        <a data-tab href="#danh-gia-test" class="tab tab-inactive px-3 py-2 rounded-xl text-sm font-semibold transition">
+          Đánh giá & Test
+        </a>
+        <a data-tab href="#dieu-tri" class="tab tab-inactive px-3 py-2 rounded-xl text-sm font-semibold transition">
+          Điều trị
+        </a>
+        <a data-tab href="#quiz" class="tab tab-inactive px-3 py-2 rounded-xl text-sm font-semibold transition">
+          Mini-quiz
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-10">
+
+    <!-- Hero -->
+    <section class="rounded-3xl border border-slate-200 bg-gradient-to-br from-blue-50 to-white p-6 sm:p-8">
+      <div class="flex flex-col md:flex-row gap-6 md:items-center">
+        <div class="flex-1">
+          <h2 class="text-2xl sm:text-3xl font-bold leading-tight">
+            Checklist hoá Trầm cảm: <span class="text-blue-700">triệu chứng, tiêu chí, phân biệt</span>
+          </h2>
+          <p class="mt-3 text-slate-700">
+            Mục tiêu: giúp bạn nhận diện nhanh <b>MDD</b>, tránh nhầm với <b>stress/điều chỉnh</b>, <b>tang chế</b>, hay <b>lưỡng cực</b>.
+            Nội dung trình bày theo dạng thẻ, checklist, và “đèn tín hiệu” để học dễ hơn.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-blue-100 text-sm text-blue-800">
+              <span class="h-2 w-2 rounded-full bg-blue-600"></span> Light mode
+            </span>
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-blue-100 text-sm text-blue-800">
+              <span class="h-2 w-2 rounded-full bg-blue-600"></span> Anchor + tab highlight khi scroll
+            </span>
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-blue-100 text-sm text-blue-800">
+              <span class="h-2 w-2 rounded-full bg-blue-600"></span> Checklist “đủ ý”
+            </span>
+          </div>
+        </div>
+
+        <div class="w-full md:w-[360px] rounded-2xl bg-white border border-slate-200 p-5">
+          <p class="text-xs text-slate-500 font-semibold">NHỚ NHANH</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li class="flex gap-2">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-600"></span>
+              <span><b>MDD</b>: ≥ <b>5</b> triệu chứng / <b>2 tuần</b>, có <b>khí sắc trầm</b> hoặc <b>mất hứng thú</b>.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-600"></span>
+              <span><b>Stress/AD</b>: triệu chứng sau stressor, trong vòng <b>3 tháng</b>, không kéo dài quá <b>6 tháng</b> sau khi stressor kết thúc.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-600"></span>
+              <span><b>Phân biệt quan trọng</b>: loại trừ hưng cảm/hypomania (nghĩ lưỡng cực).</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1) Definition -->
+    <section id="dinh-nghia" class="section-anchor space-y-4">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl sm:text-2xl font-bold">Định nghĩa theo DSM-5</h3>
+        <span class="text-xs text-slate-500">Anchor: #dinh-nghia</span>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="rounded-2xl border border-slate-200 p-5 bg-white">
+          <h4 class="font-semibold text-blue-800">Rối loạn trầm cảm chủ yếu (Major Depressive Disorder - MDD)</h4>
+          <p class="mt-2 text-slate-700 text-sm">
+            MDD là một rối loạn khí sắc đặc trưng bởi <b>cơn trầm cảm chủ yếu</b> (major depressive episode):
+            kéo dài tối thiểu <b>2 tuần</b>, gây <b>suy giảm chức năng</b> (học tập, nghề nghiệp, xã hội),
+            đi kèm thay đổi rõ rệt về cảm xúc, nhận thức và/hoặc cơ thể.
+          </p>
+
+          <div class="mt-4 rounded-xl bg-blue-50 border border-blue-100 p-4">
+            <p class="text-sm text-blue-900 font-semibold">Dấu hiệu “trục chính” (core)</p>
+            <ul class="mt-2 text-sm text-blue-900 space-y-1">
+              <li>• Khí sắc trầm (buồn, trống rỗng, vô vọng), hoặc</li>
+              <li>• Giảm hứng thú/niềm vui (anhedonia)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 p-5 bg-white">
+          <h4 class="font-semibold text-blue-800">Trầm cảm vs “buồn bình thường”</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li class="flex gap-2">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-600"></span>
+              <span><b>Buồn bình thường</b>: thường có tác nhân rõ, dao động, vẫn giữ khả năng tận hưởng một số thứ.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-600"></span>
+              <span><b>MDD</b>: dai dẳng, lan rộng nhiều lĩnh vực, kèm suy giảm chức năng, có thể có ý nghĩ tự sát.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-600"></span>
+              <span><b>Điểm mấu chốt</b>: mức độ, thời gian, và “độ phá” vào đời sống.</span>
+            </li>
+          </ul>
+
+          <div class="mt-4">
+            <button data-toggle="#note-guardrails"
+              class="w-full px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700">
+              Ghi chú an toàn (khi có ý nghĩ tự sát)
+            </button>
+            <div id="note-guardrails" class="hidden mt-3 rounded-xl border border-slate-200 p-4 text-sm text-slate-700">
+              Nếu người học/đối tượng có <b>ý nghĩ tự sát</b>, ưu tiên đánh giá nguy cơ ngay, không để một mình,
+              và liên hệ hỗ trợ khẩn cấp theo kênh phù hợp tại địa phương/cơ sở y tế.
+              Đây là tình huống cần can thiệp chuyên môn.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2) Epidemiology -->
+    <section id="dich-te" class="section-anchor space-y-4">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl sm:text-2xl font-bold">Dịch tễ học & Yếu tố nguy cơ</h3>
+        <span class="text-xs text-slate-500">Anchor: #dich-te</span>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="rounded-2xl border border-slate-200 p-5 bg-white">
+          <h4 class="font-semibold text-blue-800">Mức độ phổ biến (khung tham khảo)</h4>
+          <p class="mt-2 text-sm text-slate-700">
+            MDD là một trong các rối loạn tâm thần phổ biến nhất. Tỷ lệ có thể thay đổi theo độ tuổi,
+            giới, bối cảnh văn hoá và cách đo lường (khảo sát cộng đồng vs lâm sàng).
+          </p>
+          <ul class="mt-3 text-sm text-slate-700 space-y-1">
+            <li>• Thường bắt đầu từ tuổi vị thành niên/đầu trưởng thành.</li>
+            <li>• Nữ thường có tỷ lệ cao hơn nam (xu hướng dịch tễ chung).</li>
+            <li>• Đồng mắc thường gặp: lo âu, sử dụng chất, rối loạn giấc ngủ.</li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 p-5 bg-white">
+          <h4 class="font-semibold text-blue-800">Yếu tố nguy cơ</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li>• Tiền sử cá nhân/gia đình: trầm cảm, lưỡng cực, tự sát.</li>
+            <li>• Sang chấn, stress kéo dài, mất mát, bạo lực, bỏ bê.</li>
+            <li>• Bệnh lý cơ thể mạn tính, đau mạn, rối loạn nội tiết.</li>
+            <li>• Rối loạn giấc ngủ kéo dài.</li>
+            <li>• Lạm dụng chất, cô lập xã hội.</li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 p-5 bg-white">
+          <h4 class="font-semibold text-blue-800">Yếu tố bảo vệ</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li>• Mạng lưới hỗ trợ xã hội tốt.</li>
+            <li>• Kỹ năng điều hoà cảm xúc, giải quyết vấn đề.</li>
+            <li>• Ngủ đủ, vận động đều, nhịp sinh học ổn định.</li>
+            <li>• Tiếp cận dịch vụ tâm lý/psychiatry sớm.</li>
+          </ul>
+          <div class="mt-4 rounded-xl bg-blue-50 border border-blue-100 p-4">
+            <p class="text-sm text-blue-900">
+              Gợi ý học nhanh: nguy cơ tăng khi <b>stress x</b> <b>thiếu hỗ trợ</b> <b>x</b> <b>mất ngủ</b> “cộng hưởng”.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3) DSM-5 criteria MDD -->
+    <section id="tieu-chi-mdd" class="section-anchor space-y-4">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl sm:text-2xl font-bold">DSM-5: Tiêu chí chẩn đoán Trầm cảm chủ yếu (MDD)</h3>
+        <span class="text-xs text-slate-500">Anchor: #tieu-chi-mdd</span>
+      </div>
+
+      <div class="rounded-2xl border border-slate-200 bg-white p-5">
+        <div class="flex flex-col lg:flex-row gap-4 lg:items-start">
+          <div class="flex-1">
+            <h4 class="font-semibold text-blue-800">Cơn trầm cảm chủ yếu (Major Depressive Episode)</h4>
+            <p class="mt-2 text-sm text-slate-700">
+              Trong cùng một giai đoạn <b>2 tuần</b>, có <b>≥ 5</b> triệu chứng dưới đây, và ít nhất một trong hai triệu chứng:
+              <b>(1) khí sắc trầm</b> hoặc <b>(2) giảm hứng thú/niềm vui</b>.
+            </p>
+
+            <div class="mt-4 grid md:grid-cols-2 gap-3">
+              <!-- checklist -->
+              <div class="rounded-xl border border-slate-200 p-4">
+                <p class="text-sm font-semibold text-slate-900">Nhóm triệu chứng (9 mục)</p>
+                <div class="mt-3 space-y-2 text-sm text-slate-700">
+                  <label class="flex items-start gap-2">
+                    <input type="checkbox" class="mt-1 accent-blue-600"/>
+                    <span><b>Khí sắc trầm</b> hầu hết ngày (trẻ em/vị thành niên có thể là dễ cáu).</span>
+                  </label>
+                  <label class="flex items-start gap-2">
+                    <input type="checkbox" class="mt-1 accent-blue-600"/>
+                    <span><b>Giảm hứng thú/niềm vui</b> rõ rệt với hầu hết hoạt động.</span>
+                  </label>
+                  <label class="flex items-start gap-2">
+                    <input type="checkbox" class="mt-1 accent-blue-600"/>
+                    <span><b>Sụt/tăng cân</b> đáng kể hoặc thay đổi khẩu vị.</span>
+                  </label>
+                  <label class="flex items-start gap-2">
+                    <input type="checkbox" class="mt-1 accent-blue-600"/>
+                    <span><b>Mất ngủ</b> hoặc <b>ngủ nhiều</b>.</span>
+                  </label>
+                  <label class="flex items-start gap-2">
+                    <input type="checkbox" class="mt-1 accent-blue-600"/>
+                    <span><b>Kích động</b> hoặc <b>chậm chạp tâm thần vận động</b> (người khác quan sát thấy).</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="rounded-xl border border-slate-200 p-4">
+                <p class="text-sm font-semibold text-slate-900">Tiếp (9 mục)</p>
+                <div class="mt-3 space-y-2 text-sm text-slate-700">
+                  <label class="flex items-start gap-2">
+                    <input type="checkbox" class="mt-1 accent-blue-600"/>
+                    <span><b>Mệt mỏi</b> hoặc mất năng lượng.</span>
+                  </label>
+                  <label class="flex items-start gap-2">
+                    <input type="checkbox" class="mt-1 accent-blue-600"/>
+                    <span><b>Cảm giác vô dụng</b> hoặc <b>tội lỗi quá mức/không phù hợp</b>.</span>
+                  </label>
+                  <label class="flex items-start gap-2">
+                    <input type="checkbox" class="mt-1 accent-blue-600"/>
+                    <span><b>Giảm tập trung</b> hoặc khó quyết định.</span>
+                  </label>
+                  <label class="flex items-start gap-2">
+                    <input type="checkbox" class="mt-1 accent-blue-600"/>
+                    <span><b>Ý nghĩ chết</b>, ý nghĩ tự sát, kế hoạch hoặc hành vi tự sát.</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 rounded-xl bg-blue-50 border border-blue-100 p-4 text-sm text-blue-900">
+              <b>Điều kiện đi kèm để chẩn đoán MDD:</b>
+              <ul class="mt-2 space-y-1">
+                <li>• Gây đau khổ lâm sàng đáng kể hoặc suy giảm chức năng.</li>
+                <li>• Không do tác động sinh lý của chất/thuốc hoặc bệnh lý cơ thể khác (cần loại trừ).</li>
+                <li>• Không có tiền sử hưng cảm/hypomania (nếu có, cân nhắc rối loạn lưỡng cực).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="w-full lg:w-[340px] rounded-2xl border border-slate-200 p-5 bg-white">
+            <h4 class="font-semibold text-blue-800">Biệt định (specifiers) hay gặp</h4>
+            <ul class="mt-2 text-sm text-slate-700 space-y-2">
+              <li>• Mức độ: nhẹ / vừa / nặng.</li>
+              <li>• Có/không có đặc điểm lo âu (anxious distress).</li>
+              <li>• Có đặc điểm melacholic / atypical (tuỳ bài giảng/tài liệu).</li>
+              <li>• Khởi phát theo mùa (seasonal pattern) ở một số trường hợp.</li>
+              <li>• Khởi phát sau sinh (peripartum) ở phụ nữ.</li>
+            </ul>
+            <div class="mt-4">
+              <button data-toggle="#note-spec" class="w-full px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700">
+                Tip: phân tầng mức độ nhanh
+              </button>
+              <div id="note-spec" class="hidden mt-3 rounded-xl border border-slate-200 p-4 text-sm text-slate-700">
+                Dùng <b>PHQ-9</b> (hoặc BDI-II) để lượng hoá; kết hợp đánh giá suy giảm chức năng và nguy cơ tự sát để
+                quyết định mức can thiệp (tâm lý trị liệu đơn thuần vs phối hợp thuốc, hoặc can thiệp khẩn).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) Stress DSM-5 -->
+    <section id="stress-dsm5" class="section-anchor space-y-4">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl sm:text-2xl font-bold">Tiêu chí đánh giá chẩn đoán các loại stress theo DSM-5</h3>
+      <span class="text-xs text-slate-500">Anchor: #stress-dsm5</span>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-4">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h4 class="font-semibold text-blue-800">1) Rối loạn thích ứng (Adjustment Disorder - AD)</h4>
+          <p class="mt-2 text-sm text-slate-700">
+            Khi stressor xuất hiện, người bệnh phát triển triệu chứng cảm xúc/hành vi vượt quá dự kiến, gây suy giảm chức năng,
+            nhưng <b>không thoả tiêu chuẩn</b> của một rối loạn khác.
+          </p>
+
+          <div class="mt-4 rounded-xl border border-slate-200 p-4">
+            <p class="text-sm font-semibold text-slate-900">DSM-5 (tóm tắt tiêu chí)</p>
+            <ul class="mt-2 text-sm text-slate-700 space-y-1">
+              <li>• Triệu chứng xuất hiện <b>trong vòng 3 tháng</b> sau stressor.</li>
+              <li>• Mức độ đau khổ <b>không tương xứng</b> với stressor <i>(xét bối cảnh văn hoá)</i> và/hoặc suy giảm chức năng.</li>
+              <li>• Không phải do một rối loạn tâm thần khác, và không chỉ là phản ứng tang chế.</li>
+              <li>• Khi stressor/hậu quả chấm dứt, triệu chứng <b>không kéo dài quá 6 tháng</b>.</li>
+            </ul>
+          </div>
+
+          <div class="mt-4 rounded-xl bg-blue-50 border border-blue-100 p-4 text-sm text-blue-900">
+            <b>Các thể thường gặp:</b> kèm khí sắc trầm; kèm lo âu; hỗn hợp lo âu-trầm; rối loạn hành vi; hỗn hợp cảm xúc-hành vi…
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h4 class="font-semibold text-blue-800">2) Khi nào “stress” trở thành MDD?</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li class="flex gap-2">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-600"></span>
+              <span><b>AD</b> thường gắn chặt với stressor và có “điểm kết thúc” theo stressor.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-600"></span>
+              <span><b>MDD</b> có cấu trúc triệu chứng rõ (≥5/9), kéo dài ≥2 tuần, suy giảm chức năng đáng kể, có thể không cần stressor kích hoạt.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 h-2.5 w-2.5 rounded-full bg-blue-600"></span>
+              <span>Nếu thoả MDD, thường ưu tiên chẩn đoán MDD thay vì AD.</span>
+            </li>
+          </ul>
+
+          <div class="mt-4">
+            <button data-toggle="#stress-mini" class="w-full px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700">
+              Checklist phân biệt nhanh: AD vs MDD
+            </button>
+            <div id="stress-mini" class="hidden mt-3 rounded-xl border border-slate-200 p-4">
+              <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                <div class="rounded-xl border border-slate-200 p-3">
+                  <p class="font-semibold text-slate-900">Nghiêng về AD</p>
+                  <ul class="mt-2 text-slate-700 space-y-1">
+                    <li>• Khởi phát sau stressor rõ.</li>
+                    <li>• Triệu chứng nhẹ hơn, “đúng ngữ cảnh”.</li>
+                    <li>• Giảm dần khi stressor qua đi.</li>
+                    <li>• Không đủ ≥5/9 triệu chứng MDD.</li>
+                  </ul>
+                </div>
+                <div class="rounded-xl border border-slate-200 p-3">
+                  <p class="font-semibold text-slate-900">Nghiêng về MDD</p>
+                  <ul class="mt-2 text-slate-700 space-y-1">
+                    <li>• ≥5/9 triệu chứng, ≥2 tuần.</li>
+                    <li>• Anhedonia/khí sắc trầm rõ.</li>
+                    <li>• Suy giảm chức năng mạnh.</li>
+                    <li>• Có thể có ý nghĩ tự sát.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) Differential -->
+    <section id="chan-doan-phan-biet" class="section-anchor space-y-4">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl sm:text-2xl font-bold">Tiêu chí phân biệt (chẩn đoán phân biệt)</h3>
+        <span class="text-xs text-slate-500">Anchor: #chan-doan-phan-biet</span>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h4 class="font-semibold text-blue-800">MDD vs Lưỡng cực (Bipolar)</h4>
+          <p class="mt-2 text-sm text-slate-700">
+            “Bẫy” phổ biến nhất: tưởng trầm cảm đơn cực nhưng thật ra có giai đoạn <b>hưng cảm/hypomania</b>.
+          </p>
+          <ul class="mt-3 text-sm text-slate-700 space-y-1">
+            <li>• Tiền sử giai đoạn tăng khí sắc, giảm nhu cầu ngủ, tăng hoạt động, nói nhiều, bốc đồng…</li>
+            <li>• Trầm cảm tái diễn sớm, đáp ứng kém/dao động với antidepressant.</li>
+            <li>• Gia đình có lưỡng cực.</li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h4 class="font-semibold text-blue-800">MDD vs Tang chế (bereavement)</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li>• Tang chế: cảm xúc thường “từng cơn”, gắn với nhớ người mất; tự trọng thường còn giữ.</li>
+            <li>• MDD: buồn lan toả, vô vọng kéo dài, tự trách nặng; có thể anhedonia mạnh.</li>
+            <li>• Cần chú ý: ý nghĩ tự sát, suy giảm chức năng nặng, kéo dài.</li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h4 class="font-semibold text-blue-800">MDD vs Rối loạn khí sắc dai dẳng (PDD/Dysthymia)</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li>• PDD: khí sắc trầm <b>mạn tính</b> (thường ≥2 năm ở người lớn), mức độ vừa nhưng kéo dài.</li>
+            <li>• MDD: cơn rõ (≥2 tuần) và có thể nặng hơn.</li>
+            <li>• Có thể “double depression” (PDD + cơn MDD chồng lên).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-slate-200 bg-white p-5">
+        <h4 class="font-semibold text-blue-800">Loại trừ nguyên nhân y khoa / chất</h4>
+        <div class="grid md:grid-cols-2 gap-4 mt-3 text-sm text-slate-700">
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="font-semibold text-slate-900">Bệnh lý cơ thể có thể gây triệu chứng giống trầm cảm</p>
+            <ul class="mt-2 space-y-1">
+              <li>• Rối loạn tuyến giáp</li>
+              <li>• Thiếu máu, thiếu vitamin (tuỳ bối cảnh)</li>
+              <li>• Bệnh mạn tính, đau mạn</li>
+              <li>• Rối loạn giấc ngủ</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="font-semibold text-slate-900">Chất/thuốc</p>
+            <ul class="mt-2 space-y-1">
+              <li>• Rượu, chất kích thích</li>
+              <li>• Một số thuốc có thể ảnh hưởng khí sắc</li>
+              <li>• Cai chất (withdrawal)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) Assessment & tests -->
+    <section id="danh-gia-test" class="section-anchor space-y-4">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl sm:text-2xl font-bold">Các loại đánh giá & vài test kiểm tra</h3>
+        <span class="text-xs text-slate-500">Anchor: #danh-gia-test</span>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h4 class="font-semibold text-blue-800">Sàng lọc nhanh</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li>• <b>PHQ-9</b>: phổ biến, theo dõi tiến triển theo thời gian.</li>
+            <li>• <b>PHQ-2</b>: cực nhanh (2 câu), nếu dương tính → làm PHQ-9.</li>
+            <li>• <b>WHO-5</b>: phúc lợi tinh thần (well-being) để nhìn mặt “thiếu năng lượng sống”.</li>
+          </ul>
+          <div class="mt-4 rounded-xl bg-blue-50 border border-blue-100 p-4 text-sm text-blue-900">
+            Luôn hỏi thêm: <b>nguy cơ tự sát</b>, mức <b>suy giảm chức năng</b>, và <b>tiền sử hưng cảm/hypomania</b>.
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h4 class="font-semibold text-blue-800">Đánh giá mức độ (lâm sàng)</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li>• <b>BDI-II</b>: tự báo cáo, chi tiết nhận thức-cảm xúc.</li>
+            <li>• <b>HAM-D</b> (Hamilton Depression Rating Scale): clinician-rated.</li>
+            <li>• <b>MADRS</b>: clinician-rated, nhạy với thay đổi điều trị.</li>
+          </ul>
+          <p class="mt-3 text-sm text-slate-700">
+            Nếu bạn đang làm bài học: ghi nhớ “<b>PHQ-9</b> dễ dùng” và “<b>HAM-D/MADRS</b> hay gặp trong nghiên cứu/lâm sàng”.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h4 class="font-semibold text-blue-800">Đánh giá toàn diện</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li>• Phỏng vấn lâm sàng có cấu trúc (tuỳ môn học/tài liệu).</li>
+            <li>• Đánh giá đồng mắc: lo âu, PTSD, sử dụng chất, rối loạn ăn ngủ.</li>
+            <li>• Đánh giá chức năng: học tập, công việc, quan hệ, tự chăm sóc.</li>
+          </ul>
+          <div class="mt-4">
+            <button data-toggle="#risk" class="w-full px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700">
+              Checklist nguy cơ tự sát (khung hỏi)
+            </button>
+            <div id="risk" class="hidden mt-3 rounded-xl border border-slate-200 p-4 text-sm text-slate-700">
+              Hỏi trực tiếp và bình tĩnh: có ý nghĩ chết không, có kế hoạch không, phương tiện có sẵn không,
+              từng thực hiện chưa, yếu tố bảo vệ hiện có là gì. Nếu nguy cơ cao → chuyển tuyến/khẩn cấp.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7) Treatment -->
+    <section id="dieu-tri" class="section-anchor space-y-4">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl sm:text-2xl font-bold">Các cách điều trị</h3>
+        <span class="text-xs text-slate-500">Anchor: #dieu-tri</span>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-4">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h4 class="font-semibold text-blue-800">1) Tâm lý trị liệu (psychotherapy)</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li>• <b>CBT</b>: nhận diện suy nghĩ tự động, tái cấu trúc nhận thức, hoạt hoá hành vi.</li>
+            <li>• <b>IPT</b>: tập trung vai trò quan hệ, mất mát, xung đột, chuyển đổi vai trò.</li>
+            <li>• <b>BA</b> (Behavioral Activation): tăng hoạt động có ý nghĩa để kéo lại hệ thưởng.</li>
+            <li>• Kỹ năng nền: ngủ, nhịp sinh học, vận động, hỗ trợ xã hội.</li>
+          </ul>
+
+          <div class="mt-4 rounded-xl bg-blue-50 border border-blue-100 p-4 text-sm text-blue-900">
+            Gợi ý học: MDD nhẹ-vừa thường có thể bắt đầu bằng psychotherapy; nặng/ý tưởng tự sát → phối hợp.
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h4 class="font-semibold text-blue-800">2) Điều trị thuốc (phối hợp chuyên khoa)</h4>
+          <ul class="mt-2 text-sm text-slate-700 space-y-2">
+            <li>• Nhóm thường dùng: <b>SSRI/SNRI</b> (tuỳ chỉ định).</li>
+            <li>• Theo dõi: đáp ứng, tác dụng phụ, tuân thủ, nguy cơ tự sát (đặc biệt giai đoạn đầu).</li>
+            <li>• Nếu nghi lưỡng cực: tránh dùng antidepressant đơn thuần, cần đánh giá chuyên khoa.</li>
+          </ul>
+
+          <div class="mt-4">
+            <button data-toggle="#advanced" class="w-full px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700">
+              Khi nào cần can thiệp mức cao hơn?
+            </button>
+            <div id="advanced" class="hidden mt-3 rounded-xl border border-slate-200 p-4 text-sm text-slate-700">
+              Cân nhắc chuyển tuyến/điều trị tích cực khi: nguy cơ tự sát cao, trầm cảm nặng kèm suy kiệt,
+              có loạn thần, catatonia, hoặc thất bại nhiều đợt điều trị. Một số can thiệp mức cao có thể gồm
+              ECT/TMS tuỳ bối cảnh chuyên khoa.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-slate-200 bg-white p-5">
+        <h4 class="font-semibold text-blue-800">3) Kế hoạch theo dõi (monitoring) để tránh tái phát</h4>
+        <div class="grid md:grid-cols-3 gap-4 mt-3 text-sm text-slate-700">
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="font-semibold text-slate-900">Theo dõi triệu chứng</p>
+            <ul class="mt-2 space-y-1">
+              <li>• PHQ-9 định kỳ</li>
+              <li>• Nhật ký ngủ</li>
+              <li>• Trigger/stressor</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="font-semibold text-slate-900">Theo dõi chức năng</p>
+            <ul class="mt-2 space-y-1">
+              <li>• Học tập/công việc</li>
+              <li>• Quan hệ</li>
+              <li>• Tự chăm sóc</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="font-semibold text-slate-900">Phòng tái phát</p>
+            <ul class="mt-2 space-y-1">
+              <li>• Kỹ năng CBT/IPT</li>
+              <li>• Lịch vận động</li>
+              <li>• Kế hoạch khủng hoảng</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8) Mini Quiz -->
+    <section id="quiz" class="section-anchor space-y-4">
+      <div class="flex items-end justify-between gap-4">
+        <h3 class="text-xl sm:text-2xl font-bold">Mini-quiz (tự kiểm tra)</h3>
+        <span class="text-xs text-slate-500">Anchor: #quiz</span>
+      </div>
+
+      <div class="rounded-2xl border border-slate-200 bg-white p-5">
+        <p class="text-sm text-slate-700">
+          Chọn đáp án, rồi bấm <b>Chấm điểm</b>. Quiz này giúp “đóng đinh” các mốc: <b>2 tuần</b>, <b>5/9</b>, <b>3 tháng</b>, <b>6 tháng</b>.
+        </p>
+
+        <div class="mt-4 space-y-4" id="quizWrap">
+          <!-- Q1 -->
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="font-semibold">1) Mốc thời gian tối thiểu của cơn trầm cảm chủ yếu là:</p>
+            <div class="mt-2 space-y-1 text-sm">
+              <label class="flex gap-2"><input type="radio" name="q1" value="0" class="accent-blue-600 mt-1"> 3 ngày</label>
+              <label class="flex gap-2"><input type="radio" name="q1" value="1" class="accent-blue-600 mt-1"> 2 tuần</label>
+              <label class="flex gap-2"><input type="radio" name="q1" value="0" class="accent-blue-600 mt-1"> 2 tháng</label>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="font-semibold">2) Để chẩn đoán MDD, cần tối thiểu bao nhiêu triệu chứng trong 9 triệu chứng?</p>
+            <div class="mt-2 space-y-1 text-sm">
+              <label class="flex gap-2"><input type="radio" name="q2" value="0" class="accent-blue-600 mt-1"> 3</label>
+              <label class="flex gap-2"><input type="radio" name="q2" value="1" class="accent-blue-600 mt-1"> 5</label>
+              <label class="flex gap-2"><input type="radio" name="q2" value="0" class="accent-blue-600 mt-1"> 7</label>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="font-semibold">3) Rối loạn thích ứng (AD) thường khởi phát trong vòng bao lâu sau stressor?</p>
+            <div class="mt-2 space-y-1 text-sm">
+              <label class="flex gap-2"><input type="radio" name="q3" value="1" class="accent-blue-600 mt-1"> 3 tháng</label>
+              <label class="flex gap-2"><input type="radio" name="q3" value="0" class="accent-blue-600 mt-1"> 12 tháng</label>
+              <label class="flex gap-2"><input type="radio" name="q3" value="0" class="accent-blue-600 mt-1"> 2 tuần</label>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="font-semibold">4) Một “cờ đỏ” khiến bạn phải nghĩ đến lưỡng cực khi gặp trầm cảm là:</p>
+            <div class="mt-2 space-y-1 text-sm">
+              <label class="flex gap-2"><input type="radio" name="q4" value="0" class="accent-blue-600 mt-1"> Thèm ngủ hơn bình thường</label>
+              <label class="flex gap-2"><input type="radio" name="q4" value="1" class="accent-blue-600 mt-1"> Tiền sử giai đoạn giảm nhu cầu ngủ + tăng hoạt động/khí sắc</label>
+              <label class="flex gap-2"><input type="radio" name="q4" value="0" class="accent-blue-600 mt-1"> Ăn kém</label>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          <button id="gradeBtn" class="px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700">
+            Chấm điểm
+          </button>
+          <button id="resetBtn" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-800 font-semibold hover:bg-slate-50">
+            Làm lại
+          </button>
+          <div id="result" class="ml-auto text-sm font-semibold text-blue-800"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-sm text-slate-500">
+      <p>TBH Phát triển • Tailwind light mode • Anchor tabs • Không search • Không nút in</p>
+    </footer>
+  </main>
+
+  <script>
+    // Toggle blocks
+    document.querySelectorAll("[data-toggle]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const sel = btn.getAttribute("data-toggle");
+        const el = document.querySelector(sel);
+        if (!el) return;
+        el.classList.toggle("hidden");
+      });
+    });
+
+    // Tabs active based on scroll
+    const tabs = Array.from(document.querySelectorAll("a[data-tab]"));
+    const sections = tabs
+      .map(t => document.querySelector(t.getAttribute("href")))
+      .filter(Boolean);
+
+    const setActiveTab = (hash) => {
+      tabs.forEach(t => {
+        const isActive = t.getAttribute("href") === hash;
+        t.classList.toggle("tab-active", isActive);
+        t.classList.toggle("tab-inactive", !isActive);
+      });
+    };
+
+    // Click: set active immediately (then smooth scroll)
+    tabs.forEach(t => {
+      t.addEventListener("click", () => setActiveTab(t.getAttribute("href")));
+    });
+
+    // Observer: highlight when section is in view
+    const obs = new IntersectionObserver((entries) => {
+      // pick the entry with highest intersection ratio that is intersecting
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActiveTab("#" + visible.target.id);
+    }, {
+      root: null,
+      threshold: [0.2, 0.35, 0.5, 0.65],
+      rootMargin: "-20% 0px -65% 0px"
+    });
+
+    sections.forEach(s => obs.observe(s));
+
+    // Quiz
+    const gradeBtn = document.getElementById("gradeBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const result = document.getElementById("result");
+
+    gradeBtn.addEventListener("click", () => {
+      let score = 0;
+      let total = 4;
+      for (let i=1; i<=total; i++) {
+        const picked = document.querySelector(`input[name="q${i}"]:checked`);
+        if (picked) score += Number(picked.value || 0);
+      }
+      const msg = `Điểm: ${score}/${total}` + (score === total ? " ✅" : " 🧩");
+      result.textContent = msg;
+      result.classList.remove("text-red-600");
+      result.classList.add("text-blue-800");
+    });
+
+    resetBtn.addEventListener("click", () => {
+      document.querySelectorAll('#quizWrap input[type="radio"]').forEach(i => i.checked = false);
+      result.textContent = "";
+    });
+
+    // Init active tab to current hash or first
+    setActiveTab(location.hash || "#dinh-nghia");
+  </script>
+</body>
+</html>
