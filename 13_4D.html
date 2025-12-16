@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mô hình 4D: Nhận diện hành vi bất thường (TBH Phát triển)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html{scroll-behavior:smooth}
+    /* offset for sticky header */
+    section{scroll-margin-top:96px}
+  </style>
+</head>
+<body class="bg-white text-slate-800">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto max-w-6xl px-4 py-4">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 class="text-xl sm:text-2xl font-semibold tracking-tight">
+            Mô hình <span class="text-blue-700">4D</span> trong nhận diện hành vi bất thường
+          </h1>
+          <p class="mt-1 text-sm text-slate-600">
+            Deviance · Distress · Dysfunction · Danger | Dùng như “la bàn lâm sàng”, không phải “búa chẩn đoán”.
+          </p>
+        </div>
+
+        <!-- Tabs -->
+        <nav class="w-full sm:w-auto">
+          <div id="tabs" class="flex w-full flex-wrap gap-2 justify-start sm:justify-end">
+            <a data-tab href="#ynghia" class="tab inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium transition">
+              Ý nghĩa 4D
+            </a>
+            <a data-tab href="#ungdung" class="tab inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium transition">
+              Cách dùng trong RL
+            </a>
+            <a data-tab href="#moiquanhe" class="tab inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium transition">
+              Quan hệ & giới hạn
+            </a>
+            <a data-tab href="#minhhoa" class="tab inline-flex items-center rounded-full border px-3 py-1.5 text-sm font-medium transition">
+              Ví dụ VH–XH
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-8">
+
+    <!-- Quick legend -->
+    <section class="mb-8">
+      <div class="grid gap-4 md:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <p class="text-xs font-semibold text-blue-700">MẸO NHỚ</p>
+          <h2 class="mt-1 text-lg font-semibold">4D = 4 câu hỏi</h2>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li class="flex gap-2"><span class="mt-0.5 h-2 w-2 rounded-full bg-blue-600"></span><span><b>Lệch chuẩn?</b> (Deviance)</span></li>
+            <li class="flex gap-2"><span class="mt-0.5 h-2 w-2 rounded-full bg-blue-600"></span><span><b>Khổ sở?</b> (Distress)</span></li>
+            <li class="flex gap-2"><span class="mt-0.5 h-2 w-2 rounded-full bg-blue-600"></span><span><b>Suy giảm chức năng?</b> (Dysfunction)</span></li>
+            <li class="flex gap-2"><span class="mt-0.5 h-2 w-2 rounded-full bg-blue-600"></span><span><b>Nguy hiểm?</b> (Danger)</span></li>
+          </ul>
+          <p class="mt-4 text-xs text-slate-500">
+            Nếu nhiều “D” cùng bật đèn đỏ, khả năng là vấn đề lâm sàng tăng lên.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm md:col-span-2">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <p class="text-xs font-semibold text-blue-700">TẠI SAO CẦN 4D?</p>
+              <h2 class="mt-1 text-lg font-semibold">Vì “khác lạ” chưa chắc là “rối loạn”</h2>
+              <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                Trong TBH phát triển, nhiều biểu hiện có thể giống nhau (ví dụ: né tránh giao tiếp, bốc đồng, than phiền cơ thể),
+                nhưng ý nghĩa lâm sàng phụ thuộc vào <b>bối cảnh</b>, <b>độ kéo dài</b>, <b>mức suy giảm</b> và <b>nguy cơ</b>.
+                4D giúp bạn “sàng” trước khi “gọi tên” (DSM/ICD).
+              </p>
+            </div>
+            <div class="rounded-xl bg-blue-50 p-4 border border-blue-100">
+              <p class="text-xs font-semibold text-blue-800">LƯU Ý</p>
+              <p class="mt-1 text-sm text-blue-900">
+                4D không thay thế chẩn đoán DSM-5/ICD-11.
+                Nó giống bản đồ: chỉ hướng, không phải đích.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Meaning -->
+    <section id="ynghia" class="mb-10">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight">1) Ý nghĩa từng thành tố của 4D</h2>
+          <p class="mt-2 text-sm text-slate-600">Bốn “ống kính” soi cùng một hành vi, mỗi ống kính bắt một loại tín hiệu.</p>
+        </div>
+      </div>
+
+      <div class="mt-5 grid gap-4 md:grid-cols-2">
+        <!-- Deviance -->
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold"><span class="text-blue-700">D1</span> Deviance (Lệch chuẩn)</h3>
+            <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-100">Cần so với chuẩn</span>
+          </div>
+          <p class="mt-3 text-sm leading-relaxed text-slate-700">
+            Hành vi/suy nghĩ/cảm xúc <b>khác đáng kể</b> so với kỳ vọng theo tuổi, theo bối cảnh và theo văn hoá.
+            “Lệch chuẩn” không chỉ là hiếm, mà là <b>độ lệch</b> đủ lớn và có tính bền.
+          </p>
+          <div class="mt-4 rounded-xl bg-slate-50 p-4 border border-slate-200">
+            <p class="text-xs font-semibold text-slate-700">Gợi ý quan sát</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-700">
+              <li>• Tần suất/cường độ: có “lặp lại” và “dai dẳng” không?</li>
+              <li>• Mức phù hợp lứa tuổi: trẻ 3 tuổi ăn vạ khác trẻ 12 tuổi ăn vạ.</li>
+              <li>• Bối cảnh: chỉ ở nhà hay cả nhà–trường–bạn bè?</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Distress -->
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold"><span class="text-blue-700">D2</span> Distress (Đau khổ)</h3>
+            <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-100">Ai khổ?</span>
+          </div>
+          <p class="mt-3 text-sm leading-relaxed text-slate-700">
+            Mức <b>khó chịu, lo âu, buồn bã, căng thẳng</b> của chính cá nhân hoặc của người xung quanh.
+            Ở trẻ nhỏ, distress đôi khi “đi đường vòng” qua <b>than phiền cơ thể</b> hoặc <b>ăn ngủ</b>.
+          </p>
+          <div class="mt-4 rounded-xl bg-slate-50 p-4 border border-slate-200">
+            <p class="text-xs font-semibold text-slate-700">Gợi ý quan sát</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-700">
+              <li>• Trẻ có nói/biểu hiện “khó chịu” không? (khóc, cáu, né tránh)</li>
+              <li>• Người chăm sóc/giáo viên có căng thẳng vì hành vi đó không?</li>
+              <li>• Distress có tăng lên theo stressor (thi cử, thay đổi lớp, xung đột gia đình)?</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Dysfunction -->
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold"><span class="text-blue-700">D3</span> Dysfunction (Suy giảm chức năng)</h3>
+            <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-100">Tác động thực tế</span>
+          </div>
+          <p class="mt-3 text-sm leading-relaxed text-slate-700">
+            Hành vi gây <b>gián đoạn</b> hoặc <b>suy giảm đáng kể</b> trong các lĩnh vực quan trọng: học tập, giao tiếp xã hội,
+            tự chăm sóc, gia đình, thích nghi trường lớp.
+            Đây thường là “điểm chốt” khiến một vấn đề trở thành vấn đề lâm sàng.
+          </p>
+          <div class="mt-4 rounded-xl bg-slate-50 p-4 border border-slate-200">
+            <p class="text-xs font-semibold text-slate-700">Gợi ý quan sát</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-700">
+              <li>• Điểm số/tiến độ học: tụt rõ rệt, bỏ bài, không hoàn thành nhiệm vụ?</li>
+              <li>• Quan hệ: bị cô lập, xung đột lặp lại, bị phạt kỷ luật thường xuyên?</li>
+              <li>• Sinh hoạt: ăn ngủ đảo lộn, tự chăm sóc kém so với tuổi?</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Danger -->
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold"><span class="text-blue-700">D4</span> Danger (Nguy hiểm)</h3>
+            <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-100">Ưu tiên an toàn</span>
+          </div>
+          <p class="mt-3 text-sm leading-relaxed text-slate-700">
+            Nguy cơ gây hại cho bản thân/người khác, hoặc nguy cơ bị hại (tai nạn do bốc đồng, hành vi hung hăng,
+            tự hại, lạm dụng, bỏ nhà, vi phạm nghiêm trọng…).
+            Khi Danger cao, nguyên tắc là <b>giảm nguy cơ trước</b>, rồi mới bàn “nhãn chẩn đoán”.
+          </p>
+          <div class="mt-4 rounded-xl bg-slate-50 p-4 border border-slate-200">
+            <p class="text-xs font-semibold text-slate-700">Gợi ý quan sát</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-700">
+              <li>• Có hành vi tự hại/đe doạ tự hại, liều lĩnh, bạo lực không?</li>
+              <li>• Có sử dụng chất, trộm cắp, phá hoại, mang vũ khí không?</li>
+              <li>• Có dấu hiệu bị bạo hành/bắt nạt dẫn đến nguy cơ thứ phát không?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Usage -->
+    <section id="ungdung" class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight">2) 4D được dùng thế nào khi nhận diện các rối loạn trong project?</h2>
+      <p class="mt-2 text-sm text-slate-600">
+        Dưới đây là “bảng gợi ý” (không phải tiêu chuẩn chẩn đoán). Ý tưởng: cùng một biểu hiện, 4D giúp bạn hỏi đúng câu.
+      </p>
+
+      <div class="mt-5 overflow-x-auto rounded-2xl border border-slate-200 shadow-sm">
+        <table class="min-w-[900px] w-full text-left">
+          <thead class="bg-slate-50">
+            <tr>
+              <th class="px-4 py-3 text-xs font-semibold text-slate-600">Nhóm RL (trong project)</th>
+              <th class="px-4 py-3 text-xs font-semibold text-slate-600">Deviance thường thấy</th>
+              <th class="px-4 py-3 text-xs font-semibold text-slate-600">Distress điển hình</th>
+              <th class="px-4 py-3 text-xs font-semibold text-slate-600">Dysfunction hay gặp</th>
+              <th class="px-4 py-3 text-xs font-semibold text-slate-600">Danger cần lưu ý</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 text-sm">
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">ASD (Phổ tự kỷ)</td>
+              <td class="px-4 py-3">Khác biệt giao tiếp xã hội, hành vi lặp/hạn hẹp, kém linh hoạt</td>
+              <td class="px-4 py-3">Có thể thấp ở trẻ (không “kêu khổ”) nhưng tăng khi bị quá tải cảm giác</td>
+              <td class="px-4 py-3">Khó hoà nhập lớp học, tương tác bạn bè, thích nghi thay đổi</td>
+              <td class="px-4 py-3">Tự kích thích mạnh, chạy vụt, nguy cơ tai nạn khi quá tải; đôi khi tự gây thương tích khi meltdown</td>
+            </tr>
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">ADHD</td>
+              <td class="px-4 py-3">Tăng động/bốc đồng, giảm chú ý dai dẳng</td>
+              <td class="px-4 py-3">Căng thẳng vì bị phê bình, thất bại lặp lại; bồn chồn nội tâm (lớn hơn)</td>
+              <td class="px-4 py-3">Học tập sa sút, kém tổ chức, xung đột do ngắt lời/khó chờ lượt</td>
+              <td class="px-4 py-3">Tai nạn do liều lĩnh; ở tuổi lớn hơn: nguy cơ lạm dụng chất, hành vi nguy cơ</td>
+            </tr>
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">ODD</td>
+              <td class="px-4 py-3">Mẫu tranh cãi/chống đối, cáu kỉnh, thù hằn ≥ 6 tháng</td>
+              <td class="px-4 py-3">Khổ tâm của gia đình/giáo viên thường nổi bật; trẻ có thể thấy “bất công”</td>
+              <td class="px-4 py-3">Giảm hạnh kiểm, xung đột nhà–trường, vòng xoắn leo thang</td>
+              <td class="px-4 py-3">Thường nguy hiểm thấp hơn CD; cần cảnh giác khi có bạo lực thể chất, phá hoại</td>
+            </tr>
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">CD (Rối loạn hành vi)</td>
+              <td class="px-4 py-3">Vi phạm chuẩn mực/quy tắc xã hội, lừa dối, hung hãn, phá hoại</td>
+              <td class="px-4 py-3">Có thể thấp (thiếu hối hận/đồng cảm ở một số trường hợp)</td>
+              <td class="px-4 py-3">Học tập kém, bị đình chỉ, khó hoà nhập, vấn đề pháp lý</td>
+              <td class="px-4 py-3">Nguy cơ cao: gây hại người khác, hành vi phạm pháp, vũ khí, cưỡng bức</td>
+            </tr>
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">Lo âu (trẻ & vị thành niên)</td>
+              <td class="px-4 py-3">Sợ hãi/lo lắng quá mức, né tránh</td>
+              <td class="px-4 py-3">Distress thường rất rõ: bồn chồn, sợ, than phiền cơ thể, mất ngủ</td>
+              <td class="px-4 py-3">Né trường, né thuyết trình, giảm tham gia xã hội</td>
+              <td class="px-4 py-3">Nguy cơ thứ phát: trầm cảm, tự hại (tuỳ mức độ); cần đánh giá an toàn</td>
+            </tr>
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">PTSD / RL liên quan stress</td>
+              <td class="px-4 py-3">Tái hiện, né tránh, tăng cảnh giác, biến đổi nhận thức/cảm xúc</td>
+              <td class="px-4 py-3">Distress cao: ác mộng, hoảng sợ, kích hoạt bởi gợi nhớ</td>
+              <td class="px-4 py-3">Giảm học tập, co cụm, rối loạn giấc ngủ, khó điều hoà cảm xúc</td>
+              <td class="px-4 py-3">Tự hại, hành vi liều lĩnh; cần ưu tiên bảo vệ khỏi tiếp tục sang chấn</td>
+            </tr>
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">SSD (Triệu chứng cơ thể)</td>
+              <td class="px-4 py-3">Tập trung quá mức vào triệu chứng cơ thể, lo âu sức khoẻ</td>
+              <td class="px-4 py-3">Khổ tâm rõ: lo lắng dai dẳng, đi khám nhiều, sợ bệnh nặng</td>
+              <td class="px-4 py-3">Gián đoạn học/việc, tránh hoạt động, lệ thuộc chăm sóc</td>
+              <td class="px-4 py-3">Nguy cơ iatrogenic: xét nghiệm/điều trị quá mức; bỏ sót bệnh thật nếu “đóng khung” sớm</td>
+            </tr>
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">IDD (Phát triển trí tuệ)</td>
+              <td class="px-4 py-3">Thiếu hụt trí tuệ & thích ứng (khởi phát giai đoạn phát triển)</td>
+              <td class="px-4 py-3">Distress tuỳ hỗ trợ; có thể thể hiện qua bùng nổ khi quá sức</td>
+              <td class="px-4 py-3">Khó tự chăm sóc/học tập theo mức độ; cần hỗ trợ chức năng</td>
+              <td class="px-4 py-3">Nguy cơ bị bắt nạt/lạm dụng; cần cảnh giác “che lấp chẩn đoán” khi có RL đồng mắc</td>
+            </tr>
+            <tr class="hover:bg-blue-50/40">
+              <td class="px-4 py-3 font-semibold">LD/SLD (Ngôn ngữ & học tập)</td>
+              <td class="px-4 py-3">Khó tiếp thu/sử dụng ngôn ngữ; khó đọc-viết-toán dai dẳng</td>
+              <td class="px-4 py-3">Dễ xấu hổ, lo âu, tự ti (đặc biệt khi bị so sánh)</td>
+              <td class="px-4 py-3">Tụt tiến độ học, tránh nhiệm vụ, hạn chế giao tiếp nhóm</td>
+              <td class="px-4 py-3">Nguy cơ thứ phát: trầm cảm, bỏ học; cần phân biệt với thiếu cơ hội học tập</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <h3 class="text-lg font-semibold">Cách dùng nhanh trong thực hành học tập</h3>
+          <ol class="mt-3 space-y-2 text-sm text-slate-700">
+            <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white text-xs font-bold">1</span><span><b>Mô tả hành vi</b> thật cụ thể (ai, làm gì, bao lâu, ở đâu).</span></li>
+            <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white text-xs font-bold">2</span><span><b>Chấm 4D</b>: mỗi D cho điểm 0–2 (0: không, 1: nhẹ/không rõ, 2: rõ).</span></li>
+            <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white text-xs font-bold">3</span><span><b>Đặt giả thuyết nhóm RL</b> (neurodevelopmental vs. disruptive vs. anxiety/stress…)</span></li>
+            <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white text-xs font-bold">4</span><span><b>Kiểm tra bằng DSM/ICD + phân biệt</b> (thời gian, số tiêu chí, loại trừ, bối cảnh).</span></li>
+          </ol>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <h3 class="text-lg font-semibold">Một “bẫy” hay gặp: chỉ nhìn 1D</h3>
+          <div class="mt-3 space-y-3 text-sm text-slate-700">
+            <p><b>Chỉ nhìn Deviance:</b> Trẻ ít giao tiếp mắt có thể là khác biệt khí chất/văn hoá, hoặc ASD, hoặc lo âu xã hội.</p>
+            <p><b>Chỉ nhìn Distress:</b> Trẻ có thể rất khổ nhưng không “lệch chuẩn” (phản ứng stress tạm thời).</p>
+            <p><b>Chỉ nhìn Dysfunction:</b> Suy giảm có thể do môi trường (dạy học không phù hợp, bắt nạt) chứ không phải RL.</p>
+            <p><b>Chỉ nhìn Danger:</b> Nguy hiểm cao cần can thiệp an toàn trước, nhưng nguyên nhân có thể đa dạng (CD, PTSD, lạm dụng…).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Relation & Limits -->
+    <section id="moiquanhe" class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight">3) Mối quan hệ và giới hạn của mô hình 4D</h2>
+      <p class="mt-2 text-sm text-slate-600">
+        4D giúp phân biệt “bình thường” vs “có thể là rối loạn”, nhưng có những vùng mờ.
+      </p>
+
+      <div class="mt-5 grid gap-4 lg:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm lg:col-span-2">
+          <h3 class="text-lg font-semibold">4D không phải bốn chiếc công tắc độc lập</h3>
+          <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+            Thường có “chuỗi phản ứng”: <b>Deviance</b> (khác biệt) có thể kéo theo <b>Dysfunction</b> (bị phạt/kém hòa nhập),
+            rồi sinh <b>Distress</b> (tự ti/lo âu), và nếu không hỗ trợ có thể tăng <b>Danger</b> (tự hại, liều lĩnh).
+            Nhưng chuỗi này <b>không bắt buộc</b>. Ví dụ: một số trường hợp CD có Dysfunction và Danger cao nhưng Distress thấp.
+          </p>
+
+          <div class="mt-4 rounded-xl bg-blue-50 p-4 border border-blue-100">
+            <p class="text-sm text-blue-900"><b>Quy tắc thực dụng:</b> Khi <span class="font-semibold">Dysfunction</span> và/hoặc <span class="font-semibold">Danger</span> rõ rệt, nên ưu tiên đánh giá chuyên môn sớm.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <h3 class="text-lg font-semibold">Các giới hạn chính</h3>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li class="flex gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-blue-600"></span><span><b>Chuẩn phụ thuộc văn hoá:</b> “lệch chuẩn” thay đổi theo cộng đồng, kỳ vọng giới, bối cảnh trường lớp.</span></li>
+            <li class="flex gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-blue-600"></span><span><b>Trẻ em ít tự báo cáo:</b> distress có thể bị “ẩn” dưới hành vi hoặc cơ thể.</span></li>
+            <li class="flex gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-blue-600"></span><span><b>Ngưỡng “đáng kể” mơ hồ:</b> cần dữ liệu từ nhiều nguồn (nhà–trường–trẻ).</span></li>
+            <li class="flex gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-blue-600"></span><span><b>Không nói nguyên nhân:</b> 4D không cho bạn biết “vì sao” (sinh học, tâm lý, xã hội), chỉ cho biết “đáng chú ý tới đâu”.</span></li>
+            <li class="flex gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-blue-600"></span><span><b>Nguy cơ nhầm với bối cảnh:</b> suy giảm có thể do nghèo, thiếu hỗ trợ, bắt nạt, hoặc phương pháp dạy.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-4 grid gap-4 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <h3 class="text-lg font-semibold">“Bình thường” cũng có thể lệch chuẩn</h3>
+          <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+            Nhiều hành vi bình thường có tính lệch chuẩn tạm thời: tuổi lên 2 (tantrum), giai đoạn dậy thì (nhạy cảm),
+            đổi trường (né tránh). Nếu <b>không kéo dài</b>, <b>không suy giảm đáng kể</b>, và <b>không nguy hiểm</b>,
+            thường là biến thiên phát triển.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <h3 class="text-lg font-semibold">“Rối loạn” đôi khi không kêu to</h3>
+          <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+            Một số RL có distress thấp (ví dụ: trẻ “lì”, không thấy mình sai), hoặc distress biểu hiện gián tiếp.
+            Vì vậy, trong TBH phát triển cần luôn soi <b>Dysfunction</b> (học tập, quan hệ) và <b>Danger</b> (an toàn).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Culture examples -->
+    <section id="minhhoa" class="mb-10">
+      <h2 class="text-2xl font-semibold tracking-tight">4) Ví dụ minh hoạ trong bối cảnh văn hoá, xã hội</h2>
+      <p class="mt-2 text-sm text-slate-600">
+        Ít nhất 2 tiêu chí được minh hoạ: <b>Deviance</b> và <b>Distress/Dysfunction</b> (kèm bối cảnh Việt Nam).
+      </p>
+
+      <div class="mt-5 grid gap-4 md:grid-cols-2">
+        <!-- Example 1 -->
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h3 class="text-lg font-semibold">Ví dụ A: “Tránh nhìn mắt” và câu hỏi về <span class="text-blue-700">Deviance</span></h3>
+              <p class="mt-1 text-sm text-slate-600">Cùng hành vi, nhưng ý nghĩa đổi theo chuẩn văn hoá và tình huống.</p>
+            </div>
+            <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-100">Deviance</span>
+          </div>
+
+          <div class="mt-3 space-y-3 text-sm text-slate-700">
+            <p><b>Bối cảnh VH–XH:</b> Trong nhiều gia đình/trường học Việt Nam, trẻ “nhìn thẳng” người lớn đôi khi bị diễn giải là hỗn,
+              còn “cúi mặt” được xem là lễ phép. Ở lớp đông, giáo viên cũng có thể ít kỳ vọng giao tiếp mắt từng-một.</p>
+            <p><b>Vùng bình thường:</b> Trẻ nhút nhát, trẻ mới đi học, hoặc trẻ được dạy “không nhìn chằm chằm” có thể tránh mắt nhưng vẫn
+              <b>đáp lại gọi tên</b>, <b>chia sẻ hứng thú</b>, biết chơi qua lại với bạn khi quen.</p>
+            <p><b>Vùng cần lưu ý:</b> Nếu tránh mắt đi kèm: <b>không đáp lại tên</b>, <b>khó tương tác qua lại</b>, <b>giao tiếp ít dùng cử chỉ</b>,
+              hoặc <b>hành vi lặp/hạn hẹp</b> xuất hiện ở nhiều bối cảnh, khi đó Deviance không còn “chỉ là phép lịch sự”, mà là tín hiệu cần đánh giá sâu hơn (ví dụ: ASD, lo âu xã hội, hoặc LD/SCD).</p>
+          </div>
+
+          <div class="mt-4 rounded-xl bg-slate-50 p-4 border border-slate-200">
+            <p class="text-xs font-semibold text-slate-700">Câu hỏi 4D để phân định nhanh</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-700">
+              <li>• Deviance: lệch chuẩn trong <i>nhiều</i> bối cảnh hay chỉ khi gặp người lớn?</li>
+              <li>• Dysfunction: trẻ có bị “kẹt” trong bạn bè/học tập vì khó giao tiếp không?</li>
+              <li>• Distress: trẻ có căng thẳng khi bị yêu cầu nhìn mắt hoặc khi giao tiếp không?</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="rounded-2xl border border-slate-200 p-5 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <h3 class="text-lg font-semibold">Ví dụ B: “Đau bụng, đau đầu” và câu hỏi về <span class="text-blue-700">Distress</span> + <span class="text-blue-700">Dysfunction</span></h3>
+              <p class="mt-1 text-sm text-slate-600">Khi cảm xúc khó nói thành lời, cơ thể đôi khi trở thành “loa phát thanh”.</p>
+            </div>
+            <div class="flex gap-2">
+              <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-100">Distress</span>
+              <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 border border-blue-100">Dysfunction</span>
+            </div>
+          </div>
+
+          <div class="mt-3 space-y-3 text-sm text-slate-700">
+            <p><b>Bối cảnh VH–XH:</b> Ở nhiều gia đình, trẻ được khuyến khích “đừng làm quá”, “đừng than buồn”, hoặc ưu tiên thành tích học tập.
+              Khi đó, lo âu/stress dễ biểu hiện qua <b>than phiền cơ thể</b> (đau bụng trước giờ đi học, đau đầu trước kiểm tra).</p>
+            <p><b>Vùng bình thường:</b> Thỉnh thoảng đau bụng khi hồi hộp là có thể. Nếu triệu chứng ngắn, cải thiện khi tình huống qua đi,
+              và không làm trẻ bỏ học/giảm chức năng, thường là phản ứng stress tạm thời.</p>
+            <p><b>Vùng cần lưu ý:</b> Khi trẻ <b>lo lắng dai dẳng</b>, <b>dành nhiều thời gian nghĩ về bệnh</b>, hoặc <b>đi khám nhiều</b> nhưng vẫn sợ,
+              kèm <b>nghỉ học, né hoạt động</b>, chức năng tụt, lúc đó 4D gợi ý cần xem xét nhóm lo âu hoặc SSD (tùy mô tả và thời gian).</p>
+          </div>
+
+          <div class="mt-4 rounded-xl bg-slate-50 p-4 border border-slate-200">
+            <p class="text-xs font-semibold text-slate-700">Câu hỏi 4D để phân định nhanh</p>
+            <ul class="mt-2 space-y-1 text-sm text-slate-700">
+              <li>• Distress: trẻ có lo “mình bị bệnh nặng” không? hay chỉ khó chịu thoáng qua?</li>
+              <li>• Dysfunction: có né trường, giảm chơi, giảm ngủ, tụt điểm không?</li>
+              <li>• Deviance: mức tập trung vào cơ thể có “không tương xứng” so với kết quả y khoa không?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mini practice -->
+      <div class="mt-6 rounded-2xl border border-slate-200 p-5 shadow-sm">
+        <h3 class="text-lg font-semibold">Bài tập nhỏ (tự luyện 4D) 🧠</h3>
+        <p class="mt-2 text-sm text-slate-700">
+          Chọn một hành vi trong các ca lâm sàng của bạn (ví dụ: “cãi lời”, “chạy vòng tròn”, “không làm bài”, “đau bụng đi học”), rồi thử:
+        </p>
+        <div class="mt-4 grid gap-3 md:grid-cols-4">
+          <div class="rounded-xl bg-blue-50 p-4 border border-blue-100">
+            <p class="text-xs font-semibold text-blue-800">Deviance</p>
+            <p class="mt-1 text-sm text-blue-900">Lệch so với tuổi/văn hoá bao nhiêu?</p>
+          </div>
+          <div class="rounded-xl bg-blue-50 p-4 border border-blue-100">
+            <p class="text-xs font-semibold text-blue-800">Distress</p>
+            <p class="mt-1 text-sm text-blue-900">Ai đang khổ? mức nào?</p>
+          </div>
+          <div class="rounded-xl bg-blue-50 p-4 border border-blue-100">
+            <p class="text-xs font-semibold text-blue-800">Dysfunction</p>
+            <p class="mt-1 text-sm text-blue-900">Đụng vào học–xã hội–tự chăm sóc ra sao?</p>
+          </div>
+          <div class="rounded-xl bg-blue-50 p-4 border border-blue-100">
+            <p class="text-xs font-semibold text-blue-800">Danger</p>
+            <p class="mt-1 text-sm text-blue-900">Có rủi ro an toàn nào không?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pb-10">
+      <div class="rounded-2xl bg-slate-50 border border-slate-200 p-5">
+        <p class="text-sm text-slate-700">
+          Gợi ý học nhanh: dùng 4D để <b>sàng lọc</b>, sau đó quay về tiêu chuẩn DSM-5/ICD-11 và phần <b>chẩn đoán phân biệt</b>
+          trong từng rối loạn của project.
+        </p>
+        <p class="mt-2 text-xs text-slate-500">
+          Trang này phục vụ học tập. Không thay thế đánh giá/chẩn đoán chuyên môn.
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Tab active/inactive/hover states
+    const tabs = Array.from(document.querySelectorAll('[data-tab]'));
+
+    function setTabStyles(activeHref) {
+      tabs.forEach(a => {
+        const isActive = a.getAttribute('href') === activeHref;
+        a.classList.remove(
+          'bg-blue-600','text-white','border-blue-600',
+          'bg-white','text-slate-700','border-slate-300'
+        );
+        if (isActive) {
+          a.classList.add('bg-blue-600','text-white','border-blue-600');
+        } else {
+          a.classList.add('bg-white','text-slate-700','border-slate-300');
+          a.addEventListener('mouseenter', () => {
+            if (a.getAttribute('href') !== activeHref) {
+              a.classList.add('bg-blue-50','border-blue-200');
+            }
+          }, { once: true });
+        }
+      });
+    }
+
+    // Update active tab on click
+    tabs.forEach(a => {
+      a.addEventListener('click', () => {
+        setTimeout(() => setTabStyles(a.getAttribute('href')), 50);
+      });
+    });
+
+    // Update active tab on scroll
+    const sections = tabs
+      .map(t => document.querySelector(t.getAttribute('href')))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) {
+        const href = '#' + visible.target.id;
+        setTabStyles(href);
+      }
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: [0.1, 0.2, 0.3, 0.4, 0.5] });
+
+    sections.forEach(s => observer.observe(s));
+
+    // Initial state
+    const initial = location.hash && document.querySelector(location.hash) ? location.hash : '#ynghia';
+    setTabStyles(initial);
+  </script>
+</body>
+</html>
