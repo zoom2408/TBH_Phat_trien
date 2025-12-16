@@ -10,6 +10,12 @@
         /* Hiệu ứng chuyển động mượt mà cho sidebar */
         #sidebar {
             transition: transform 0.3s ease-in-out;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        #sidebar::-webkit-scrollbar {
+            display: none;
         }
         /* Lớp CSS cho trạng thái active của link menu */
         .active-link {
